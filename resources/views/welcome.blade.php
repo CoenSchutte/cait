@@ -1,132 +1,956 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
 
-        <!-- Fonts -->
-        <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+@section('content')
+        <!-- =======================
+        Main hero START -->
+        <section class="p-0">
+            <div class="container-fluid">
+                <div class="row g-0">
+                    <div class="col-xxl-10 mx-auto rounded-3 overflow-hidden">
+                        <div class="tiny-slider arrow-hover arrow-blur arrow-round position-relative">
+                            <div class="tiny-slider-inner"
+                                 data-autoplay="false"
+                                 data-hoverpause="true"
+                                 data-gutter="2"
+                                 data-arrow="false"
+                                 data-dots="true"
+                                 data-items="1">
+                                <!-- Slide item -->
+                                <div class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden" style="background-image:url('images/blog/16by9/big/02.jpg'); background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="card-img-overlay rounded-0 d-flex align-items-center">
+                                        <div class="container px-3 my-auto">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <!-- Card category -->
+                                                    <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                                    <!-- Card title -->
+                                                    <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">10 tell-tale signs you need to get a new startup.</a></h2>
+                                                    <p class="text-white">No visited raising gravity outward subject my cottage Mr be. Hold do at tore in park feet near my case. </p>
+                                                    <!-- Card info -->
+                                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                        <li class="nav-item">
+                                                            <div class="nav-link">
+                                                                <div class="d-flex align-items-center text-white position-relative">
+                                                                    <div class="avatar avatar-sm">
+                                                                        <img class="avatar-img rounded-circle" src="images/avatar/11.jpg" alt="avatar">
+                                                                    </div>
+                                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Louis</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nav-item">Jan 01, 2022</li>
+                                                        <li class="nav-item">5 min read</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Slide item -->
+                                <div class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden" style="background-image:url(images/blog/16by9/big/01.jpg); background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="card-img-overlay rounded-0 d-flex align-items-center">
+                                        <div class="container px-3 my-auto">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <!-- Card category -->
+                                                    <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+                                                    <!-- Card title -->
+                                                    <h2 class="text-white display-5"><a href="post-single-6.html" class="btn-link text-reset fw-normal">7 common mistakes everyone makes while traveling</a></h2>
+                                                    <p class="text-white">Particular way thoroughly unaffected projection favorable Mrs can be projecting own.</p>
+                                                    <!-- Card info -->
+                                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                        <li class="nav-item">
+                                                            <div class="nav-link">
+                                                                <div class="d-flex align-items-center text-white position-relative">
+                                                                    <div class="avatar avatar-sm">
+                                                                        <img class="avatar-img rounded-circle" src="images/avatar/11.jpg" alt="avatar">
+                                                                    </div>
+                                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Larry</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nav-item">Feb 22, 2022</li>
+                                                        <li class="nav-item">2 min read</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Slide item -->
+                                <div class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden" style="background-image:url(images/blog/16by9/big/03.jpg); background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="card-img-overlay rounded-0 d-flex align-items-center">
+                                        <div class="container w-100 my-auto">
+                                            <div class="row">
+                                                <div class="col-lg-7">
+                                                    <!-- Card category -->
+                                                    <a href="#" class="badge bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Covid-19</a>
+                                                    <!-- Card title -->
+                                                    <h2 class="text-white display-5"><a href="post-single-4.html" class="btn-link text-reset fw-normal">Initial problem of startups and their solution</a></h2>
+                                                    <p class="text-white"> Thirty it matter enable become admire in giving. See resolved goodness felicity shy civility domestic. </p>
+                                                    <!-- Card info -->
+                                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                        <li class="nav-item">
+                                                            <div class="nav-link">
+                                                                <div class="d-flex align-items-center text-white position-relative">
+                                                                    <div class="avatar avatar-sm">
+                                                                        <img class="avatar-img rounded-circle" src="images/avatar/08.jpg" alt="avatar">
+                                                                    </div>
+                                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <li class="nav-item">Jun 17, 2022</li>
+                                                        <li class="nav-item">10 min read</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                            <!-- Custom thumb START -->
+                            <div class="col-xl-4 custom-thumb pe-5 position-absolute top-50 end-0 translate-middle-y d-none d-xxl-block" id="custom-thumb">
+                                <!-- Thumb 1 -->
+                                <div class="row align-items-center g-3 mb-4">
+                                    <div class="col-auto">
+                                        <div class="avatar avatar-lg">
+                                            <img class="avatar-img rounded-circle" src="images/blog/16by9/big/02.jpg" alt="avatar">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="fw-normal text-truncate mb-1">Tell-tale signs you need to get a new startup</h4>
+                                        <p class="text-truncate d-block col-11 small mb-0">Departure defective arranging rapturous did believe</p>
+                                    </div>
+                                </div>
+                                <!-- Thumb 2 -->
+                                <div class="row align-items-center g-3 mb-4">
+                                    <div class="col-auto">
+                                        <div class="avatar avatar-lg">
+                                            <img class="avatar-img rounded-circle" src="images/blog/16by9/big/01.jpg" alt="avatar">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="fw-normal text-truncate mb-1">7 common mistakes everyone makes while traveling</h4>
+                                        <p class="text-truncate d-block col-11 small mb-0">Particular way thoroughly unaffected projection favorable </p>
+                                    </div>
+                                </div>
+                                <!-- Thumb 3 -->
+                                <div class="row align-items-center g-3">
+                                    <div class="col-auto">
+                                        <div class="avatar avatar-lg">
+                                            <img class="avatar-img rounded-circle" src="images/blog/16by9/big/03.jpg" alt="avatar">
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="fw-normal text-truncate mb-1">Initial problem of startups and their solution</h4>
+                                        <p class="text-truncate d-block col-11 small mb-0">Drawings offended yet answered Jennings perceive</p>
+                                    </div>
                                 </div>
                             </div>
+                            <!-- Custom thumb END -->
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
                     </div>
                 </div>
             </div>
-        </div>
-    </body>
-</html>
+        </section>
+        <!-- =======================
+        Main hero END -->
+
+        <!-- =======================
+        Highlights START -->
+        <section class="pt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Title -->
+                        <div class="mb-4">
+                            <h2 class="m-0"><i class="bi bi-megaphone"></i> Today's top highlights</h2>
+                            <p class="m-0">Latest breaking news, pictures, videos, and special reports</p>
+                        </div>
+                        <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
+                            <div class="tiny-slider-inner"
+                                 data-autoplay="true"
+                                 data-hoverpause="true"
+                                 data-gutter="24"
+                                 data-arrow="true"
+                                 data-dots="false"
+                                 data-items-xl="4"
+                                 data-items-lg="3"
+                                 data-items-md="3"
+                                 data-items-sm="2"
+                                 data-items-xs="1">
+
+                                <!-- Card item START -->
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="images/blog/4by3/07.jpg" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay Top -->
+                                            <div class="w-100 mb-auto d-flex justify-content-end">
+                                                <div class="text-end ms-auto">
+                                                    <!-- Card format icon -->
+                                                    <div class="icon-md bg-white bg-opacity-10 bg-blur text-white fw-bold rounded-circle" title="8.5 rating">8.5</div>
+                                                </div>
+                                            </div>
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <a href="#" class="badge text-bg-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Marketing</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-6.html" class="btn-link text-reset fw-bold">7 common mistakes everyone makes while traveling</a></h5>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/07.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Lori</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Mar 07, 2022</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="images/blog/4by3/08.jpg" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-6.html" class="btn-link text-reset fw-bold">Skills that you can learn from business</a></h5>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/08.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="post-single-6.html" class="stretched-link text-reset btn-link">Joan</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Aug 15, 2022</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="images/blog/4by3/09.jpg" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <a href="#" class="badge text-bg-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Marketing</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-6.html" class="btn-link text-reset fw-bold">10 tell-tale signs you need to get a new business</a></h5>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/09.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Jun 01, 2022</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="images/blog/4by3/10.jpg" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay Top -->
+                                            <div class="w-100 mb-auto d-flex justify-content-end">
+                                                <div class="text-end ms-auto">
+                                                    <!-- Card format icon -->
+                                                    <div class="icon-md bg-white-soft bg-blur text-white rounded-circle" title="This post has images"><i class="fas fa-image"></i></div>
+                                                </div>
+                                            </div>
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <a href="#" class="badge text-bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Photography</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-6.html" class="btn-link text-reset fw-bold">This is why this year will be the year of startups</a></h5>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/10.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Dec 07, 2022</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card">
+                                    <!-- Card img -->
+                                    <div class="position-relative">
+                                        <img class="card-img" src="images/blog/4by3/11.jpg" alt="Card image">
+                                        <div class="card-img-overlay d-flex align-items-start flex-column p-3">
+                                            <!-- Card overlay bottom -->
+                                            <div class="w-100 mt-auto">
+                                                <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-body px-0 pt-3">
+                                        <h5 class="card-title"><a href="post-single-6.html" class="btn-link text-reset fw-bold">Best Pinterest Boards for learning about business</a></h5>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider align-items-center">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center position-relative">
+                                                        <div class="avatar avatar-xs">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/12.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Sep 07, 2022</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Highlights END -->
+
+        <!-- =======================
+        Adv START -->
+        <section class="p-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <a href="#" class="d-block card-img-flash">
+                            <img src="images/adv-3.png" alt="">
+                        </a>
+                        <small class="text-end d-block mt-1">Advertisement</small>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Adv END -->
+
+        <!-- =======================
+        Top highlights START -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <!-- Title -->
+                        <div class="mb-4">
+                            <h2 class="m-0"><i class="bi bi-bookmark-star me-2"></i>Last week top highlights</h2>
+                            <p class="m-0">Check last weeks top highlights, news, stories and headline news</p>
+                        </div>
+                        <div class="row gy-4">
+                            <div class="col-lg-7">
+                                <div class="card card-overlay-bottom card-bg-scale h-400 h-lg-560" style="background-image:url(images/blog/16by9/05.jpg); background-position: center left; background-size: cover;">
+                                    <!-- Card Image overlay -->
+                                    <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
+                                        <div class="w-100 mt-auto">
+                                            <div class="col">
+                                                <!-- Card category -->
+                                                <a href="#" class="badge text-bg-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                                                <a href="#!" class="badge mb-2 text-bg-dark z-index-99 position-relative" tabindex="0" role="button" data-bs-container="body" data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top" data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
+                                                    <i class="bi bi-info-circle pe-1"></i> Sponsored
+                                                </a>
+                                                <!-- Card title -->
+                                                <h2 class="text-white display-6"><a href="post-single-5.html" class="btn-link text-reset stretched-link fw-normal">Never underestimate the influence of social media</a></h2>
+                                                <!-- Card info -->
+                                                <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                    <li class="nav-item">
+                                                        <div class="nav-link">
+                                                            <div class="d-flex align-items-center text-white position-relative">
+                                                                <div class="avatar avatar-sm">
+                                                                    <img class="avatar-img rounded-circle" src="images/avatar/01.jpg" alt="avatar">
+                                                                </div>
+                                                                <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Carolyn</a></span>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="nav-item">Jan 26, 2022</li>
+                                                    <li class="nav-item">3 min read</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-5">
+                                <!-- Card item START -->
+                                <div class="card mb-2 mb-md-4">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded-3" src="images/blog/4by3/01.jpg" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                            <h5><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">The pros and cons of business agency</a></h5>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <div class="avatar avatar-xs">
+                                                                <div class="avatar-img rounded-circle bg-primary bg-opacity-10">
+                                                                    <span class="text-primary position-absolute top-50 start-50 translate-middle fw-bold small">PT</span>
+                                                                </div>
+                                                            </div>
+                                                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Jan 22, 2022</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card mb-2 mb-md-4">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded-3" src="images/blog/4by3/02.jpg" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <a href="#" class="badge bg-info bg-opacity-10 text-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
+                                            <h5><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">5 reasons why you shouldn't startup</a></h5>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <div class="avatar avatar-xs">
+                                                                <img class="avatar-img rounded-circle" src="images/avatar/02.jpg" alt="avatar">
+                                                            </div>
+                                                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Mar 07, 2022</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card mb-2 mb-md-4">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded-3" src="images/blog/4by3/03.jpg" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <a href="#" class="badge bg-success bg-opacity-10 text-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                                            <h5><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">Five unbelievable facts about money.</a></h5>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <div class="avatar avatar-xs">
+                                                                <img class="avatar-img rounded-circle" src="images/avatar/03.jpg" alt="avatar">
+                                                            </div>
+                                                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Jun 17, 2022</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                                <!-- Card item START -->
+                                <div class="card mb-2 mb-md-4">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded-3" src="images/blog/4by3/04.jpg" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <a href="#" class="badge bg-warning bg-opacity-15 text-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                            <h5><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">Around the web: 20 fabulous infographics about business</a></h5>
+                                            <!-- Card info -->
+                                            <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                                <li class="nav-item">
+                                                    <div class="nav-link">
+                                                        <div class="d-flex align-items-center position-relative">
+                                                            <div class="avatar avatar-xs">
+                                                                <img class="avatar-img rounded-circle" src="images/avatar/05.jpg" alt="avatar">
+                                                            </div>
+                                                            <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Jacqueline</a></span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li class="nav-item">Nov 11, 2022</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Card item END -->
+                            </div>
+                        </div> <!-- Row END -->
+                    </div>
+                </div> <!-- Row END -->
+            </div>
+        </section>
+        <!-- =======================
+        Top highlights END -->
+
+        <!-- =======================
+        Trending topics START -->
+        <section class="p-0">
+            <div class="container">
+                <div class="row g-0">
+                    <div class="col-12 bg-light p-2 p-sm-4 rounded-3">
+                        <!-- Title -->
+                        <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                            <h2 class="m-0">Trending topics</h2>
+                            <a href="#" class="text-body text-primary-hover"><u>View all categories</u></a>
+                        </div>
+                        <!-- Slider -->
+                        <div class="tiny-slider arrow-hover arrow-dark arrow-blur arrow-round">
+                            <div class="tiny-slider-inner"
+                                 data-autoplay="false"
+                                 data-hoverpause="true"
+                                 data-gutter="24"
+                                 data-arrow="true"
+                                 data-dots="false"
+                                 data-items-xl="5"
+                                 data-items-lg="4"
+                                 data-items-md="3"
+                                 data-items-sm="2"
+                                 data-items-xs="2"
+                            >
+                                <!-- Category item -->
+                                <div>
+                                    <div class="card card-overlay-bottom card-img-scale">
+                                        <img class="card-img" src="images/blog/1by1/thumb/01.jpg" alt="card image">
+                                        <div class="card-img-overlay d-flex px-3 px-sm-5">
+                                            <h5 class="mt-auto mx-auto">
+                                                <a href="#" class="stretched-link btn-link fw-bold text-white">Travel</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Category item -->
+                                <div>
+                                    <div class="card card-overlay-bottom card-img-scale">
+                                        <img class="card-img" src="images/blog/1by1/thumb/02.jpg" alt="card image">
+                                        <div class="card-img-overlay d-flex px-3 px-sm-5">
+                                            <h5 class="mt-auto mx-auto">
+                                                <a href="#" class="stretched-link btn-link fw-bold text-white">Business</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Category item -->
+                                <div>
+                                    <div class="card card-overlay-bottom card-img-scale">
+                                        <img class="card-img" src="images/blog/1by1/thumb/03.jpg" alt="card image">
+                                        <div class="card-img-overlay d-flex px-3 px-sm-5">
+                                            <h5 class="mt-auto mx-auto">
+                                                <a href="#" class="stretched-link btn-link fw-bold text-white">Marketing</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Category item -->
+                                <div>
+                                    <div class="card card-overlay-bottom card-img-scale">
+                                        <img class="card-img" src="images/blog/1by1/thumb/04.jpg" alt="card image">
+                                        <div class="card-img-overlay d-flex px-3 px-sm-5">
+                                            <h5 class="mt-auto mx-auto">
+                                                <a href="#" class="stretched-link btn-link fw-bold text-white">Photography</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Category item -->
+                                <div>
+                                    <div class="card card-overlay-bottom card-img-scale">
+                                        <img class="card-img" src="images/blog/1by1/thumb/05.jpg" alt="card image">
+                                        <div class="card-img-overlay d-flex px-3 px-sm-5">
+                                            <h5 class="mt-auto mx-auto">
+                                                <a href="#" class="stretched-link btn-link fw-bold text-white">Sports</a>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- Slider END -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Trending topics END -->
+
+        <!-- =======================
+        Sports update START -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <!-- Title -->
+                    <div class="col-12 mb-4">
+                        <h2 class="m-0"><i class="bi bi-controller me-2"></i>Sports update</h2>
+                        <p class="m-0">Get the latest sports news and updates from football, tennis, formula one, cricket, NBA, and golf with live scores and stats</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-4 mb-md-0">
+                        <!-- Card item START -->
+                        <div class="card card-overlay-bottom card-bg-scale h-300 h-lg-540" style="background-image:url(images/blog/16by9/06.jpg); background-position: center left; background-size: cover;">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
+                                <div class="w-100 mt-auto">
+                                    <div class="col">
+                                        <!-- Card category -->
+                                        <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+                                        <!-- Card title -->
+                                        <h2 class="text-white display-6"><a href="post-single-4.html" class="btn-link text-reset stretched-link fw-normal">8 initial problem of startups and their solution</a></h2>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center text-white position-relative">
+                                                        <div class="avatar avatar-sm">
+                                                            <div class="avatar-img rounded-circle bg-primary">
+                                                                <span class="text-white position-absolute top-50 start-50 translate-middle fw-bold small">VP</span>
+                                                            </div>
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Carolyn</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Feb 28, 2022</li>
+                                            <li class="nav-item">6 min read</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    </div>
+                    <div class="col-md-6">
+                        <!-- Card item START -->
+                        <div class="card card-overlay-bottom card-bg-scale h-300 h-lg-540" style="background-image:url(images/blog/16by9/01.jpg); background-position: center left; background-size: cover;">
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
+                                <div class="w-100 mt-auto">
+                                    <div class="col">
+                                        <!-- Card category -->
+                                        <a href="#" class="badge text-bg-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                        <!-- Card title -->
+                                        <h2 class="text-white display-6"><a href="post-single-4.html" class="btn-link text-reset stretched-link fw-normal">Business ideas that will boom in upcoming years</a></h2>
+                                        <!-- Card info -->
+                                        <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                            <li class="nav-item">
+                                                <div class="nav-link">
+                                                    <div class="d-flex align-items-center text-white position-relative">
+                                                        <div class="avatar avatar-sm">
+                                                            <img class="avatar-img rounded-circle" src="images/avatar/09.jpg" alt="avatar">
+                                                        </div>
+                                                        <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Billy</a></span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li class="nav-item">Jul 19, 2022</li>
+                                            <li class="nav-item">2 min read</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Sports update END -->
+
+        <!-- =======================
+        Sponsored news START -->
+        <section class="pt-4">
+            <div class="container">
+                <div class="row">
+                    <!-- Title -->
+                    <div class="col-md-12">
+                        <div class="mb-4 d-md-flex justify-content-between align-items-center">
+                            <h2 class="m-0"><i class="bi bi-megaphone me-2"></i> Sponsored news</h2>
+                            <a href="#" class="text-body small"><u>Content by: Bootstrap</u></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/01.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                    <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">The pros and cons of business agency</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/01.jpg" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Jan 22, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/02.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-info bg-opacity-10 text-info mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
+                                    <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">5 reasons why you shouldn't startup</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/02.jpg" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Mar 07, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/03.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-success bg-opacity-10 text-success mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Business</a>
+                                    <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">Five unbelievable facts about money.</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/03.jpg" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Jun 17, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/04.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-warning bg-opacity-15 text-warning mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
+                                    <h4><a href="post-single-2.html" class="btn-link stretched-link text-reset fw-bold">Around the web: 20 fabulous infographics about business</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/05.jpg" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Jacqueline</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Oct 11, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/05.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-primary bg-opacity-10 text-primary mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Marketing</a>
+                                    <h4><a href="post-single-6.html" class="btn-link stretched-link text-reset fw-bold">7 common mistakes everyone makes while traveling</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <div class="avatar-img rounded-circle bg-danger">
+                                                            <span class="text-white position-absolute top-50 start-50 translate-middle fw-bold small">W</span>
+                                                        </div>
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Jul 22, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                        <!-- Card item START -->
+                        <div class="card mb-3 mb-sm-4">
+                            <div class="row g-3">
+                                <div class="col-4">
+                                    <img class="rounded-3" src="images/blog/4by3/06.jpg" alt="">
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Photography</a>
+                                    <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">5 investment doubts you should clarify</a></h4>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            <div class="nav-link">
+                                                <div class="d-flex align-items-center position-relative">
+                                                    <div class="avatar avatar-xs">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/07.jpg" alt="avatar">
+                                                    </div>
+                                                    <span class="ms-3">by <a href="#" class="stretched-link text-reset btn-link">Judy</a></span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">Sep 30, 2022</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card item END -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Sponsored news END -->
+
+        <!-- =======================
+        Newsletter START -->
+        <section class="pt-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="bg-dark p-3 p-sm-5 rounded-3 position-relative overflow-hidden">
+                            <!-- SVG shape START -->
+                            <figure class="position-absolute top-50 start-50 translate-middle">
+                                <svg width="1848" height="481" viewBox="0 0 1848.9 481.8" xmlns="http://www.w3.org/2000/svg">
+                                    <path class="fill-success" d="m779.4 251c-10.3-11.5-19.9-23.8-29.4-36.1-9-11.6-18.4-22.8-27.1-34.7-15.3-21.2-30.2-45.8-54.8-53.3-10.5-3.2-21.6-3.2-30.6 2.5-7.6 4.8-13 12.6-17.3 20.9-10.8 20.6-16.1 44.7-24.6 66.7-7.9 20.2-19.4 38.6-33.8 54.3-14.7 16.2-31.7 30-50.4 41-15.9 9.4-33.4 17.2-52 19.3-18.4 2-38-2.5-56.5-6.2-22.4-4.4-45.1-9.7-67.6-10.9-9.8-0.5-19.8-0.3-29.1 2.3-9.8 2.8-18.7 8.6-26.6 15.2-17.3 14.5-30.2 34.4-43.7 52.9-12.9 17.6-26.8 34.9-45.4 45.4-19.5 11-42.6 12.1-65 6.6-52.3-13.1-93.8-56.5-127.9-101.5-8.8-11.6-17.3-23.4-25.6-35.4-0.6-0.9-1.1-1.8-1.6-2.7-1.1-2.4-0.9-2.6 0.6-1.2 1 0.9 1.9 1.9 2.7 3 35.3 47.4 71.5 98.5 123.2 123.9 22.8 11.2 48.2 17.2 71.7 12.2 23-5 40.6-21.2 55.3-39.7 24.5-30.7 46.5-75.6 87.1-83 19.5-3.5 40.7 0.1 60.6 3.7 21.2 3.9 42.3 9.1 63.6 11.7 17.8 2.3 35.8-0.1 52.2-7 20-8.1 38.4-20.2 54.8-34.6 16.2-14.1 31-30.7 41.8-50.4 11.1-20.2 17-43.7 24.9-65.7 6.1-16.9 13.8-36.2 29.3-44.5 16.1-8.6 37.3-1.9 52.3 10.6 18.7 15.6 31.2 39.2 46.7 58.2"/>
+                                    <path class="fill-warning" d="m1157.9 344.9c9.8 7.6 18.9 15.8 28.1 24 8.6 7.7 17.6 15.2 26 23.2 14.8 14.2 29.5 30.9 51.2 34.7 9.3 1.6 18.8 0.9 26.1-3.8 6.1-3.9 10.2-9.9 13.2-16.2 7.6-15.6 10.3-33.2 15.8-49.6 5.2-15.1 13.6-29 24.7-41.3 11.4-12.6 24.8-23.6 40-32.8 12.9-7.8 27.3-14.6 43.1-17.3 15.6-2.6 32.8-0.7 49 0.7 19.6 1.7 39.4 4 58.8 3.4 8.4-0.3 17-1.1 24.8-3.6 8.2-2.7 15.4-7.4 21.6-12.7 13.7-11.6 23.1-26.7 33.3-40.9 9.6-13.5 20.2-26.9 35.3-35.6 15.8-9.2 35.6-11.6 55.2-9.1 45.7 5.8 84.8 34.3 117.6 64.4 8.7 8 17.2 16.2 25.6 24.6 2.5 3.2 1.9 3-1.2 1-34.3-32-69.7-66.9-116.5-81.9-20.5-6.5-42.7-9.2-62.4-4-19.3 5.1-33.1 17.9-44.3 32.2-18.5 23.7-33.9 57.5-68.1 65.5-16.5 3.8-34.9 2.6-52.3 1.3-18.5-1.4-37-3.7-55.4-4.2-15.5-0.5-30.7 2.5-44.2 8.5-16.5 7.2-31.3 17.1-44.3 28.5-12.8 11.2-24.1 24.1-31.9 39-7.9 15.3-11.1 32.5-16.2 48.9-3.9 12.6-9 26.9-21.6 33.9-13.1 7.3-31.9 3.8-45.7-4.1-17.2-10-29.9-26.1-44.6-38.8"/>
+                                    <path class="fill-warning opacity-6" d="m1840.8 379c-8.8 40.3-167.8 79.9-300.2 45.3-42.5-11.1-91.4-32-138.7-11.6-38.7 16.7-55 66-90.8 67.4-25.1 1-48.6-20.3-58.1-39.8-31-63.3 50.7-179.9 155.7-208.1 50.4-13.5 97.3-3.2 116.1 1.6 36.3 9.3 328.6 87.4 316 145.2z"/>
+                                    <path class="fill-success opacity-6" d="M368.3,247.3C265.6,257.2,134,226,110.9,141.5C85,47.2,272.5-9.4,355.5-30.7s182.6-31.1,240.8-18.6    C677.6-31.8,671.5,53.9,627,102C582.6,150.2,470.9,237.5,368.3,247.3z"/>
+                                </svg>
+                            </figure>
+                            <!-- SVG shape END -->
+                            <div class="row">
+                                <div class="col-md-8 col-lg-6 mx-auto text-center py-5 position-relative">
+                                    <!-- Title -->
+                                    <h2 class="display-5 text-white">Never miss a story!</h2>
+                                    <p class="text-white">Get the freshest headlines and updates sent uninterrupted to your inbox.</p>
+                                    <!-- Form -->
+                                    <form class="row row-cols-sm-auto g-2 align-items-center justify-content-center mt-3">
+                                        <div class="col-12">
+                                            <input type="email" class="form-control form-control-lg" placeholder="Enter your email address">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary btn-lg m-0">Subscribe</button>
+                                        </div>
+                                        <div class="form-text text-white opacity-6 mt-2">By subscribing you agree to our
+                                            <a href="#" class="text-decoration-underline text-reset">Privacy Policy</a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- =======================
+        Newsletter END -->
+
+
+
+@endsection
