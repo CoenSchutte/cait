@@ -20,6 +20,7 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@stirotterdam.nl',
             'password' => bcrypt('password'),
             'is_admin' => true,
+            'student_number' => '0976553000',
         ]);
     }
 }

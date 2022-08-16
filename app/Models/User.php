@@ -27,6 +27,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'student_number',
+        'is_admin',
     ];
 
     /**
@@ -58,4 +60,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function getHroEmailAddress()
+    {
+        return $this->student_number . '@hro.nl';
+    }
 }
