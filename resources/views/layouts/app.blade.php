@@ -24,7 +24,7 @@
     <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/style.css','resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -469,13 +469,14 @@ Footer END -->
 
 
 <!-- Bootstrap JS -->
-<script src="vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <!-- Vendors -->
-<script src="vendor/tiny-slider/tiny-slider.js"></script>
+<script src="../vendor/tiny-slider/tiny-slider.js"></script>
 
 <!-- Template Functions -->
-<script src="js/functions.js"></script>
+{{--<script src="../js/functions.js"></script>--}}
+@vite(['resources/js/functions.js'])
 @livewireScripts
 </body>
 </html>
