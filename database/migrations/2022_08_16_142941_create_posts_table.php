@@ -16,7 +16,10 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('subtitle');
             $table->string('body');
+            $table->boolean('is_published')->default(false);
+            $table->boolean('is_featured')->default(false);
             $table->timestamps();
         });
     }

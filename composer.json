@@ -19,7 +19,9 @@
         "laravel/nova": "*",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "livewire/livewire": "^2.5"
+        "league/flysystem-aws-s3-v3": "^3.0",
+        "livewire/livewire": "^2.5",
+        "spatie/laravel-medialibrary": "^10.0.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

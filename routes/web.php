@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', [
+        'posts' => Post::all(),
+    ]);
 })->name('welcome');
 
 Route::middleware([
@@ -26,3 +29,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+

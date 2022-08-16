@@ -3,6 +3,7 @@
 namespace App\Nova;
 
 use Illuminate\Http\Request;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Text;
@@ -47,8 +48,17 @@ class Post extends Resource
             Text::make('Title')
                 ->rules('required', 'max:255'),
 
+            Text::make('Subtitle')
+                ->rules('required', 'max:255'),
+
             Markdown::make('Body')
                 ->rules('required'),
+
+            Boolean::make('Is Published', 'is_published')
+                ->default(false),
+
+            Boolean::make('Is Featured', 'is_featured')
+                ->default(false),
         ];
     }
 
