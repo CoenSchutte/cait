@@ -28,7 +28,7 @@
                                                 <div class="col-lg-7">
                                                     <!-- Card category -->
                                                     <a href="#" class="badge text-bg-danger mb-2"><i
-                                                            class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                                            class="fas fa-circle me-2 small fw-bold"></i>Tech</a>
                                                     <!-- Card title -->
                                                     <h2 class="text-white display-5">
                                                         <a href="{{route('posts.show',$post)}}"
@@ -97,8 +97,8 @@
                 <div class="col-md-12">
                     <!-- Title -->
                     <div class="mb-4">
-                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Today's top highlights</h2>
-                        <p class="m-0">Latest breaking news, pictures, videos, and special reports</p>
+                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Event hightlights!</h2>
+                        <p class="m-0">De foto's, video's en andere ongein van de laatste events!</p>
                     </div>
                     <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
                         <div class="tiny-slider-inner"
