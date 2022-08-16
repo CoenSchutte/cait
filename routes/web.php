@@ -16,7 +16,7 @@ use App\Models\Post;
 
 Route::get('/', function () {
     return view('welcome', [
-        'posts' => Post::all(),
+        'posts' => Post::where('is_featured', true)->where('is_published', true)->get(),
     ]);
 })->name('welcome');
 
