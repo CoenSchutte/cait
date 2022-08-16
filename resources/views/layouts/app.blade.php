@@ -28,6 +28,11 @@
 
     <!-- Styles -->
     @livewireStyles
+
+    <!-- PWA  -->
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{ asset('logo.PNG') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 </head>
 <body class="font-sans antialiased">
 <header class="navbar-light navbar-sticky header-static">
@@ -477,5 +482,14 @@ Footer END -->
 <!-- Template Functions -->
 <script src="js/functions.js"></script>
 @livewireScripts
+
+<script src="{{ asset('/sw.js') }}"></script>
+<script>
+    if (!navigator.serviceWorker.controller) {
+        navigator.serviceWorker.register("/sw.js").then(function (reg) {
+            console.log("Service worker has been registered for scope: " + reg.scope);
+        });
+    }
+</script>
 </body>
 </html>
