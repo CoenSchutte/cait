@@ -22,8 +22,8 @@
                                                             class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                                                     <!-- Card title -->
                                                     <h2 class="text-white display-5">
-                                                        <a href="post-single-4.html"
-                                                            class="btn-link text-reset fw-normal">{{ $post->title }}</a>
+                                                        <a href="{{route('posts.show',$post)}}"
+                                                           class="btn-link text-reset fw-normal">{{$post->title}}</a>
                                                     </h2>
                                                     <p class="text-white">{{ $post->subtitle }}</p>
                                                     <!-- Card info -->

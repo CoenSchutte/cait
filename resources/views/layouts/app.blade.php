@@ -23,8 +23,9 @@
     <link rel="stylesheet" type="text/css" href="vendor/tiny-slider/tiny-slider.css">
     <link id="style-switch" rel="stylesheet" type="text/css" href="css/style.css">
 
+
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/style.css','resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles

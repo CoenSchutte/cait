@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 
 /*
@@ -18,4 +19,6 @@ use App\Models\Post;
 Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
+    
+    Route::resource('posts', PostController::class);
 });
