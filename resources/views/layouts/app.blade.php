@@ -8,7 +8,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.ico">
+    <link rel="shortcut icon" href="images/logo-stir-zwart.png">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -36,8 +36,8 @@
         <div class="container">
             <!-- Logo START -->
             <a class="navbar-brand" href="{{route('welcome')}}">
-                <img class="navbar-brand-item light-mode-item" src="images/logo.svg" alt="logo">
-                <img class="navbar-brand-item dark-mode-item" src="images/logo-light.svg" alt="logo">
+                <img class="navbar-brand-item light-mode-item" src="images/logo-stir-zwart.png" alt="logo">
+                <img class="navbar-brand-item dark-mode-item" src="images/logo-stir-wit.png" alt="logo">
             </a>
             <!-- Logo END -->
 
@@ -350,7 +350,10 @@
                 </div>
                 <!-- Nav Button -->
                 <div class="nav-item d-none d-md-block">
-                    <a href="#" class="btn btn-sm btn-danger mb-0 mx-2">Subscribe!</a>
+                    <a href="{{route('login')}}" class="btn btn-sm btn-primary mb-0 mx-2">Login</a>
+                </div>
+                <div class="nav-item d-none d-md-block">
+                    <a href="{{route('register')}}" class="btn btn-sm btn-success mb-0 mx-2">Registreer</a>
                 </div>
                 <!-- Nav Search -->
                 <div class="nav-item dropdown nav-search dropdown-toggle-icon-none">
@@ -440,14 +443,17 @@
             <div class="col-sm-6 col-lg-2 mb-4">
                 <h5 class="mb-4">Our Social handles</h5>
                 <ul class="nav flex-column">
-                    <li class="nav-item"><a class="nav-link pt-0" href="#"><i
-                                class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fab fa-twitter-square fa-fw me-2 text-twitter"></i>Twitter</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i
+                    <li class="nav-item"><a class="nav-link pt-0" href="https://discord.gg/Np6WEv46Bc"><i
+                                class="fab fa-discord fa-fw me-2 text-facebook"></i>Discord</a></li>
+                    <li class="nav-item"><a class="nav-link" target="_blank"
+                                            href="https://linkedin.com/company/stirotterdam"><i
                                 class="fab fa-linkedin fa-fw me-2 text-linkedin"></i>Linkedin</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#"><i
-                                class="fab fa-youtube-square fa-fw me-2 text-youtube"></i>YouTube</a></li>
+                    <li class="nav-item"><a class="nav-link" target="_blank"
+                                            href="https://instagram.com/stirotterdam"><i
+                                class="fab fa-instagram-square fa-fw me-2 text-instagram"></i>Instagram</a></li>
+                    <li class="nav-item"><a class="nav-link" target="_blank"
+                                            href="https://facebook.com/stirotterdam"><i
+                                class="fab fa-facebook-square fa-fw me-2 text-facebook"></i>Facebook</a></li>
                 </ul>
             </div>
         </div>
@@ -457,24 +463,6 @@
 <!-- =======================
 Footer END -->
 
-<!-- =======================
-Cookies alert START -->
-<div
-    class="alert alert-light alert-dismissible fade show position-fixed bottom-0 start-50 translate-middle-x z-index-99 d-lg-flex justify-content-between align-items-center shadow p-4 col-9 col-md-5"
-    role="alert">
-    <p class="m-0 pe-3">This website stores cookies on your computer. To find out more about the cookies we use, see our
-        <a class="text-reset" href="#"> <u>Privacy Policy</u></a></p>
-    <div class="d-flex mt-3 mt-lg-0">
-        <button type="button" class="btn btn-success-soft btn-sm mb-0 me-2" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">Accept</span>
-        </button>
-        <button type="button" class="btn btn-danger-soft btn-sm mb-0" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">Decline</span>
-        </button>
-    </div>
-</div>
-<!-- =======================
-Cookies alert END -->
 
 <!-- Back to top -->
 <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
