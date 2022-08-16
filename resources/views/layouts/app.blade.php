@@ -17,14 +17,14 @@
         rel="stylesheet">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="vendor/tiny-slider/tiny-slider.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/tiny-slider/tiny-slider.css">
 
-    <link id="style-switch" rel="stylesheet" type="text/css" href="css/style.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
 
     <!-- Scripts -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/vendor/font-awesome/css/all.min.css','resources/vendor/bootstrap-icons/bootstrap-icons.css','resources/vendor/tiny-slider/tiny-slider.css','resources/css/style.css','resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -36,8 +36,8 @@
         <div class="container">
             <!-- Logo START -->
             <a class="navbar-brand" href="{{route('welcome')}}">
-                <img class="navbar-brand-item light-mode-item" src="images/logo-stir-zwart.png" alt="logo">
-                <img class="navbar-brand-item dark-mode-item" src="images/logo-stir-wit.png" alt="logo">
+                <img class="navbar-brand-item light-mode-item" src="{{asset('images/logo-stir-zwart.png')}}" alt="logo">
+                <img class="navbar-brand-item dark-mode-item" src="{{asset('images/logo-stir-wit.png')}}" alt="logo">
             </a>
             <!-- Logo END -->
 

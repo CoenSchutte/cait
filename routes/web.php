@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 use App\Models\Post;
 
 /*
@@ -19,6 +20,9 @@ Route::get('/', function () {
         'posts' => Post::where('is_featured', true)->where('is_published', true)->get(),
     ]);
 })->name('welcome');
+
+
+Route::resource('posts', PostController::class);
 
 Route::middleware([
     'auth:sanctum',
