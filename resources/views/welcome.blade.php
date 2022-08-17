@@ -65,8 +65,7 @@
                                     </div>
                                     <div class="col-8">
                                         <h4 class="fw-normal text-truncate mb-1">{{ $post->title }}</h4>
-                                        <p class="text-truncate d-block col-11 small mb-0">Departure defective arranging
-                                            rapturous did believe</p>
+                                        <p class="text-truncate d-block col-11 small mb-0">{{$post->subtitle}}</p>
                                     </div>
                                 </div>
                             @endforeach
