@@ -25,7 +25,7 @@
 
 
     <!-- Scripts -->
-    @vite(['resources/css/style.css','resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <!-- Styles -->
     @livewireStyles
@@ -43,10 +43,15 @@
     <!-- Back to top -->
     <div class="back-top"><i class="bi bi-arrow-up-short"></i></div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('vendor/tiny-slider/tiny-slider.js') }}"></script>
-    <script src="{{ asset('js/functions.js') }}"></script>
+    <!-- Bootstrap JS -->
+    <script src="../vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Vendors -->
+    <script src="../vendor/tiny-slider/tiny-slider.js"></script>
+
+    <!-- Template Functions -->
+    {{--<script src="../js/functions.js"></script>--}}
+    @vite(['resources/js/functions.js'])
     @livewireScripts
 </body>
 

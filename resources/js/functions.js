@@ -1,9 +1,9 @@
 /**
-* Blogzine - Blog and Magazine Bootstrap 5 Theme
-*
-* @author Webestica (https://www.webestica.com/)
-* @version 1.2.0
-**/
+ * Blogzine - Blog and Magazine Bootstrap 5 Theme
+ *
+ * @author Webestica (https://www.webestica.com/)
+ * @version 1.2.0
+ **/
 
 
 /* ===================
@@ -72,37 +72,37 @@ Table Of Content
 
 // Get CSS var value
 var ThemeColor = function () {
-  return {
-    getCssVariableValue: function (e) {
-      var t = getComputedStyle(document.documentElement).getPropertyValue(e);
-      return t && t.length > 0 && (t = t.trim()), t;
-    }
-  };
+    return {
+        getCssVariableValue: function (e) {
+            var t = getComputedStyle(document.documentElement).getPropertyValue(e);
+            return t && t.length > 0 && (t = t.trim()), t;
+        }
+    };
 }();
 
 var e = {
     init: function () {
         e.preLoader(),
-        e.megaMenu(),
-        e.stickyHeader(),
-        e.tinySlider(),
-        e.parallaxBG(),
-        e.stickyBar(),
-        e.toolTipFunc(),
-        e.popOverFunc(),
-        e.backTotop(),
-        e.stickyPost(),
-        e.stickyFooter(),
-        e.lightBox(),
-        e.enableIsotope(),
-        e.darkMode(),
-        e.zooming(),
-        e.lazyLoading(),
-        e.quill(),
-        e.videoPlyr()
+            e.megaMenu(),
+            e.stickyHeader(),
+            e.tinySlider(),
+            e.parallaxBG(),
+            e.stickyBar(),
+            e.toolTipFunc(),
+            e.popOverFunc(),
+            e.backTotop(),
+            e.stickyPost(),
+            e.stickyFooter(),
+            e.lightBox(),
+            e.enableIsotope(),
+            e.darkMode(),
+            e.zooming(),
+            e.lazyLoading(),
+            e.quill(),
+            e.videoPlyr()
         e.overlayScrollbars(),
-        e.trafficsourcesChart(),
-        e.trafficstatsChart();
+            e.trafficsourcesChart(),
+            e.trafficstatsChart();
     },
     isVariableDefined: function (el) {
         return typeof !!el && (el) != 'undefined' && el != null;
@@ -300,98 +300,98 @@ var e = {
     tinySlider: function () {
         var $carousel = e.select('.tiny-slider-inner');
         if (e.isVariableDefined($carousel)) {
-          var tnsCarousel = e.selectAll('.tiny-slider-inner');
-          tnsCarousel.forEach(slider => {
-              var slider1 = slider;
-              var sliderMode = slider1.getAttribute('data-mode') ? slider1.getAttribute('data-mode') : 'carousel';
-              var sliderAxis = slider1.getAttribute('data-axis') ? slider1.getAttribute('data-axis') : 'horizontal';
-              var sliderSpace = slider1.getAttribute('data-gutter') ? slider1.getAttribute('data-gutter') : 30;
-              var sliderEdge = slider1.getAttribute('data-edge') ? slider1.getAttribute('data-edge') : 0;
+            var tnsCarousel = e.selectAll('.tiny-slider-inner');
+            tnsCarousel.forEach(slider => {
+                var slider1 = slider;
+                var sliderMode = slider1.getAttribute('data-mode') ? slider1.getAttribute('data-mode') : 'carousel';
+                var sliderAxis = slider1.getAttribute('data-axis') ? slider1.getAttribute('data-axis') : 'horizontal';
+                var sliderSpace = slider1.getAttribute('data-gutter') ? slider1.getAttribute('data-gutter') : 30;
+                var sliderEdge = slider1.getAttribute('data-edge') ? slider1.getAttribute('data-edge') : 0;
 
-              var sliderItems = slider1.getAttribute('data-items') ? slider1.getAttribute('data-items') : 4; //option: number (items in all device)
-              var sliderItemsXl = slider1.getAttribute('data-items-xl') ? slider1.getAttribute('data-items-xl') : Number(sliderItems); //option: number (items in 1200 to end )
-              var sliderItemsLg = slider1.getAttribute('data-items-lg') ? slider1.getAttribute('data-items-lg') : Number(sliderItemsXl); //option: number (items in 992 to 1199 )
-              var sliderItemsMd = slider1.getAttribute('data-items-md') ? slider1.getAttribute('data-items-md') : Number(sliderItemsLg); //option: number (items in 768 to 991 )
-              var sliderItemsSm = slider1.getAttribute('data-items-sm') ? slider1.getAttribute('data-items-sm') : Number(sliderItemsMd); //option: number (items in 576 to 767 )
-              var sliderItemsXs = slider1.getAttribute('data-items-xs') ? slider1.getAttribute('data-items-xs') : Number(sliderItemsSm); //option: number (items in start to 575 )
+                var sliderItems = slider1.getAttribute('data-items') ? slider1.getAttribute('data-items') : 4; //option: number (items in all device)
+                var sliderItemsXl = slider1.getAttribute('data-items-xl') ? slider1.getAttribute('data-items-xl') : Number(sliderItems); //option: number (items in 1200 to end )
+                var sliderItemsLg = slider1.getAttribute('data-items-lg') ? slider1.getAttribute('data-items-lg') : Number(sliderItemsXl); //option: number (items in 992 to 1199 )
+                var sliderItemsMd = slider1.getAttribute('data-items-md') ? slider1.getAttribute('data-items-md') : Number(sliderItemsLg); //option: number (items in 768 to 991 )
+                var sliderItemsSm = slider1.getAttribute('data-items-sm') ? slider1.getAttribute('data-items-sm') : Number(sliderItemsMd); //option: number (items in 576 to 767 )
+                var sliderItemsXs = slider1.getAttribute('data-items-xs') ? slider1.getAttribute('data-items-xs') : Number(sliderItemsSm); //option: number (items in start to 575 )
 
-              var sliderSpeed = slider1.getAttribute('data-speed') ? slider1.getAttribute('data-speed') : 500;
-              var sliderautoWidth = slider1.getAttribute('data-autowidth') === 'true'; //option: true or false
-              var sliderArrow = slider1.getAttribute('data-arrow') !== 'false'; //option: true or false
-              var sliderDots = slider1.getAttribute('data-dots') !== 'false'; //option: true or false
+                var sliderSpeed = slider1.getAttribute('data-speed') ? slider1.getAttribute('data-speed') : 500;
+                var sliderautoWidth = slider1.getAttribute('data-autowidth') === 'true'; //option: true or false
+                var sliderArrow = slider1.getAttribute('data-arrow') !== 'false'; //option: true or false
+                var sliderDots = slider1.getAttribute('data-dots') !== 'false'; //option: true or false
 
-              var sliderAutoPlay = slider1.getAttribute('data-autoplay') !== 'false'; //option: true or false
-              var sliderAutoPlayTime = slider1.getAttribute('data-autoplaytime') ? slider1.getAttribute('data-autoplaytime') : 4000;
-              var sliderHoverPause = slider1.getAttribute('data-hoverpause') === 'true'; //option: true or false
-              if (e.isVariableDefined(e.select('.custom-thumb'))) {
-                var sliderNavContainer = e.select('.custom-thumb');
-              }
-              var sliderLoop = slider1.getAttribute('data-loop') !== 'false'; //option: true or false
-              var sliderRewind = slider1.getAttribute('data-rewind') === 'true'; //option: true or false
-              var sliderAutoHeight = slider1.getAttribute('data-autoheight') === 'true'; //option: true or false
-              var sliderfixedWidth = slider1.getAttribute('data-fixedwidth') === 'true'; //option: true or false
-              var sliderTouch = slider1.getAttribute('data-touch') !== 'false'; //option: true or false
-              var sliderDrag = slider1.getAttribute('data-drag') !== 'false'; //option: true or false
-              // Check if document DIR is RTL
-              var ifRtl = document.getElementsByTagName("html")[0].getAttribute("dir");
-              var sliderDirection;
-              if (ifRtl === 'rtl') {
-                  sliderDirection = 'rtl';
-              }
+                var sliderAutoPlay = slider1.getAttribute('data-autoplay') !== 'false'; //option: true or false
+                var sliderAutoPlayTime = slider1.getAttribute('data-autoplaytime') ? slider1.getAttribute('data-autoplaytime') : 4000;
+                var sliderHoverPause = slider1.getAttribute('data-hoverpause') === 'true'; //option: true or false
+                if (e.isVariableDefined(e.select('.custom-thumb'))) {
+                    var sliderNavContainer = e.select('.custom-thumb');
+                }
+                var sliderLoop = slider1.getAttribute('data-loop') !== 'false'; //option: true or false
+                var sliderRewind = slider1.getAttribute('data-rewind') === 'true'; //option: true or false
+                var sliderAutoHeight = slider1.getAttribute('data-autoheight') === 'true'; //option: true or false
+                var sliderfixedWidth = slider1.getAttribute('data-fixedwidth') === 'true'; //option: true or false
+                var sliderTouch = slider1.getAttribute('data-touch') !== 'false'; //option: true or false
+                var sliderDrag = slider1.getAttribute('data-drag') !== 'false'; //option: true or false
+                // Check if document DIR is RTL
+                var ifRtl = document.getElementsByTagName("html")[0].getAttribute("dir");
+                var sliderDirection;
+                if (ifRtl === 'rtl') {
+                    sliderDirection = 'rtl';
+                }
 
-              var tnsSlider = tns({
-                  container: slider,
-                  mode: sliderMode,
-                  axis: sliderAxis,
-                  gutter: sliderSpace,
-                  edgePadding: sliderEdge,
-                  speed: sliderSpeed,
-                  autoWidth: sliderautoWidth,
-                  controls: sliderArrow,
-                  nav: sliderDots,
-                  autoplay: sliderAutoPlay,
-                  autoplayTimeout: sliderAutoPlayTime,
-                  autoplayHoverPause: sliderHoverPause,
-                  autoplayButton: false,
-                  autoplayButtonOutput: false,
-                  controlsPosition: top,
-                  navContainer: sliderNavContainer,
-                  navPosition: top,
-                  autoplayPosition: top,
-                  controlsText: [
-                      '<i class="fas fa-chevron-left"></i>',
-                      '<i class="fas fa-chevron-right"></i>'
-                  ],
-                  loop: sliderLoop,
-                  rewind: sliderRewind,
-                  autoHeight: sliderAutoHeight,
-                  fixedWidth: sliderfixedWidth,
-                  touch: sliderTouch,
-                  mouseDrag: sliderDrag,
-                  arrowKeys: true,
-                  items: sliderItems,
-                  textDirection: sliderDirection,
-                  lazyload: true,
-                  lazyloadSelector: '.lazy',
-                  responsive: {
-                      0: {
-                          items: Number(sliderItemsXs)
-                      },
-                      576: {
-                          items: Number(sliderItemsSm)
-                      },
-                      768: {
-                          items: Number(sliderItemsMd)
-                      },
-                      992: {
-                          items: Number(sliderItemsLg)
-                      },
-                      1200: {
-                          items: Number(sliderItemsXl)
-                      }
-                  }
-              });
-          });
+                var tnsSlider = tns({
+                    container: slider,
+                    mode: sliderMode,
+                    axis: sliderAxis,
+                    gutter: sliderSpace,
+                    edgePadding: sliderEdge,
+                    speed: sliderSpeed,
+                    autoWidth: sliderautoWidth,
+                    controls: sliderArrow,
+                    nav: sliderDots,
+                    autoplay: sliderAutoPlay,
+                    autoplayTimeout: sliderAutoPlayTime,
+                    autoplayHoverPause: sliderHoverPause,
+                    autoplayButton: false,
+                    autoplayButtonOutput: false,
+                    controlsPosition: top,
+                    navContainer: sliderNavContainer,
+                    navPosition: top,
+                    autoplayPosition: top,
+                    controlsText: [
+                        '<i class="fas fa-chevron-left"></i>',
+                        '<i class="fas fa-chevron-right"></i>'
+                    ],
+                    loop: sliderLoop,
+                    rewind: sliderRewind,
+                    autoHeight: sliderAutoHeight,
+                    fixedWidth: sliderfixedWidth,
+                    touch: sliderTouch,
+                    mouseDrag: sliderDrag,
+                    arrowKeys: true,
+                    items: sliderItems,
+                    textDirection: sliderDirection,
+                    lazyload: true,
+                    lazyloadSelector: '.lazy',
+                    responsive: {
+                        0: {
+                            items: Number(sliderItemsXs)
+                        },
+                        576: {
+                            items: Number(sliderItemsSm)
+                        },
+                        768: {
+                            items: Number(sliderItemsMd)
+                        },
+                        992: {
+                            items: Number(sliderItemsLg)
+                        },
+                        1200: {
+                            items: Number(sliderItemsXl)
+                        }
+                    }
+                });
+            });
         }
     },
     // END: Tiny Slider
@@ -421,7 +421,7 @@ var e = {
     toolTipFunc: function () {
         var tooltipTriggerList = [].slice.call(e.selectAll('[data-bs-toggle="tooltip"]'))
         var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-          return new bootstrap.Tooltip(tooltipTriggerEl)
+            return new bootstrap.Tooltip(tooltipTriggerEl)
         })
     },
     // END: Tooltip
@@ -431,7 +431,7 @@ var e = {
     popOverFunc: function () {
         var popoverTriggerList = [].slice.call(e.selectAll('[data-bs-toggle="popover"]'))
         var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
-          return new bootstrap.Popover(popoverTriggerEl)
+            return new bootstrap.Popover(popoverTriggerEl)
         })
     },
     // END: Popover
@@ -577,47 +577,47 @@ var e = {
 
         var dark = e.select('#darkModeSwitch');
         if (e.isVariableDefined(dark)) {
-          let theme = localStorage.getItem('data-theme');
-          var style = document.getElementById("style-switch");
-          var dir = document.getElementsByTagName("html")[0].getAttribute('dir');
+            let theme = localStorage.getItem('data-theme');
+            var style = document.getElementById("style-switch");
+            var dir = document.getElementsByTagName("html")[0].getAttribute('dir');
 
-          var changeThemeToDark = () => {
-            document.documentElement.setAttribute("data-theme", "dark") // set theme to dark
-            if(dir == 'rtl') {
-                style.setAttribute('href', 'css/style-dark-rtl.css');
-            } else {
-                style.setAttribute('href', '../css/style-dark.css');
-            }
-            localStorage.setItem("data-theme", "dark") // save theme to local storage
-          }
-
-          var changeThemeToLight = () => {
-            document.documentElement.setAttribute("data-theme", "light") // set theme light
-            if(dir == 'rtl') {
-                style.setAttribute('href', 'css/style-rtl.css');
-            } else {
-                style.setAttribute('href', '../css/style.css');
+            var changeThemeToDark = () => {
+                document.documentElement.setAttribute("data-theme", "dark") // set theme to dark
+                if(dir == 'rtl') {
+                    style.setAttribute('href', '../css/style-dark-rtl.css');
+                } else {
+                    style.setAttribute('href', '../css/style-dark.css');
+                }
+                localStorage.setItem("data-theme", "dark") // save theme to local storage
             }
 
-            localStorage.setItem("data-theme", 'light') // save theme to local storage
-          }
+            var changeThemeToLight = () => {
+                document.documentElement.setAttribute("data-theme", "light") // set theme light
+                if(dir == 'rtl') {
+                    style.setAttribute('href', '../css/style-rtl.css');
+                } else {
+                    style.setAttribute('href', '../css/style.css');
+                }
 
-          if(theme === 'dark'){
-            changeThemeToDark()
-          } else if (theme == null || theme === 'light' ) {
-            changeThemeToLight();
-          }
+                localStorage.setItem("data-theme", 'light') // save theme to local storage
+            }
 
-          const dms = document.querySelector('#darkModeSwitch');
-
-          dms.addEventListener('click', () => {
-            let theme = localStorage.getItem('data-theme'); // Retrieve saved them from local storage
-            if (theme ==='dark'){
-                changeThemeToLight()
-            } else{
+            if(theme === 'dark'){
                 changeThemeToDark()
+            } else if (theme == null || theme === 'light' ) {
+                changeThemeToLight();
             }
-          });
+
+            const dms = document.querySelector('#darkModeSwitch');
+
+            dms.addEventListener('click', () => {
+                let theme = localStorage.getItem('data-theme'); // Retrieve saved them from local storage
+                if (theme ==='dark'){
+                    changeThemeToLight()
+                } else{
+                    changeThemeToDark()
+                }
+            });
 
         }
     },
@@ -625,22 +625,22 @@ var e = {
 
     // START: 15 Font size
     zooming: function () {
-      const doc = document.documentElement;
-      var radios = document.querySelectorAll('input[type=radio][name="fntradio"]');
-      radios.forEach(radio => {
-        radio.addEventListener("change", function() {
-            var idZ = radio.getAttribute('id');
-            if(idZ == 'font-sm') {
-              doc.classList.remove('font-lg');
-              doc.classList.add('font-sm');
-            } else if(idZ == 'font-default') {
-              doc.classList.remove('font-sm','font-lg');
-            } else if(idZ == 'font-lg') {
-              doc.classList.remove('font-sm');
-              doc.classList.add('font-lg');
-            }
+        const doc = document.documentElement;
+        var radios = document.querySelectorAll('input[type=radio][name="fntradio"]');
+        radios.forEach(radio => {
+            radio.addEventListener("change", function() {
+                var idZ = radio.getAttribute('id');
+                if(idZ == 'font-sm') {
+                    doc.classList.remove('font-lg');
+                    doc.classList.add('font-sm');
+                } else if(idZ == 'font-default') {
+                    doc.classList.remove('font-sm','font-lg');
+                } else if(idZ == 'font-lg') {
+                    doc.classList.remove('font-sm');
+                    doc.classList.add('font-lg');
+                }
+            });
         });
-      });
     },
     // END: Font size
 
@@ -656,177 +656,177 @@ var e = {
 
     // START: 17 Quill Editor
     quill: function () {
-      var ql = e.select('#quilleditor');
-      if (e.isVariableDefined(ql)) {
-        var editor = new Quill('#quilleditor', {
-          modules: { toolbar: '#quilltoolbar' },
-          theme: 'snow'
-        });
-      }
+        var ql = e.select('#quilleditor');
+        if (e.isVariableDefined(ql)) {
+            var editor = new Quill('#quilleditor', {
+                modules: { toolbar: '#quilltoolbar' },
+                theme: 'snow'
+            });
+        }
     },
     // END: Quill Editor
 
-  // START: 18 Video player
-  videoPlyr: function () {
-    var vdp = e.select('.player-wrapper');
-    if (e.isVariableDefined(vdp)) {
-      // youtube
-      const playerYoutube = Plyr.setup('.player-youtube', {});
-      window.player = playerYoutube;
+    // START: 18 Video player
+    videoPlyr: function () {
+        var vdp = e.select('.player-wrapper');
+        if (e.isVariableDefined(vdp)) {
+            // youtube
+            const playerYoutube = Plyr.setup('.player-youtube', {});
+            window.player = playerYoutube;
 
-      // Vimeo
-      const playerVimeo = Plyr.setup('.player-vimeo', {});
-      window.player = playerVimeo;
+            // Vimeo
+            const playerVimeo = Plyr.setup('.player-vimeo', {});
+            window.player = playerVimeo;
 
-      // HTML video
-      const playerHtmlvideo = Plyr.setup('.player-html', {
-        captions: {active: true}
-      });
-      window.player = playerHtmlvideo;
+            // HTML video
+            const playerHtmlvideo = Plyr.setup('.player-html', {
+                captions: {active: true}
+            });
+            window.player = playerHtmlvideo;
 
-      // HTML audio
-      const playerHtmlaudio = Plyr.setup('.player-audio', {});
-      window.player = playerHtmlaudio;
-    }
-  },
-  // END: Video player
+            // HTML audio
+            const playerHtmlaudio = Plyr.setup('.player-audio', {});
+            window.player = playerHtmlaudio;
+        }
+    },
+    // END: Video player
 
-  // START: 19 Overlay scrollbar
-  overlayScrollbars: function () {
-    var os = e.select('.custom-scrollbar');
-    if (os) {
-      document.addEventListener("DOMContentLoaded", function() {
-        var cs = document.querySelectorAll('.custom-scrollbar');
-        cs.forEach(c => {
-            OverlayScrollbars(c, {
-              scrollbars: {
-                autoHide: 'leave',
-                autoHideDelay: 200
-              },
-              overflowBehavior : {
-                  x : "visible-hidden",
-                  y : "scroll"
-              }
-             });
-        });
-      });
-    }
-  },
-  // END: Overlay scrollbar
+    // START: 19 Overlay scrollbar
+    overlayScrollbars: function () {
+        var os = e.select('.custom-scrollbar');
+        if (os) {
+            document.addEventListener("DOMContentLoaded", function() {
+                var cs = document.querySelectorAll('.custom-scrollbar');
+                cs.forEach(c => {
+                    OverlayScrollbars(c, {
+                        scrollbars: {
+                            autoHide: 'leave',
+                            autoHideDelay: 200
+                        },
+                        overflowBehavior : {
+                            x : "visible-hidden",
+                            y : "scroll"
+                        }
+                    });
+                });
+            });
+        }
+    },
+    // END: Overlay scrollbar
 
-  // START: 20 Dashboard Chart
-  trafficsourcesChart: function () {
-    var ac = e.select('#apexChartTrafficSources');
-    if (e.isVariableDefined(ac)) {
-      var options = {
-        colors: [
-          '#2163e8', '#0cbc87', '#d6293e', '#f7c32e'
-        ],
-        labels: ['Search', 'Direct', 'Social', 'Display ads'],
-        series: [44, 55, 41, 17],
-        legend: {
-          show: false,
-          position: 'right'
-        },
-        chart: {
-          height: 300,
-          type: 'donut',
-        },
-        plotOptions: {
-          pie: {
-            donut: {
-              size: '75%',
-            },
-            offsetY: 20,
-          },
-          stroke: {
-            colors: undefined
-          }
-        },
-        stroke:{
-          show: false
-        },
-        dataLabels: {
-          enabled: false
-        },
-        responsive: [{
-          breakpoint: 480,
-          options: {
-            chart: {
-              height: 200
-            },
-            legend: {
-              show: false
-            }
-          }
-        }]
-      };
-    var chart = new ApexCharts(document.querySelector("#apexChartTrafficSources"), options);
-    chart.render();
-    }
-  },
-  // END: Dashboard Chart
+    // START: 20 Dashboard Chart
+    trafficsourcesChart: function () {
+        var ac = e.select('#apexChartTrafficSources');
+        if (e.isVariableDefined(ac)) {
+            var options = {
+                colors: [
+                    '#2163e8', '#0cbc87', '#d6293e', '#f7c32e'
+                ],
+                labels: ['Search', 'Direct', 'Social', 'Display ads'],
+                series: [44, 55, 41, 17],
+                legend: {
+                    show: false,
+                    position: 'right'
+                },
+                chart: {
+                    height: 300,
+                    type: 'donut',
+                },
+                plotOptions: {
+                    pie: {
+                        donut: {
+                            size: '75%',
+                        },
+                        offsetY: 20,
+                    },
+                    stroke: {
+                        colors: undefined
+                    }
+                },
+                stroke:{
+                    show: false
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                responsive: [{
+                    breakpoint: 480,
+                    options: {
+                        chart: {
+                            height: 200
+                        },
+                        legend: {
+                            show: false
+                        }
+                    }
+                }]
+            };
+            var chart = new ApexCharts(document.querySelector("#apexChartTrafficSources"), options);
+            chart.render();
+        }
+    },
+    // END: Dashboard Chart
 
-  // START: 21 Traffic Chart
-  trafficstatsChart: function () {
-    var cpv = e.select('#apexChartTrafficStats');
-    if (e.isVariableDefined(cpv)) {
-      var options = {
-        colors: [
-          '#2163e8',
-        ],
-        series: [{
-          name: 'Users',
-          data: [100, 401, 305, 501, 409, 602, 609, 901, 848, 602, 809, 901]
-        }],
-        chart: {
-          height: 320,
-          type: 'area',
-          toolbar: {
-            show: false
-          }
-        },
-        grid: {
-          strokeDashArray: 4,
-          position: 'back'
-        },
-        dataLabels: {
-          enabled: false
-        },
-        stroke: {
-          curve: 'smooth'
-        },
-        legend: {
-          show: true,
-          horizontalAlign: 'right',
-          position: 'top',
-          labels: {
-          },
-          markers: {
-            width: 8,
-            height: 8
-          }
-        },
-        xaxis: {
-          labels: {
-            show: true
-          },
-          axisBorder: {
-            show: false
-          },
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        tooltip: {
-          x: {
-            format: 'dd/MM/yy HH:mm'
-          },
-        },
-      };
-      var chart = new ApexCharts(document.querySelector("#apexChartTrafficStats"), options);
-      chart.render();
-    }
-  },
-  // END: Traffic Chart
+    // START: 21 Traffic Chart
+    trafficstatsChart: function () {
+        var cpv = e.select('#apexChartTrafficStats');
+        if (e.isVariableDefined(cpv)) {
+            var options = {
+                colors: [
+                    '#2163e8',
+                ],
+                series: [{
+                    name: 'Users',
+                    data: [100, 401, 305, 501, 409, 602, 609, 901, 848, 602, 809, 901]
+                }],
+                chart: {
+                    height: 320,
+                    type: 'area',
+                    toolbar: {
+                        show: false
+                    }
+                },
+                grid: {
+                    strokeDashArray: 4,
+                    position: 'back'
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                },
+                legend: {
+                    show: true,
+                    horizontalAlign: 'right',
+                    position: 'top',
+                    labels: {
+                    },
+                    markers: {
+                        width: 8,
+                        height: 8
+                    }
+                },
+                xaxis: {
+                    labels: {
+                        show: true
+                    },
+                    axisBorder: {
+                        show: false
+                    },
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                },
+                tooltip: {
+                    x: {
+                        format: 'dd/MM/yy HH:mm'
+                    },
+                },
+            };
+            var chart = new ApexCharts(document.querySelector("#apexChartTrafficStats"), options);
+            chart.render();
+        }
+    },
+    // END: Traffic Chart
 
 };
 e.init();
