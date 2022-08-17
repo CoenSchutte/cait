@@ -9,14 +9,14 @@
     --success: #21b978;
     --warning: #ffeb3b;
     --info: #03a9f4;
-    --primary: #031927;
+    --primary: #1ABC9C;
     --primary-dark: #007F57;
-    --primary-70: rgba(3, 25, 39, 0.7);
-    --primary-50: rgba(3, 25, 39, 0.5);
-    --primary-30: rgba(3, 25, 39, 0.3);
-    --primary-10: rgba(3, 25, 39, 0.1);
+    --primary-70: rgba(26, 188, 156, 0.7);
+    --primary-50: rgba(26, 188, 156, 0.5);
+    --primary-30: rgba(26, 188, 156, 0.3);
+    --primary-10: rgba(26, 188, 156, 0.1);
     --logo: #ffffff;
-    --sidebar-icon: rgb(3, 25, 39);
+    --sidebar-icon: #1ABC9C;
     --20: #f6fbff;
     --30: #f4f7fa;
     --40: #eef1f4;
@@ -395,7 +395,7 @@ input[type=search]::-webkit-search-cancel-button {
 }
 
 .bg-grad-sidebar {
-    background-color: var(--primary);
+    background-color: #1ABC9C;
     background-attachment: fixed
 }
 

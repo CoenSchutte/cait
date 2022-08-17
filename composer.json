@@ -8,15 +8,20 @@
         {
             "type": "git",
             "url": "https://github.com/CoenSchutte/nova"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/CoenSchutte/advanced-nova-media-library"
         }
     ],
     "require": {
         "php": "^8.0.2",
+        "ebess/advanced-nova-media-library": "*",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.11",
-        "laravel/nova": "*",
+        "laravel/nova": "dev-main",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",

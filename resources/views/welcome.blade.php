@@ -11,7 +11,7 @@
                             <!-- Slide item -->
                             @foreach ($posts as $post)
                                 <div class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden"
-                                    style="background-image:url('images/blog/16by9/big/02.jpg'); background-position: center left; background-size: cover;">
+                                    style="background-image:url({{$post->image_url}}); background-position: center left; background-size: cover;">
                                     <!-- Card Image overlay -->
                                     <div class="card-img-overlay rounded-0 d-flex align-items-center">
                                         <div class="container px-3 my-auto">
@@ -59,7 +59,7 @@
                                 <div class="row align-items-center g-3 mb-4">
                                     <div class="col-auto">
                                         <div class="avatar avatar-lg">
-                                            <img class="avatar-img rounded-circle" src="images/blog/16by9/big/02.jpg"
+                                            <img class="avatar-img rounded-circle" src="{{$post->preview_url}}"
                                                 alt="avatar">
                                         </div>
                                     </div>
