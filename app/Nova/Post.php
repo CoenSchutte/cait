@@ -64,6 +64,7 @@ class Post extends Resource
             Images::make('Main image') // second parameter is the media collection name
                 ->conversionOnIndexView('preview') // conversion used to display the image
                 ->rules('required')
+                ->showStatistics()
                 ->temporary(now()->addMinutes(10)),
         ];
     }
