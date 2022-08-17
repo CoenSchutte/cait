@@ -2,8 +2,8 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="{{ route('welcome') }}">
-                <img class="navbar-brand-item light-mode-item" src="images/logo-stir-zwart.png" alt="logo">
-                <img class="navbar-brand-item dark-mode-item" src="images/logo-stir-wit.png" alt="logo">
+                <img class="navbar-brand-item light-mode-item" src="../images/logo-stir-zwart.png" alt="logo">
+                <img class="navbar-brand-item dark-mode-item" src="../images/logo-stir-wit.png" alt="logo">
             </a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"

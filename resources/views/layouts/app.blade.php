@@ -18,10 +18,10 @@
         rel="stylesheet">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css">
-    <link rel="stylesheet" type="text/css" href="vendor/tiny-slider/tiny-slider.css">
-    <link id="style-switch" rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/tiny-slider/tiny-slider.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
 
 
     <!-- Scripts -->
