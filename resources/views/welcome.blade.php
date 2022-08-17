@@ -1,25 +1,16 @@
 @extends('layouts.app')
 
-
 @section('content')
-    <!-- =======================
-        Main hero START -->
     <section class="p-0">
         <div class="container-fluid">
             <div class="row g-0">
                 <div class="col-xxl-10 mx-auto rounded-3 overflow-hidden">
                     <div class="tiny-slider arrow-hover arrow-blur arrow-round position-relative">
-                        <div class="tiny-slider-inner"
-                             data-autoplay="false"
-                             data-hoverpause="true"
-                             data-gutter="2"
-                             data-arrow="false"
-                             data-dots="true"
-                             data-items="1">
+                        <div class="tiny-slider-inner" data-autoplay="false" data-hoverpause="true" data-gutter="2"
+                            data-arrow="false" data-dots="true" data-items="1">
                             <!-- Slide item -->
-                            @foreach($posts as $post)
-                                <div
-                                    class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden"
+                            @foreach ($posts as $post)
+                                <div class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden"
                                     style="background-image:url('images/blog/16by9/big/02.jpg'); background-position: center left; background-size: cover;">
                                     <!-- Card Image overlay -->
                                     <div class="card-img-overlay rounded-0 d-flex align-items-center">
@@ -34,23 +25,24 @@
                                                         <a href="{{route('posts.show',$post)}}"
                                                            class="btn-link text-reset fw-normal">{{$post->title}}</a>
                                                     </h2>
-                                                    <p class="text-white">{{$post->subtitle}}</p>
+                                                    <p class="text-white">{{ $post->subtitle }}</p>
                                                     <!-- Card info -->
-                                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                    <ul
+                                                        class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                                         <li class="nav-item">
                                                             <div class="nav-link">
                                                                 <div
                                                                     class="d-flex align-items-center text-white position-relative">
                                                                     <div class="avatar avatar-sm">
                                                                         <img class="avatar-img rounded-circle"
-                                                                             src="images/avatar/11.jpg" alt="avatar">
+                                                                            src="images/avatar/11.jpg" alt="avatar">
                                                                     </div>
                                                                     <span class="ms-3">by <a href="#"
-                                                                                             class="stretched-link text-reset btn-link">STIR</a></span>
+                                                                            class="stretched-link text-reset btn-link">STIR</a></span>
                                                                 </div>
                                                             </div>
                                                         </li>
-                                                        <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
+                                                        <li class="nav-item">{{ $post->created_at->format('d/m/Y') }}</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -60,20 +52,19 @@
                             @endforeach
                         </div>
 
-                        <div
-                            class="col-xl-4 custom-thumb pe-5 position-absolute top-50 end-0 translate-middle-y d-none d-xxl-block"
+                        <div class="col-xl-4 custom-thumb pe-5 position-absolute top-50 end-0 translate-middle-y d-none d-xxl-block"
                             id="custom-thumb">
 
-                            @foreach($posts as $post)
+                            @foreach ($posts as $post)
                                 <div class="row align-items-center g-3 mb-4">
                                     <div class="col-auto">
                                         <div class="avatar avatar-lg">
                                             <img class="avatar-img rounded-circle" src="images/blog/16by9/big/02.jpg"
-                                                 alt="avatar">
+                                                alt="avatar">
                                         </div>
                                     </div>
                                     <div class="col-8">
-                                        <h4 class="fw-normal text-truncate mb-1">{{$post->title}}</h4>
+                                        <h4 class="fw-normal text-truncate mb-1">{{ $post->title }}</h4>
                                         <p class="text-truncate d-block col-11 small mb-0">Departure defective arranging
                                             rapturous did believe</p>
                                     </div>
@@ -87,10 +78,10 @@
         </div>
     </section>
     <!-- =======================
-    Main hero END -->
+        Main hero END -->
 
     <!-- =======================
-    Highlights START -->
+        Highlights START -->
     <section class="pt-4">
         <div class="container">
             <div class="row">
@@ -101,17 +92,9 @@
                         <p class="m-0">De foto's, video's en andere ongein van de laatste events!</p>
                     </div>
                     <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
-                        <div class="tiny-slider-inner"
-                             data-autoplay="true"
-                             data-hoverpause="true"
-                             data-gutter="24"
-                             data-arrow="true"
-                             data-dots="false"
-                             data-items-xl="4"
-                             data-items-lg="3"
-                             data-items-md="3"
-                             data-items-sm="2"
-                             data-items-xs="1">
+                        <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24"
+                            data-arrow="true" data-dots="false" data-items-xl="4" data-items-lg="3" data-items-md="3"
+                            data-items-sm="2" data-items-xs="1">
 
                             <!-- Card item START -->
                             <div class="card">
@@ -123,8 +106,7 @@
                                         <div class="w-100 mb-auto d-flex justify-content-end">
                                             <div class="text-end ms-auto">
                                                 <!-- Card format icon -->
-                                                <div
-                                                    class="icon-md bg-white bg-opacity-10 bg-blur text-white fw-bold rounded-circle"
+                                                <div class="icon-md bg-white bg-opacity-10 bg-blur text-white fw-bold rounded-circle"
                                                     title="8.5 rating">8.5
                                                 </div>
                                             </div>
@@ -138,7 +120,7 @@
                                 </div>
                                 <div class="card-body px-0 pt-3">
                                     <h5 class="card-title"><a href="post-single-6.html"
-                                                              class="btn-link text-reset fw-bold">7 common mistakes
+                                            class="btn-link text-reset fw-bold">7 common mistakes
                                             everyone makes while traveling</a></h5>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center">
@@ -146,11 +128,11 @@
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center position-relative">
                                                     <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/07.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/07.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Lori</a></span>
+                                                            class="stretched-link text-reset btn-link">Lori</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -174,7 +156,7 @@
                                 </div>
                                 <div class="card-body px-0 pt-3">
                                     <h5 class="card-title"><a href="post-single-6.html"
-                                                              class="btn-link text-reset fw-bold">Skills that you can
+                                            class="btn-link text-reset fw-bold">Skills that you can
                                             learn from business</a></h5>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center">
@@ -182,11 +164,11 @@
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center position-relative">
                                                     <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/08.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/08.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="post-single-6.html"
-                                                                             class="stretched-link text-reset btn-link">Joan</a></span>
+                                                            class="stretched-link text-reset btn-link">Joan</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -210,7 +192,7 @@
                                 </div>
                                 <div class="card-body px-0 pt-3">
                                     <h5 class="card-title"><a href="post-single-6.html"
-                                                              class="btn-link text-reset fw-bold">10 tell-tale signs you
+                                            class="btn-link text-reset fw-bold">10 tell-tale signs you
                                             need to get a new business</a></h5>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center">
@@ -218,11 +200,11 @@
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center position-relative">
                                                     <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/09.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/09.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                            class="stretched-link text-reset btn-link">Bryan</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -242,7 +224,7 @@
                                             <div class="text-end ms-auto">
                                                 <!-- Card format icon -->
                                                 <div class="icon-md bg-white-soft bg-blur text-white rounded-circle"
-                                                     title="This post has images"><i class="fas fa-image"></i></div>
+                                                    title="This post has images"><i class="fas fa-image"></i></div>
                                             </div>
                                         </div>
                                         <!-- Card overlay bottom -->
@@ -254,7 +236,7 @@
                                 </div>
                                 <div class="card-body px-0 pt-3">
                                     <h5 class="card-title"><a href="post-single-6.html"
-                                                              class="btn-link text-reset fw-bold">This is why this year
+                                            class="btn-link text-reset fw-bold">This is why this year
                                             will be the year of startups</a></h5>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center">
@@ -262,11 +244,11 @@
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center position-relative">
                                                     <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/10.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/10.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                            class="stretched-link text-reset btn-link">Samuel</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -290,7 +272,7 @@
                                 </div>
                                 <div class="card-body px-0 pt-3">
                                     <h5 class="card-title"><a href="post-single-6.html"
-                                                              class="btn-link text-reset fw-bold">Best Pinterest Boards
+                                            class="btn-link text-reset fw-bold">Best Pinterest Boards
                                             for learning about business</a></h5>
                                     <!-- Card info -->
                                     <ul class="nav nav-divider align-items-center">
@@ -298,11 +280,11 @@
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center position-relative">
                                                     <div class="avatar avatar-xs">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/12.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/12.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                            class="stretched-link text-reset btn-link">Dennis</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -318,10 +300,10 @@
         </div>
     </section>
     <!-- =======================
-    Highlights END -->
+        Highlights END -->
 
     <!-- =======================
-    Adv START -->
+        Adv START -->
     <section class="p-0">
         <div class="container">
             <div class="row">
@@ -335,10 +317,10 @@
         </div>
     </section>
     <!-- =======================
-    Adv END -->
+        Adv END -->
 
     <!-- =======================
-    Top highlights START -->
+        Top highlights START -->
     <section>
         <div class="container">
             <div class="row">
@@ -351,7 +333,7 @@
                     <div class="row gy-4">
                         <div class="col-lg-7">
                             <div class="card card-overlay-bottom card-bg-scale h-400 h-lg-560"
-                                 style="background-image:url(images/blog/16by9/05.jpg); background-position: center left; background-size: cover;">
+                                style="background-image:url(images/blog/16by9/05.jpg); background-position: center left; background-size: cover;">
                                 <!-- Card Image overlay -->
                                 <div class="card-img-overlay d-flex align-items-center p-3 p-sm-5">
                                     <div class="w-100 mt-auto">
@@ -360,27 +342,28 @@
                                             <a href="#" class="badge text-bg-primary mb-2"><i
                                                     class="fas fa-circle me-2 small fw-bold"></i>Business</a>
                                             <a href="#!" class="badge mb-2 text-bg-dark z-index-99 position-relative"
-                                               tabindex="0" role="button" data-bs-container="body"
-                                               data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
-                                               data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
+                                                tabindex="0" role="button" data-bs-container="body"
+                                                data-bs-toggle="popover" data-bs-trigger="focus" data-bs-placement="top"
+                                                data-bs-content="You're seeing this ad because your activity meets the intended audience of our site.">
                                                 <i class="bi bi-info-circle pe-1"></i> Sponsored
                                             </a>
                                             <!-- Card title -->
                                             <h2 class="text-white display-6"><a href="post-single-5.html"
-                                                                                class="btn-link text-reset stretched-link fw-normal">Never
+                                                    class="btn-link text-reset stretched-link fw-normal">Never
                                                     underestimate the influence of social media</a></h2>
                                             <!-- Card info -->
-                                            <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                            <ul
+                                                class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                                 <li class="nav-item">
                                                     <div class="nav-link">
                                                         <div
                                                             class="d-flex align-items-center text-white position-relative">
                                                             <div class="avatar avatar-sm">
                                                                 <img class="avatar-img rounded-circle"
-                                                                     src="images/avatar/01.jpg" alt="avatar">
+                                                                    src="images/avatar/01.jpg" alt="avatar">
                                                             </div>
                                                             <span class="ms-3">by <a href="#"
-                                                                                     class="stretched-link text-reset btn-link">Carolyn</a></span>
+                                                                    class="stretched-link text-reset btn-link">Carolyn</a></span>
                                                         </div>
                                                     </div>
                                                 </li>
@@ -403,7 +386,7 @@
                                         <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i
                                                 class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
                                         <h5><a href="post-single-5.html"
-                                               class="btn-link stretched-link text-reset fw-bold">The pros and cons of
+                                                class="btn-link stretched-link text-reset fw-bold">The pros and cons of
                                                 business agency</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -418,7 +401,7 @@
                                                             </div>
                                                         </div>
                                                         <span class="ms-3">by <a href="#"
-                                                                                 class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                                class="stretched-link text-reset btn-link">Samuel</a></span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -438,7 +421,7 @@
                                         <a href="#" class="badge bg-info bg-opacity-10 text-info mb-2"><i
                                                 class="fas fa-circle me-2 small fw-bold"></i>Sports</a>
                                         <h5><a href="post-single-5.html"
-                                               class="btn-link stretched-link text-reset fw-bold">5 reasons why you
+                                                class="btn-link stretched-link text-reset fw-bold">5 reasons why you
                                                 shouldn't startup</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -447,10 +430,10 @@
                                                     <div class="d-flex align-items-center position-relative">
                                                         <div class="avatar avatar-xs">
                                                             <img class="avatar-img rounded-circle"
-                                                                 src="images/avatar/02.jpg" alt="avatar">
+                                                                src="images/avatar/02.jpg" alt="avatar">
                                                         </div>
                                                         <span class="ms-3">by <a href="#"
-                                                                                 class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                                class="stretched-link text-reset btn-link">Dennis</a></span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -470,7 +453,7 @@
                                         <a href="#" class="badge bg-success bg-opacity-10 text-success mb-2"><i
                                                 class="fas fa-circle me-2 small fw-bold"></i>Business</a>
                                         <h5><a href="post-single-5.html"
-                                               class="btn-link stretched-link text-reset fw-bold">Five unbelievable
+                                                class="btn-link stretched-link text-reset fw-bold">Five unbelievable
                                                 facts about money.</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -479,10 +462,10 @@
                                                     <div class="d-flex align-items-center position-relative">
                                                         <div class="avatar avatar-xs">
                                                             <img class="avatar-img rounded-circle"
-                                                                 src="images/avatar/03.jpg" alt="avatar">
+                                                                src="images/avatar/03.jpg" alt="avatar">
                                                         </div>
                                                         <span class="ms-3">by <a href="#"
-                                                                                 class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                                class="stretched-link text-reset btn-link">Bryan</a></span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -502,7 +485,7 @@
                                         <a href="#" class="badge bg-warning bg-opacity-15 text-warning mb-2"><i
                                                 class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
                                         <h5><a href="post-single-5.html"
-                                               class="btn-link stretched-link text-reset fw-bold">Around the web: 20
+                                                class="btn-link stretched-link text-reset fw-bold">Around the web: 20
                                                 fabulous infographics about business</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
@@ -511,10 +494,10 @@
                                                     <div class="d-flex align-items-center position-relative">
                                                         <div class="avatar avatar-xs">
                                                             <img class="avatar-img rounded-circle"
-                                                                 src="images/avatar/05.jpg" alt="avatar">
+                                                                src="images/avatar/05.jpg" alt="avatar">
                                                         </div>
                                                         <span class="ms-3">by <a href="#"
-                                                                                 class="stretched-link text-reset btn-link">Jacqueline</a></span>
+                                                                class="stretched-link text-reset btn-link">Jacqueline</a></span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -531,10 +514,10 @@
         </div>
     </section>
     <!-- =======================
-    Top highlights END -->
+        Top highlights END -->
 
     <!-- =======================
-    Trending topics START -->
+        Trending topics START -->
     <section class="p-0">
         <div class="container">
             <div class="row g-0">
@@ -546,25 +529,17 @@
                     </div>
                     <!-- Slider -->
                     <div class="tiny-slider arrow-hover arrow-dark arrow-blur arrow-round">
-                        <div class="tiny-slider-inner"
-                             data-autoplay="false"
-                             data-hoverpause="true"
-                             data-gutter="24"
-                             data-arrow="true"
-                             data-dots="false"
-                             data-items-xl="5"
-                             data-items-lg="4"
-                             data-items-md="3"
-                             data-items-sm="2"
-                             data-items-xs="2"
-                        >
+                        <div class="tiny-slider-inner" data-autoplay="false" data-hoverpause="true" data-gutter="24"
+                            data-arrow="true" data-dots="false" data-items-xl="5" data-items-lg="4" data-items-md="3"
+                            data-items-sm="2" data-items-xs="2">
                             <!-- Category item -->
                             <div>
                                 <div class="card card-overlay-bottom card-img-scale">
                                     <img class="card-img" src="images/blog/1by1/thumb/01.jpg" alt="card image">
                                     <div class="card-img-overlay d-flex px-3 px-sm-5">
                                         <h5 class="mt-auto mx-auto">
-                                            <a href="#" class="stretched-link btn-link fw-bold text-white">Travel</a>
+                                            <a href="#"
+                                                class="stretched-link btn-link fw-bold text-white">Travel</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -575,7 +550,8 @@
                                     <img class="card-img" src="images/blog/1by1/thumb/02.jpg" alt="card image">
                                     <div class="card-img-overlay d-flex px-3 px-sm-5">
                                         <h5 class="mt-auto mx-auto">
-                                            <a href="#" class="stretched-link btn-link fw-bold text-white">Business</a>
+                                            <a href="#"
+                                                class="stretched-link btn-link fw-bold text-white">Business</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -586,7 +562,8 @@
                                     <img class="card-img" src="images/blog/1by1/thumb/03.jpg" alt="card image">
                                     <div class="card-img-overlay d-flex px-3 px-sm-5">
                                         <h5 class="mt-auto mx-auto">
-                                            <a href="#" class="stretched-link btn-link fw-bold text-white">Marketing</a>
+                                            <a href="#"
+                                                class="stretched-link btn-link fw-bold text-white">Marketing</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -598,7 +575,7 @@
                                     <div class="card-img-overlay d-flex px-3 px-sm-5">
                                         <h5 class="mt-auto mx-auto">
                                             <a href="#"
-                                               class="stretched-link btn-link fw-bold text-white">Photography</a>
+                                                class="stretched-link btn-link fw-bold text-white">Photography</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -609,7 +586,8 @@
                                     <img class="card-img" src="images/blog/1by1/thumb/05.jpg" alt="card image">
                                     <div class="card-img-overlay d-flex px-3 px-sm-5">
                                         <h5 class="mt-auto mx-auto">
-                                            <a href="#" class="stretched-link btn-link fw-bold text-white">Sports</a>
+                                            <a href="#"
+                                                class="stretched-link btn-link fw-bold text-white">Sports</a>
                                         </h5>
                                     </div>
                                 </div>
@@ -621,10 +599,10 @@
         </div>
     </section>
     <!-- =======================
-    Trending topics END -->
+        Trending topics END -->
 
     <!-- =======================
-    Sports update START -->
+        Sports update START -->
     <section>
         <div class="container">
             <div class="row">
@@ -639,7 +617,7 @@
                 <div class="col-md-6 mb-4 mb-md-0">
                     <!-- Card item START -->
                     <div class="card card-overlay-bottom card-bg-scale h-300 h-lg-540"
-                         style="background-image:url(images/blog/16by9/06.jpg); background-position: center left; background-size: cover;">
+                        style="background-image:url(images/blog/16by9/06.jpg); background-position: center left; background-size: cover;">
                         <!-- Card Image overlay -->
                         <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
                             <div class="w-100 mt-auto">
@@ -649,10 +627,11 @@
                                             class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
                                     <!-- Card title -->
                                     <h2 class="text-white display-6"><a href="post-single-4.html"
-                                                                        class="btn-link text-reset stretched-link fw-normal">8
+                                            class="btn-link text-reset stretched-link fw-normal">8
                                             initial problem of startups and their solution</a></h2>
                                     <!-- Card info -->
-                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                    <ul
+                                        class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                         <li class="nav-item">
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center text-white position-relative">
@@ -663,7 +642,7 @@
                                                         </div>
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Carolyn</a></span>
+                                                            class="stretched-link text-reset btn-link">Carolyn</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -679,7 +658,7 @@
                 <div class="col-md-6">
                     <!-- Card item START -->
                     <div class="card card-overlay-bottom card-bg-scale h-300 h-lg-540"
-                         style="background-image:url(images/blog/16by9/01.jpg); background-position: center left; background-size: cover;">
+                        style="background-image:url(images/blog/16by9/01.jpg); background-position: center left; background-size: cover;">
                         <!-- Card Image overlay -->
                         <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
                             <div class="w-100 mt-auto">
@@ -689,19 +668,20 @@
                                             class="fas fa-circle me-2 small fw-bold"></i>Technology</a>
                                     <!-- Card title -->
                                     <h2 class="text-white display-6"><a href="post-single-4.html"
-                                                                        class="btn-link text-reset stretched-link fw-normal">Business
+                                            class="btn-link text-reset stretched-link fw-normal">Business
                                             ideas that will boom in upcoming years</a></h2>
                                     <!-- Card info -->
-                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                    <ul
+                                        class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
                                         <li class="nav-item">
                                             <div class="nav-link">
                                                 <div class="d-flex align-items-center text-white position-relative">
                                                     <div class="avatar avatar-sm">
-                                                        <img class="avatar-img rounded-circle"
-                                                             src="images/avatar/09.jpg" alt="avatar">
+                                                        <img class="avatar-img rounded-circle" src="images/avatar/09.jpg"
+                                                            alt="avatar">
                                                     </div>
                                                     <span class="ms-3">by <a href="#"
-                                                                             class="stretched-link text-reset btn-link">Billy</a></span>
+                                                            class="stretched-link text-reset btn-link">Billy</a></span>
                                                 </div>
                                             </div>
                                         </li>
@@ -718,10 +698,10 @@
         </div>
     </section>
     <!-- =======================
-    Sports update END -->
+        Sports update END -->
 
     <!-- =======================
-    Sponsored news START -->
+        Sponsored news START -->
     <section class="pt-4">
         <div class="container">
             <div class="row">
@@ -753,10 +733,10 @@
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs">
                                                     <img class="avatar-img rounded-circle" src="images/avatar/01.jpg"
-                                                         alt="avatar">
+                                                        alt="avatar">
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                        class="stretched-link text-reset btn-link">Samuel</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -784,10 +764,10 @@
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs">
                                                     <img class="avatar-img rounded-circle" src="images/avatar/02.jpg"
-                                                         alt="avatar">
+                                                        alt="avatar">
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Dennis</a></span>
+                                                        class="stretched-link text-reset btn-link">Dennis</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -815,10 +795,10 @@
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs">
                                                     <img class="avatar-img rounded-circle" src="images/avatar/03.jpg"
-                                                         alt="avatar">
+                                                        alt="avatar">
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Bryan</a></span>
+                                                        class="stretched-link text-reset btn-link">Bryan</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -848,10 +828,10 @@
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs">
                                                     <img class="avatar-img rounded-circle" src="images/avatar/05.jpg"
-                                                         alt="avatar">
+                                                        alt="avatar">
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Jacqueline</a></span>
+                                                        class="stretched-link text-reset btn-link">Jacqueline</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -884,7 +864,7 @@
                                                     </div>
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Samuel</a></span>
+                                                        class="stretched-link text-reset btn-link">Samuel</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -912,10 +892,10 @@
                                             <div class="d-flex align-items-center position-relative">
                                                 <div class="avatar avatar-xs">
                                                     <img class="avatar-img rounded-circle" src="images/avatar/07.jpg"
-                                                         alt="avatar">
+                                                        alt="avatar">
                                                 </div>
                                                 <span class="ms-3">by <a href="#"
-                                                                         class="stretched-link text-reset btn-link">Judy</a></span>
+                                                        class="stretched-link text-reset btn-link">Judy</a></span>
                                             </div>
                                         </div>
                                     </li>
@@ -930,10 +910,10 @@
         </div>
     </section>
     <!-- =======================
-    Sponsored news END -->
+        Sponsored news END -->
 
     <!-- =======================
-    Newsletter START -->
+        Newsletter START -->
     <section class="pt-0">
         <div class="container">
             <div class="row">
@@ -942,15 +922,15 @@
                         <!-- SVG shape START -->
                         <figure class="position-absolute top-50 start-50 translate-middle">
                             <svg width="1848" height="481" viewBox="0 0 1848.9 481.8"
-                                 xmlns="http://www.w3.org/2000/svg">
+                                xmlns="http://www.w3.org/2000/svg">
                                 <path class="fill-success"
-                                      d="m779.4 251c-10.3-11.5-19.9-23.8-29.4-36.1-9-11.6-18.4-22.8-27.1-34.7-15.3-21.2-30.2-45.8-54.8-53.3-10.5-3.2-21.6-3.2-30.6 2.5-7.6 4.8-13 12.6-17.3 20.9-10.8 20.6-16.1 44.7-24.6 66.7-7.9 20.2-19.4 38.6-33.8 54.3-14.7 16.2-31.7 30-50.4 41-15.9 9.4-33.4 17.2-52 19.3-18.4 2-38-2.5-56.5-6.2-22.4-4.4-45.1-9.7-67.6-10.9-9.8-0.5-19.8-0.3-29.1 2.3-9.8 2.8-18.7 8.6-26.6 15.2-17.3 14.5-30.2 34.4-43.7 52.9-12.9 17.6-26.8 34.9-45.4 45.4-19.5 11-42.6 12.1-65 6.6-52.3-13.1-93.8-56.5-127.9-101.5-8.8-11.6-17.3-23.4-25.6-35.4-0.6-0.9-1.1-1.8-1.6-2.7-1.1-2.4-0.9-2.6 0.6-1.2 1 0.9 1.9 1.9 2.7 3 35.3 47.4 71.5 98.5 123.2 123.9 22.8 11.2 48.2 17.2 71.7 12.2 23-5 40.6-21.2 55.3-39.7 24.5-30.7 46.5-75.6 87.1-83 19.5-3.5 40.7 0.1 60.6 3.7 21.2 3.9 42.3 9.1 63.6 11.7 17.8 2.3 35.8-0.1 52.2-7 20-8.1 38.4-20.2 54.8-34.6 16.2-14.1 31-30.7 41.8-50.4 11.1-20.2 17-43.7 24.9-65.7 6.1-16.9 13.8-36.2 29.3-44.5 16.1-8.6 37.3-1.9 52.3 10.6 18.7 15.6 31.2 39.2 46.7 58.2"/>
+                                    d="m779.4 251c-10.3-11.5-19.9-23.8-29.4-36.1-9-11.6-18.4-22.8-27.1-34.7-15.3-21.2-30.2-45.8-54.8-53.3-10.5-3.2-21.6-3.2-30.6 2.5-7.6 4.8-13 12.6-17.3 20.9-10.8 20.6-16.1 44.7-24.6 66.7-7.9 20.2-19.4 38.6-33.8 54.3-14.7 16.2-31.7 30-50.4 41-15.9 9.4-33.4 17.2-52 19.3-18.4 2-38-2.5-56.5-6.2-22.4-4.4-45.1-9.7-67.6-10.9-9.8-0.5-19.8-0.3-29.1 2.3-9.8 2.8-18.7 8.6-26.6 15.2-17.3 14.5-30.2 34.4-43.7 52.9-12.9 17.6-26.8 34.9-45.4 45.4-19.5 11-42.6 12.1-65 6.6-52.3-13.1-93.8-56.5-127.9-101.5-8.8-11.6-17.3-23.4-25.6-35.4-0.6-0.9-1.1-1.8-1.6-2.7-1.1-2.4-0.9-2.6 0.6-1.2 1 0.9 1.9 1.9 2.7 3 35.3 47.4 71.5 98.5 123.2 123.9 22.8 11.2 48.2 17.2 71.7 12.2 23-5 40.6-21.2 55.3-39.7 24.5-30.7 46.5-75.6 87.1-83 19.5-3.5 40.7 0.1 60.6 3.7 21.2 3.9 42.3 9.1 63.6 11.7 17.8 2.3 35.8-0.1 52.2-7 20-8.1 38.4-20.2 54.8-34.6 16.2-14.1 31-30.7 41.8-50.4 11.1-20.2 17-43.7 24.9-65.7 6.1-16.9 13.8-36.2 29.3-44.5 16.1-8.6 37.3-1.9 52.3 10.6 18.7 15.6 31.2 39.2 46.7 58.2" />
                                 <path class="fill-warning"
-                                      d="m1157.9 344.9c9.8 7.6 18.9 15.8 28.1 24 8.6 7.7 17.6 15.2 26 23.2 14.8 14.2 29.5 30.9 51.2 34.7 9.3 1.6 18.8 0.9 26.1-3.8 6.1-3.9 10.2-9.9 13.2-16.2 7.6-15.6 10.3-33.2 15.8-49.6 5.2-15.1 13.6-29 24.7-41.3 11.4-12.6 24.8-23.6 40-32.8 12.9-7.8 27.3-14.6 43.1-17.3 15.6-2.6 32.8-0.7 49 0.7 19.6 1.7 39.4 4 58.8 3.4 8.4-0.3 17-1.1 24.8-3.6 8.2-2.7 15.4-7.4 21.6-12.7 13.7-11.6 23.1-26.7 33.3-40.9 9.6-13.5 20.2-26.9 35.3-35.6 15.8-9.2 35.6-11.6 55.2-9.1 45.7 5.8 84.8 34.3 117.6 64.4 8.7 8 17.2 16.2 25.6 24.6 2.5 3.2 1.9 3-1.2 1-34.3-32-69.7-66.9-116.5-81.9-20.5-6.5-42.7-9.2-62.4-4-19.3 5.1-33.1 17.9-44.3 32.2-18.5 23.7-33.9 57.5-68.1 65.5-16.5 3.8-34.9 2.6-52.3 1.3-18.5-1.4-37-3.7-55.4-4.2-15.5-0.5-30.7 2.5-44.2 8.5-16.5 7.2-31.3 17.1-44.3 28.5-12.8 11.2-24.1 24.1-31.9 39-7.9 15.3-11.1 32.5-16.2 48.9-3.9 12.6-9 26.9-21.6 33.9-13.1 7.3-31.9 3.8-45.7-4.1-17.2-10-29.9-26.1-44.6-38.8"/>
+                                    d="m1157.9 344.9c9.8 7.6 18.9 15.8 28.1 24 8.6 7.7 17.6 15.2 26 23.2 14.8 14.2 29.5 30.9 51.2 34.7 9.3 1.6 18.8 0.9 26.1-3.8 6.1-3.9 10.2-9.9 13.2-16.2 7.6-15.6 10.3-33.2 15.8-49.6 5.2-15.1 13.6-29 24.7-41.3 11.4-12.6 24.8-23.6 40-32.8 12.9-7.8 27.3-14.6 43.1-17.3 15.6-2.6 32.8-0.7 49 0.7 19.6 1.7 39.4 4 58.8 3.4 8.4-0.3 17-1.1 24.8-3.6 8.2-2.7 15.4-7.4 21.6-12.7 13.7-11.6 23.1-26.7 33.3-40.9 9.6-13.5 20.2-26.9 35.3-35.6 15.8-9.2 35.6-11.6 55.2-9.1 45.7 5.8 84.8 34.3 117.6 64.4 8.7 8 17.2 16.2 25.6 24.6 2.5 3.2 1.9 3-1.2 1-34.3-32-69.7-66.9-116.5-81.9-20.5-6.5-42.7-9.2-62.4-4-19.3 5.1-33.1 17.9-44.3 32.2-18.5 23.7-33.9 57.5-68.1 65.5-16.5 3.8-34.9 2.6-52.3 1.3-18.5-1.4-37-3.7-55.4-4.2-15.5-0.5-30.7 2.5-44.2 8.5-16.5 7.2-31.3 17.1-44.3 28.5-12.8 11.2-24.1 24.1-31.9 39-7.9 15.3-11.1 32.5-16.2 48.9-3.9 12.6-9 26.9-21.6 33.9-13.1 7.3-31.9 3.8-45.7-4.1-17.2-10-29.9-26.1-44.6-38.8" />
                                 <path class="fill-warning opacity-6"
-                                      d="m1840.8 379c-8.8 40.3-167.8 79.9-300.2 45.3-42.5-11.1-91.4-32-138.7-11.6-38.7 16.7-55 66-90.8 67.4-25.1 1-48.6-20.3-58.1-39.8-31-63.3 50.7-179.9 155.7-208.1 50.4-13.5 97.3-3.2 116.1 1.6 36.3 9.3 328.6 87.4 316 145.2z"/>
+                                    d="m1840.8 379c-8.8 40.3-167.8 79.9-300.2 45.3-42.5-11.1-91.4-32-138.7-11.6-38.7 16.7-55 66-90.8 67.4-25.1 1-48.6-20.3-58.1-39.8-31-63.3 50.7-179.9 155.7-208.1 50.4-13.5 97.3-3.2 116.1 1.6 36.3 9.3 328.6 87.4 316 145.2z" />
                                 <path class="fill-success opacity-6"
-                                      d="M368.3,247.3C265.6,257.2,134,226,110.9,141.5C85,47.2,272.5-9.4,355.5-30.7s182.6-31.1,240.8-18.6    C677.6-31.8,671.5,53.9,627,102C582.6,150.2,470.9,237.5,368.3,247.3z"/>
+                                    d="M368.3,247.3C265.6,257.2,134,226,110.9,141.5C85,47.2,272.5-9.4,355.5-30.7s182.6-31.1,240.8-18.6    C677.6-31.8,671.5,53.9,627,102C582.6,150.2,470.9,237.5,368.3,247.3z" />
                             </svg>
                         </figure>
                         <!-- SVG shape END -->
@@ -964,7 +944,7 @@
                                 <form class="row row-cols-sm-auto g-2 align-items-center justify-content-center mt-3">
                                     <div class="col-12">
                                         <input type="email" class="form-control form-control-lg"
-                                               placeholder="Enter your email address">
+                                            placeholder="Enter your email address">
                                     </div>
                                     <div class="col-12">
                                         <button type="submit" class="btn btn-primary btn-lg m-0">Subscribe</button>
@@ -981,6 +961,5 @@
         </div>
     </section>
     <!-- =======================
-    Newsletter END -->
-
+        Newsletter END -->
 @endsection

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
@@ -15,22 +16,9 @@ use App\Models\Post;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome', [
-        'posts' => Post::where('is_featured', true)->where('is_published', true)->get(),
-    ]);
-})->name('welcome');
+Route::middleware([])->group(function () {
 
-
-Route::resource('posts', PostController::class);
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('welcome');
+    
+    Route::resource('posts', PostController::class);
 });
-
