@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto pt-md-5">
-                    <a href="#" class="badge text-bg-danger mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>Travel</a>
+                    <a href="#" class="badge text-bg-{{strtolower($post->category)}} mb-2"><i class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}</a>
                     <h1 class="display-4">{{$post->title}}</h1>
                     <p class="lead">{{$post->subtitle}} </p>
                     <!-- Info -->
@@ -18,9 +18,9 @@
                             </div>
                         </li>
                         <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
-                        <li class="nav-item">5 min read</li>
+                        <li class="nav-item">{{$post->getReadingTimeAttribute()}} min leestijd</li>
                     </ul>
-{{--                    <img class="rounded mt-5" src="../images/blog/16by9/07.jpg" alt="Image">--}}
+                    <img class="rounded mt-5" src="{{$post->image_url}}" alt="Image">
                 </div>
             </div>
         </div>

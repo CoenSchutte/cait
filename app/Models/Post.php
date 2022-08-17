@@ -35,6 +35,10 @@ class Post extends Model implements HasMedia
         return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
     }
 
+    public function getReadingTimeAttribute(): int
+    {
+        return (int)ceil(str_word_count($this->body) / 200);
+    }
 
 
 
