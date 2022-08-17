@@ -10,7 +10,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $posts = Post::where('is_featured', true)->where('is_published', true)->get();
+        $posts = Post::where('is_featured', true)->where('is_published', true)->take(3  )->get();
 
         $posts->map(function ($post) {
             $post->image_url = $post->fileUrl();

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -46,13 +47,25 @@ class Post extends Resource
         return [
             ID::make()->sortable(),
 
-            Text::make('Title')
+            Text::make('Title', 'title')
                 ->rules('required', 'max:255'),
 
-            Text::make('Subtitle')
+            Text::make('Subtitle', 'subtitle')
                 ->rules('required', 'max:255'),
 
-            Markdown::make('Body')
+            Markdown::make('Body', 'body')
+                ->rules('required'),
+
+            Select::make('Category', 'category')
+                ->options([
+                    'Workshop' => 'Workshop',
+                    'Promo' => 'Promo',
+                    'Borrel' => 'Borrel',
+                    'Vacature' => 'Vacature',
+                    'Activiteit' => 'Activiteit',
+                    'Nieuws' => 'Nieuws',
+                    'Overig' => 'Overig',
+                ])
                 ->rules('required'),
 
             Boolean::make('Is Published', 'is_published')

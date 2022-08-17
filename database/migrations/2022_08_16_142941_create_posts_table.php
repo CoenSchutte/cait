@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('body');
             $table->boolean('is_published')->default(false);
             $table->boolean('is_featured')->default(false);
+            $table->string('category');
             $table->timestamps();
         });
     }

@@ -18,8 +18,8 @@
                                             <div class="row">
                                                 <div class="col-lg-7">
                                                     <!-- Card category -->
-                                                    <a href="#" class="badge text-bg-danger mb-2"><i
-                                                            class="fas fa-circle me-2 small fw-bold"></i>Tech</a>
+                                                    <a href="#" class="badge text-bg-{{strtolower($post->category)}} mb-2"><i
+                                                            class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}</a>
                                                     <!-- Card title -->
                                                     <h2 class="text-white display-5">
                                                         <a href="{{route('posts.show',$post)}}"
@@ -54,7 +54,6 @@
 
                         <div class="col-xl-4 custom-thumb pe-5 position-absolute top-50 end-0 translate-middle-y d-none d-xxl-block"
                             id="custom-thumb">
-
                             @foreach ($posts as $post)
                                 <div class="row align-items-center g-3 mb-4">
                                     <div class="col-auto">
