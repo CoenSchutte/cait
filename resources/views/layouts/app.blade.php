@@ -21,6 +21,8 @@
     <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="../vendor/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" type="text/css" href="../vendor/tiny-slider/tiny-slider.css">
+    <script src="../vendor/vanilla-lazyload/lazyload.min.js"></script>
+
     <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
 
 

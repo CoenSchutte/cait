@@ -29,7 +29,7 @@ Inner intro START -->
                                 <div class="card">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img" src="{{$post->image_url}}" alt="Card image">
+                                        <img class="card-img lazy" data-src="{{$post->image_url}}" src="{{$post->low_res}} alt="Card image">
                                         <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                             <!-- Card overlay bottom -->
                                             <div class="w-100 mt-auto">
@@ -107,7 +107,7 @@ Inner intro START -->
                         <!-- ADV widget START -->
                         <div class="col-12 col-sm-6 col-lg-12 my-4">
                             <a href="#" class="d-block card-img-flash">
-                                <img src="{{$ad->image_url}}" alt="">
+                                <img class="lazy" data-src="{{$ad->image_url}}" alt="">
                             </a>
                             <div class="smaller text-end mt-2">ads via
                                 <a href="{{$ad->company_url}}"
