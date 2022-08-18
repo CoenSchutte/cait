@@ -74,7 +74,7 @@ Inner intro START -->
                         <!-- Trending topics widget START -->
 
                         <div>
-                            <h2 class="mb-3">Trending topics</h2>
+                            <h4 class="mb-3">Trending topics</h4>
                             <!-- Category item -->
                             <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
                                 <div class="bg-dark-overlay-4 p-3">
