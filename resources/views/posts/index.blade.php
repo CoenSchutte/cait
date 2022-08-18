@@ -59,7 +59,7 @@ Inner intro START -->
 
 
                             <!-- Load more START -->
-                        <div class="flex justify-center">
+                        <div style="display: flex; justify-content: center;">
 
                                 {{ $posts->links() }}
                         </div>

@@ -18,7 +18,7 @@ class PostController extends Controller
         $ad = Ad::inRandomOrder()->first();
         $ad->image_url =$ad->getSidebarAttribute();
 
-        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(1);
         $posts->map(function ($post) {
             $post->image_url = $post->get4by3Attribute();
         });
