@@ -50,7 +50,7 @@
     <script src="../vendor/tiny-slider/tiny-slider.js"></script>
 
     <!-- Template Functions -->
-    {{--<script src="../js/functions.js"></script>--}}
+{{--    <script src="../js/functions.js"></script>--}}
     @vite(['resources/js/functions.js'])
     @livewireScripts
 </body>

@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $posts = Post::where('is_featured', true)->where('is_published', true)->take(3  )->get();
 
         $posts->map(function ($post) {
-            $post->image_url = $post->fileUrl();
+            $post->image_url = $post->get16by9Attribute();
             $post->preview_url = $post->preview();
         });
 

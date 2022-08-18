@@ -11,20 +11,18 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class Post extends Model implements HasMedia
+class Ad extends Model implements HasMedia
 {
     use HasFactory;
     use InteractsWithMedia;
 
     protected $fillable = [
-        'title',
-        'subtitle',
-        'body',
-        'category',
-        'is_published',
-        'is_featured',
+        'company_name',
+        'expiration_date',
     ];
-
+    protected $casts = [
+        'expiration_date' => 'date',
+    ];
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -35,14 +33,8 @@ class Post extends Model implements HasMedia
             ->nonQueued();
 
         $this
-            ->addMediaConversion('16by9')
-            ->fit(Manipulations::FIT_STRETCH, 1920, 1080)
-            ->optimize([Jpegoptim::class => ['--all-progressive']])
-            ->nonQueued();
-
-        $this
-            ->addMediaConversion('4by3')
-            ->fit(Manipulations::FIT_STRETCH, 1000, 750)
+            ->addMediaConversion('sidebar')
+            ->fit(Manipulations::FIT_STRETCH, 770, 926)
             ->optimize([Jpegoptim::class => ['--all-progressive']])
             ->nonQueued();
     }
@@ -57,20 +49,8 @@ class Post extends Model implements HasMedia
         return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
     }
 
-    public function get4by3Attribute(): ?string
+    public function getSidebarAttribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '4by3');
+        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'sidebar');
     }
-
-    public function get16by9Attribute(): ?string
-    {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '16by9');
-    }
-
-    public function getReadingTimeAttribute(): int
-    {
-        return (int)ceil(str_word_count($this->body) / 200);
-    }
-
-
 }

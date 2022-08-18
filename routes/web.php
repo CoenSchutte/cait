@@ -19,6 +19,23 @@ use App\Models\Post;
 Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
-    
+
     Route::resource('posts', PostController::class);
+
+
+    Route::group(['middleware' => ['admin']], function () {
+        Route::prefix('admin')->group(function () {
+
+            //Niet zo interessant, alleen ter demonstratie dat je routes kan afschermen
+            Route::get('/posts', function () {
+                $posts = Post::orderByDesc('created_at')->get();
+
+                $posts->map(function ($post) {
+                    $post->image_url = $post->get4by3Attribute();
+                });
+                return view('posts.index', compact('posts'));
+            });
+        });
+    });
+
 });

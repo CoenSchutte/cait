@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ad;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,17 @@ class PostController extends Controller
      */
     public function index()
     {
+        $ad = Ad::inRandomOrder()->first();
+        $ad->image_url =$ad->getSidebarAttribute();
 
+        $posts = Post::all();
+        $posts->map(function ($post) {
+            $post->image_url = $post->get4by3Attribute();
+        });
+        return view('posts.index', [
+            'posts' => $posts,
+            'ad' => $ad,
+        ]);
     }
 
     /**
@@ -46,7 +57,6 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-
         $post->image_url = $post->fileUrl();
         return view('posts.show', compact('post'));
     }
