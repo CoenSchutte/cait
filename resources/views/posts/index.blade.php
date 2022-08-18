@@ -57,10 +57,11 @@ Inner intro START -->
 
                         <!-- Card item END -->
 
-                        <!-- Load more START -->
-                        <div class="col-12 text-center mt-5">
-                            <button type="button" class="btn btn-primary-soft">Load more post <i
-                                    class="bi bi-arrow-down-circle ms-2 align-middle"></i></button>
+
+                            <!-- Load more START -->
+                        <div class="flex justify-center">
+
+                                {{ $posts->links() }}
                         </div>
                         <!-- Load more END -->
                     </div>
