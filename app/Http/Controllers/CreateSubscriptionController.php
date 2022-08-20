@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
 class CreateSubscriptionController extends Controller
 {
@@ -24,6 +25,5 @@ class CreateSubscriptionController extends Controller
 
             return back()->with('status', 'Welcome to the ' . $plan . ' plan');
         }
-        return route('posts.index');
     }
 }
