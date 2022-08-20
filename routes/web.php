@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
@@ -20,9 +21,9 @@ Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
-//    Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class);
 
-    Route::get('/pay', [PostController::class, 'pay'])->name('posts.pay');
+    Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
 
     Route::group(['middleware' => ['admin']], function () {
         Route::prefix('admin')->group(function () {

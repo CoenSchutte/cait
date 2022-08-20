@@ -31,26 +31,6 @@ class PostController extends Controller
         ]);
     }
 
-    public function pay(Request $request)
-    {
-        $user = auth()->user();
-
-        $item = new ChargeItemBuilder($user);
-        $item->unitPrice(money(3000, 'EUR')); //1 EUR
-        $item->description('STIR Lidmaatschap');
-        $chargeItem = $item->make();
-
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
-            ->create();
-
-        if (is_a($result, RedirectToCheckoutResponse::class)) {
-            return $result;
-        }
-
-        return back()->with('status', 'Thank you.');
-    }
-
 
     /**
      * Show the form for creating a new resource.
