@@ -67,4 +67,8 @@ class User extends Authenticatable
     {
         return $this->student_number . '@hro.nl';
     }
+
+    public function hasSubscription(){
+        return $this->subscribed('main');
+    }
 }

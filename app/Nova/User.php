@@ -67,14 +67,26 @@ class User extends Resource
             Boolean::make('Is Admin', 'is_admin')
                 ->default(false),
 
-            Boolean::make('Is Subscribed', function () {
-                return $this->subscribed('stir-yearly');
-            })->sortable(),
+            Boolean::make('Heeft lopend abonnement', function (\App\Models\User $user) {
+                return $user->hasSubscription();
+            }),
 
             Text::make('Mollie Customer ID', 'mollie_customer_id')
-                ->hideFromIndex(),
+                ->hideFromIndex()
+                ->withMeta([
+                    'extraAttributes' => [
+                        'readonly' => true,
+                    ],
+                ]),
+
             Text::make('Mollie Mandate ID', 'mollie_mandate_id')
-                ->hideFromIndex(),
+                ->hideFromIndex()
+                ->withMeta([
+                    'extraAttributes' => [
+                        'readonly' => true,
+                    ],
+                ]),
+
             Text::make('Tax Percentage', 'tax_percentage')
                 ->hideFromIndex(),
             Text::make('Trial Ends At', 'trial_ends_at')
