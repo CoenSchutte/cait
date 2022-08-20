@@ -67,6 +67,10 @@ class User extends Resource
             Boolean::make('Is Admin', 'is_admin')
                 ->default(false),
 
+            Boolean::make('Is Subscribed', function () {
+                return $this->subscribed('stir-yearly');
+            })->sortable(),
+
             Text::make('Mollie Customer ID', 'mollie_customer_id')
                 ->hideFromIndex(),
             Text::make('Mollie Mandate ID', 'mollie_mandate_id')
