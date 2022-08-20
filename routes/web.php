@@ -20,8 +20,9 @@ Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
-    Route::resource('posts', PostController::class);
+//    Route::resource('posts', PostController::class);
 
+    Route::get('/pay', [PostController::class, 'pay'])->name('posts.pay');
 
     Route::group(['middleware' => ['admin']], function () {
         Route::prefix('admin')->group(function () {

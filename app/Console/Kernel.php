@@ -16,6 +16,10 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command('cashier:run')
+            ->hourly() // run as often as you like (daily, monthly, every minute, ...)
+            ->withoutOverlapping(); // make sure to include this
     }
 
     /**

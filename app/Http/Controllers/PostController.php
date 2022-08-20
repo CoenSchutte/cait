@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Ad;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Laravel\Cashier\Charge\ChargeItemBuilder;
+use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
 class PostController extends Controller
 {
@@ -16,7 +18,7 @@ class PostController extends Controller
     public function index()
     {
         $ad = Ad::inRandomOrder()->first();
-        $ad->image_url =$ad->getSidebarAttribute();
+        $ad->image_url = $ad->getSidebarAttribute();
 
         $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(1);
         $posts->map(function ($post) {
@@ -28,6 +30,28 @@ class PostController extends Controller
             'ad' => $ad,
         ]);
     }
+
+    public function pay(Request $request)
+    {
+        $user = auth()->user();
+
+        $item = new ChargeItemBuilder($user);
+        $item->unitPrice(money(3000, 'EUR')); //1 EUR
+        $item->description('STIR Lidmaatschap');
+        $chargeItem = $item->make();
+
+        $result = $user->newCharge()
+            ->addItem($chargeItem)
+            ->setRedirectUrl('https://www.example.com')
+            ->create();
+
+        if (is_a($result, RedirectToCheckoutResponse::class)) {
+            return $result;
+        }
+
+        return back()->with('status', 'Thank you.');
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -42,7 +66,7 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,7 +77,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function show(Post $post)
@@ -65,7 +89,7 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function edit(Post $post)
@@ -76,8 +100,8 @@ class PostController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Post  $post
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Post $post)
@@ -88,7 +112,7 @@ class PostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Post  $post
+     * @param \App\Models\Post $post
      * @return \Illuminate\Http\Response
      */
     public function destroy(Post $post)
