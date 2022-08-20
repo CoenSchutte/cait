@@ -24,7 +24,6 @@ class CreateSubscriptionController extends Controller
 
             return back()->with('status', 'Welcome to the ' . $plan . ' plan');
         }
-
-        return back()->with('status', 'You are already on the ' . $plan . ' plan');
+        return route('posts.index');
     }
 }
