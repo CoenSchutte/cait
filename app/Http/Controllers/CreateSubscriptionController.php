@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Laravel\Cashier\Http\RedirectToCheckoutResponse;
+use Laravel\Cashier\SubscriptionBuilder\RedirectToCheckoutResponse;
 
 class CreateSubscriptionController extends Controller
 {
