@@ -42,7 +42,7 @@ class PostController extends Controller
 
         $result = $user->newCharge()
             ->addItem($chargeItem)
-            ->setRedirectUrl('https://www.example.com')
+            ->setRedirectUrl('https://www.nuzzles.nl/')
             ->create();
 
         if (is_a($result, RedirectToCheckoutResponse::class)) {

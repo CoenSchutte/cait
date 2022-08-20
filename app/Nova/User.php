@@ -66,6 +66,18 @@ class User extends Resource
 
             Boolean::make('Is Admin', 'is_admin')
                 ->default(false),
+
+            Text::make('Mollie Customer ID', 'mollie_customer_id')
+                ->hideFromIndex(),
+            Text::make('Mollie Mandate ID', 'mollie_mandate_id')
+                ->hideFromIndex(),
+            Text::make('Tax Percentage', 'tax_percentage')
+                ->hideFromIndex(),
+            Text::make('Trial Ends At', 'trial_ends_at')
+                ->hideFromIndex(),
+            Text::make('Extra Billing Information', 'extra_billing_information')
+                ->hideFromIndex(),
+
         ];
     }
 
