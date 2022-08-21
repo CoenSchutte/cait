@@ -29,6 +29,7 @@ Route::middleware([])->group(function () {
 
     Route::resource('posts', PostController::class);
 
+    Route::post('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');
 
     Route::group(['middleware' => ['admin']], function () {
         Route::prefix('admin')->group(function () {
@@ -52,6 +53,7 @@ Route::middleware([])->group(function () {
 
         Route::prefix('user')->group(function () {
             Route::post('/update', [UserController::class, 'update'])->name('user.update');
+
 
         });
     });

@@ -53,15 +53,16 @@
                             </div>
                             <!-- Save button -->
                             <div class="d-flex justify-content-end mt-4">
-                                <a href="{{route('profile.show')}}" class="btn text-secondary border-0 me-2">Discard</a>
-                                <input type="submit" class="btn btn-primary"></input>
+                                <a href="{{route('profile.show')}}" class="btn text-secondary border-0 me-2">Annuleren</a>
+                                <input type="submit" class="btn btn-primary" value="Opslaan"></input>
                             </div>
                         </form>
                     </div>
                     <!-- Profile END -->
 
                     <!-- Update password START -->
-                    <form class="card border">
+                    <form class="card border" method="POST" action="{{route('user.change-password')}}">
+                        @csrf
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
                                 {{ session('status') }}
@@ -77,7 +78,7 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label">Huidig wachtwoord</label>
-                                <input class="form-control" type="password" placeholder="Huidig wachtwoord">
+                                <input class="form-control" type="password" name="old_password" placeholder="Huidig wachtwoord">
                                 @error('old_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -88,21 +89,22 @@
                                 <label class="form-label">Nieuw wachtwoord</label>
 
                                 <label class="form-label" id="psw-strength-message"></label>
+                                @error('new_password')
+                                <br>
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                                 <div class="input-group">
-                                    <input class="form-control fakepassword" type="password" id="psw-input"
+                                    <input class="form-control fakepassword" type="password" name="new_password" id="psw-input"
                                            placeholder="Nieuw wachtwoord">
-                                    @error('new_password')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
                                 </div>
                                 <div class="rounded mt-1" id="psw-strength"></div>
                             </div>
                             <!-- New password -->
                             <div>
-                                <input class="form-control" type="password" placeholder="Bevestig nieuw wachtwoord">
+                                <input class="form-control" name="new_password_confirmation" type="password" placeholder="Bevestig nieuw wachtwoord">
                             </div>
                             <div class="d-flex justify-content-end mt-4">
-                                <a href="#" class="btn btn-primary">Change password</a>
+                                <input type="submit" href="#" class="btn btn-primary" value="Opslaan"></input>
                             </div>
                         </div>
                     </form>
