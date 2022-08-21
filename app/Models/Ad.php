@@ -62,6 +62,6 @@ class Ad extends Model implements HasMedia
 
     public function getMainbarAttribute(): ?string
     {
-        return $this->getMedia('mainbar')->first()->getTemporaryUrl(Carbon::now()->addMinutes(5), 'mainbar');
+        return $this->getMedia('mainbar')->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'mainbar');
     }
 }
