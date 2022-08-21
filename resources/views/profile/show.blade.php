@@ -12,9 +12,11 @@
                             <h4 class="alert-heading">Je bent nog geen lid :(</h4>
                             <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
                             <ul>
-                                <li>30% korting op alle activiteiten</li>
-                                <li>Een gratis muntje bij elke borrel</li>
-                                <li>10% korting op onze merchandise</li>
+                                <li> <strong>30%</strong> korting op alle betaalde evenementen*</li>
+                                <li><strong>10%</strong> korting op onze merchandise</li>
+                                <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>
+                                <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
+                                <li>Beslissingsrecht tijdens de ALV</li>
                             </ul>
                             <hr>
                             <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30
