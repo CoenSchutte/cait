@@ -49,7 +49,7 @@
                             <div>
                                 <label class="form-label">Geboortedatum</label>
                                 <input type="date" name="birthdate" class="form-control flatpickr-input"
-                                       value="{{$user->birthdate->format('Y-m-d')}}">
+                                       value="{{$user->birthdate?->format('Y-m-d')}}">
                             </div>
                             <!-- Save button -->
                             <div class="d-flex justify-content-end mt-4">
