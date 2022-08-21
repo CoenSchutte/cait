@@ -113,7 +113,7 @@
                             <h5 class="card-header-title mb-0">STIR Lidmaatschap</h5>
                         </div>
                         <div class="card-body">
-                            <h6>{{dd($user->subscription('stir-yearly'))}}</h6>
+                            <h6>{{dd($user->subscription('main'))}}</h6>
                             <ul>
                                 <li>Take backup of your data <a href="#">Here</a> </li>
                                 <li>Account deletion is final. There will be no way to restore your account</li>
