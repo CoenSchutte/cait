@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Models\Post;
@@ -21,9 +22,13 @@ Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
+
+    Route::get('/about', function () {
+        return view('about');
+    })->name('about');
+
     Route::resource('posts', PostController::class);
 
-    Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
 
     Route::group(['middleware' => ['admin']], function () {
         Route::prefix('admin')->group(function () {
@@ -37,6 +42,17 @@ Route::middleware([])->group(function () {
                 });
                 return view('posts.index', compact('posts'));
             });
+        });
+    });
+
+
+    //auth middleware
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
+
+        Route::prefix('user')->group(function () {
+            Route::post('/update', [UserController::class, 'update'])->name('user.update');
+
         });
     });
 

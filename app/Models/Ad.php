@@ -37,6 +37,12 @@ class Ad extends Model implements HasMedia
             ->fit(Manipulations::FIT_STRETCH, 770, 926)
             ->optimize([Jpegoptim::class => ['--all-progressive']])
             ->nonQueued();
+
+        $this
+            ->addMediaConversion('mainbar')
+            ->fit(Manipulations::FIT_STRETCH, 1200, 233)
+            ->optimize([Jpegoptim::class => ['--all-progressive']])
+            ->nonQueued();
     }
 
     public function fileUrl(): ?string
@@ -52,5 +58,10 @@ class Ad extends Model implements HasMedia
     public function getSidebarAttribute(): ?string
     {
         return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'sidebar');
+    }
+
+    public function getMainbarAttribute(): ?string
+    {
+        return $this->getMedia('mainbar')->first()->getTemporaryUrl(Carbon::now()->addMinutes(5), 'mainbar');
     }
 }

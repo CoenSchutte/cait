@@ -7,9 +7,6 @@
             <div class="col-md-6 col-lg-4 mb-4">
                 <img class="light-mode-item" src="{{ asset('images/logo-stir-zwart.png') }}" alt="logo">
                 <img class="dark-mode-item" src="{{ asset('images/logo-stir-wit.png') }}" alt="logo">
-                <p class="mt-3">The next-generation blog, news, and magazine theme for you to start sharing your
-                    stories
-                    today! This Bootstrap 5 based theme is ideal for all types of sites that deliver the news.</p>
                 <div class="mt-4">©
                     <script>
                         document.write(new Date().getFullYear())
@@ -54,16 +51,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-
-            <!-- Footer Widget -->
-            <div class="col-sm-6 col-lg-3 mb-4">
-                <h5 class="mb-4">Zoek via tag</h5>
-                <ul class="list-inline">
-                    <li class="list-inline-item">
-                        <a href="#" class="btn btn-sm btn-primary-soft">TEMP</a>
-                    </li>
-                </ul>
             </div>
 
             <!-- Footer Widget -->

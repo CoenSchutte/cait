@@ -31,6 +31,7 @@ class User extends Authenticatable
         'password',
         'student_number',
         'is_admin',
+        'birthdate',
     ];
 
     /**
@@ -52,6 +53,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'trial_ends_at' => 'datetime',
+        'birthdate' => 'date',
     ];
 
     /**
@@ -69,6 +72,6 @@ class User extends Authenticatable
     }
 
     public function hasSubscription(){
-        return $this->subscribed('main');
+        return $this->subscribed('main') || $this->trial_ends_at > now();
     }
 }

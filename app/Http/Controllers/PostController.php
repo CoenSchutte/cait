@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\Post;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Laravel\Cashier\Charge\ChargeItemBuilder;
 use Laravel\Cashier\Http\RedirectToCheckoutResponse;
@@ -18,7 +19,7 @@ class PostController extends Controller
     public function index()
     {
         $ad = Ad::inRandomOrder()->first();
-        $ad->image_url = $ad->getSidebarAttribute();
+        if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
         $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(1);
         $posts->map(function ($post) {

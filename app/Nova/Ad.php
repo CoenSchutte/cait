@@ -37,7 +37,7 @@ class Ad extends Resource
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -54,9 +54,13 @@ class Ad extends Resource
             Date::make('Expiration date', 'expiration_date')
                 ->rules('required'),
 
-            Images::make('Main image') // second parameter is the media collection name
-            ->conversionOnIndexView('preview') // conversion used to display the image
-            ->rules('required')
+            Images::make('vertical', 'sidebar') // second parameter is the media collection name
+                ->conversionOnIndexView('preview') // conversion used to display the image
+                ->showStatistics()
+                ->temporary(now()->addMinutes(10)),
+
+            Images::make('horizontal', 'mainbar') // second parameter is the media collection name
+                ->conversionOnIndexView('preview') // conversion used to display the image
                 ->showStatistics()
                 ->temporary(now()->addMinutes(10)),
         ];
@@ -65,7 +69,7 @@ class Ad extends Resource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -76,7 +80,7 @@ class Ad extends Resource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -87,7 +91,7 @@ class Ad extends Resource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -98,7 +102,7 @@ class Ad extends Resource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function actions(Request $request)

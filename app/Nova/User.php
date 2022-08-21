@@ -4,6 +4,7 @@ namespace App\Nova;
 
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\Gravatar;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
@@ -64,6 +65,9 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:7'),
 
+            Date::make('Geboortedatum', 'birthdate')
+                ->sortable(),
+
             Boolean::make('Is Admin', 'is_admin')
                 ->default(false),
 
@@ -87,10 +91,9 @@ class User extends Resource
                     ],
                 ]),
 
-            Text::make('Tax Percentage', 'tax_percentage')
+            Date::make('Trial Ends At', 'trial_ends_at')
                 ->hideFromIndex(),
-            Text::make('Trial Ends At', 'trial_ends_at')
-                ->hideFromIndex(),
+
             Text::make('Extra Billing Information', 'extra_billing_information')
                 ->hideFromIndex(),
 
