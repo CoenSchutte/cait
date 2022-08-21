@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\ProductController;
 use App\Models\Post;
 
 /*
@@ -28,6 +29,9 @@ Route::middleware([])->group(function () {
     })->name('about');
 
     Route::resource('posts', PostController::class);
+
+    Route::resource('products', ProductController::class);
+
 
     Route::post('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');
 

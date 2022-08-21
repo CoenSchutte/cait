@@ -4,8 +4,59 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "995fd19fdac445cbd574978b0668b1f3",
+    "content-hash": "ce44c736e9d2aa0c79cb6222fd8899eb",
     "packages": [
+        {
+            "name": "64robots/nova-fields",
+            "version": "0.22.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/64robots/nova-fields.git",
+                "reference": "d3492da7ceaa362cde414f4435f018836fd22fa3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/64robots/nova-fields/zipball/d3492da7ceaa362cde414f4435f018836fd22fa3",
+                "reference": "d3492da7ceaa362cde414f4435f018836fd22fa3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "R64\\NovaFields\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "R64\\NovaFields\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova field.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/64robots/nova-fields/issues",
+                "source": "https://github.com/64robots/nova-fields/tree/0.22.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/beliolfa",
+                    "type": "github"
+                }
+            ],
+            "time": "2021-08-13T13:00:45+00:00"
+        },
         {
             "name": "aws/aws-crt-php",
             "version": "v1.0.2",

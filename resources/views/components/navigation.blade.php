@@ -33,7 +33,7 @@
 {{--                        </ul>--}}
 {{--                    </li>--}}
 
-                    <li class="nav-item"><a class="nav-link" href="https://stirotterdam.nl/shop">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Shop</a></li>
 
 
                     {{-- Vacatures --}}

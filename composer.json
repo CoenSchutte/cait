@@ -16,6 +16,7 @@
     ],
     "require": {
         "php": "^8.0.2",
+        "64robots/nova-fields": "^0.22.0",
         "ebess/advanced-nova-media-library": "*",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.2",

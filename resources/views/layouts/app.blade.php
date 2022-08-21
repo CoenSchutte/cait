@@ -23,6 +23,10 @@
     <link rel="stylesheet" type="text/css" href="../vendor/tiny-slider/tiny-slider.css">
     <script src="../vendor/vanilla-lazyload/lazyload.min.js"></script>
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+    <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+
+
     <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
 
 
