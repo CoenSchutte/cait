@@ -107,26 +107,22 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-5 col-xxl-4">
-                    <div class="card border mb-4">
-                        <div class="card-header border-bottom p-3">
-                            <h5 class="card-header-title mb-0">STIR Lidmaatschap</h5>
-                        </div>
-                        <div class="card-body">
-                            <h6>{{dd($user->subscription('main'))}}</h6>
-                            <ul>
-                                <li>Take backup of your data <a href="#">Here</a> </li>
-                                <li>Account deletion is final. There will be no way to restore your account</li>
-                            </ul>
-                            <div class="form-check form-check-md my-3">
-                                <input class="form-check-input" type="checkbox" value="" id="deleteaccountCheck">
-                                <label class="form-check-label" for="deleteaccountCheck">Yes, I'd really like to delete my account</label>
+                @if($user->subscription('main'))
+                    <div class="col-lg-5 col-xxl-4">
+                        <div class="card border mb-4">
+                            <div class="card-header border-bottom p-3">
+                                <h5 class="card-header-title mb-0">STIR Lidmaatschap</h5>
                             </div>
-                            <a href="#" class="btn btn-success-soft my-1">Keep my account</a>
-                            <a href="#" class="btn btn-danger my-1">Delete my account</a>
+                            <div class="card-body">
+                                <h6>Je lidmaatschap loopt door
+                                    tot: {{$user->subscription('main')?->created_at->addMonths(12)}}</h6>
+                                <ul>
+                                    <li>Je kunt opzeggen vanaf {{$user->subscription('main')?->created_at->diffInMonths() >= 12}}</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
             </div>
         </div>
     </section>
