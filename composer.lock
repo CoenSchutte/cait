@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ce44c736e9d2aa0c79cb6222fd8899eb",
+    "content-hash": "8780ca3e6a13a7cb51e5cb64428447d2",
     "packages": [
         {
             "name": "64robots/nova-fields",
@@ -8315,6 +8315,52 @@
                 }
             ],
             "time": "2022-07-20T13:46:29+00:00"
+        },
+        {
+            "name": "taronyuu/nova-mollie-tool",
+            "version": "0.0.32",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Taronyuu/nova-mollie-tool.git",
+                "reference": "24feb43961d58a43bd53ffe08d3bac2d6fb10a37"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Taronyuu/nova-mollie-tool/zipball/24feb43961d58a43bd53ffe08d3bac2d6fb10a37",
+                "reference": "24feb43961d58a43bd53ffe08d3bac2d6fb10a37",
+                "shasum": ""
+            },
+            "require": {
+                "mollie/mollie-api-php": "^2.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Taronyuu\\NovaMollieTool\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Taronyuu\\NovaMollieTool\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Simple tool for Laravel Nova to show your transactions from Mollie",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "support": {
+                "issues": "https://github.com/Taronyuu/nova-mollie-tool/issues",
+                "source": "https://github.com/Taronyuu/nova-mollie-tool/tree/master"
+            },
+            "time": "2018-08-26T14:48:39+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

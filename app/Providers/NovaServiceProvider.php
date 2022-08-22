@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Taronyuu\NovaMollieTool\NovaMollieTool;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
@@ -76,7 +77,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [];
+        return [new NovaMollieTool()];
     }
 
     /**
