@@ -112,9 +112,11 @@ class ProductController extends Controller
         $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
         $chargeItem = $item->make();
 
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
-            ->setRedirectUrl('https://www.example.com')
+        $result = $user->newMandatedCharge()
+            ->description($product->name . ' - ' . $request->color . ' - ' . $request->size)
+            ->amount(money($price * 100,'EUR'))
+            ->setRedirectUrl('https://nu.nl')
+            ->chargeItem($chargeItem)
             ->create();
 
         if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
