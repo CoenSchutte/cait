@@ -121,7 +121,8 @@ class ProductController extends Controller
                 ->addItem($chargeItem)
                 ->processAt(Carbon::now()->subMinute())
                 ->create();
-            return $result;
+
+            return redirect()->route('profile.show');
         } else {
             $result = $user->newFirstPaymentChargeThroughCheckout()
                 ->addItem($chargeItem)
