@@ -111,7 +111,7 @@ class ProductController extends Controller
 
 
         $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money($product-getPrice()*100,'EUR')); //1 EUR
+        $item->unitPrice(money($product->getPrice()*100,'EUR')); //1 EUR
         $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
         $chargeItem = $item->make();
 
