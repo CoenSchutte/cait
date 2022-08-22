@@ -112,7 +112,7 @@ class ProductController extends Controller
         $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
         $chargeItem = $item->make();
 
-        $result = $user->newMandatedCharge()
+        $result = $user->newCharge()
             ->addItem($chargeItem)
             ->create();
 
