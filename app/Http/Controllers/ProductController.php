@@ -113,7 +113,7 @@ class ProductController extends Controller
         $chargeItem = $item->make();
 
         $result = $user->newMandatedCharge()
-            ->chargeItem($chargeItem)
+            ->addItem($chargeItem)
             ->create();
 
         if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
