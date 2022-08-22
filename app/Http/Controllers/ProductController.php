@@ -108,17 +108,19 @@ class ProductController extends Controller
 
         $price = $user->hasSubscription() ? $product->member_price : $product->normal_price;
 
-        $item->unitPrice(money($price * 100,'EUR')); //1 EUR
-        $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
-        $chargeItem = $item->make();
+    // create an order item for the charge
+        $item->amount($price)
+            ->description($product->name)
+            ->build();
 
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
+
+        $order = new \Laravel\Cashier\Order\OrderBuilder($user);
+        $order->setItems([$item])
+            ->paymentDescription($product->name)
+            ->processAt(now())
             ->create();
 
-        if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
-            return $result;
-        }
+
 
         return redirect()->route('profile.show');
 
