@@ -32,6 +32,7 @@ class User extends Authenticatable
         'student_number',
         'is_admin',
         'birthdate',
+        'mollie_mandate_id',
     ];
 
     /**
