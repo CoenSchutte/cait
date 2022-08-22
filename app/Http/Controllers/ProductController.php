@@ -112,14 +112,11 @@ class ProductController extends Controller
     // create an order item for the charge
         $item->unitPrice(Money::EUR($price))
             ->description($product->name)
-            ->build();
+            ->make();
 
+        $charge = $user->charge($item);
+        return redirect($charge->getCheckoutUrl());
 
-        $order = new \Laravel\Cashier\Order\OrderBuilder($user);
-        $order->setItems([$item])
-            ->paymentDescription($product->name)
-            ->processAt(now())
-            ->create();
 
 
 
