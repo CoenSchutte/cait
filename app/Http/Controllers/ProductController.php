@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ad;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Money\Money;
 
 class ProductController extends Controller
 {
@@ -109,7 +110,7 @@ class ProductController extends Controller
         $price = $user->hasSubscription() ? $product->member_price : $product->normal_price;
 
     // create an order item for the charge
-        $item->unitPrice($price)
+        $item->unitPrice(Money::EUR($price))
             ->description($product->name)
             ->build();
 
