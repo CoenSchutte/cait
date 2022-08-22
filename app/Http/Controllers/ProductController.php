@@ -113,8 +113,6 @@ class ProductController extends Controller
         $chargeItem = $item->make();
 
         $result = $user->newMandatedCharge()
-            ->description($product->name . ' - ' . $request->color . ' - ' . $request->size)
-            ->amount(money($price * 100,'EUR'))
             ->setRedirectUrl('https://nu.nl')
             ->chargeItem($chargeItem)
             ->create();
