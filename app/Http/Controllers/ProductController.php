@@ -112,6 +112,7 @@ class ProductController extends Controller
         $item->description('Test Item 1');
         $chargeItem = $item->make();
 
+        $user->clearMollieMandate();
 
         $result = $user->newCharge()
             ->addItem($chargeItem)
