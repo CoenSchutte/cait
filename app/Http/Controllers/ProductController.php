@@ -109,7 +109,7 @@ class ProductController extends Controller
         $price = $user->hasSubscription() ? $product->member_price : $product->normal_price;
 
     // create an order item for the charge
-        $item->amount($price)
+        $item->unitPrice($price)
             ->description($product->name)
             ->build();
 
