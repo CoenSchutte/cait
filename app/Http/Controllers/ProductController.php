@@ -113,7 +113,6 @@ class ProductController extends Controller
         $chargeItem = $item->make();
 
         $result = $user->newMandatedCharge()
-            ->setRedirectUrl('https://nu.nl')
             ->chargeItem($chargeItem)
             ->create();
 
