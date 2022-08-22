@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ad;
 use App\Models\Product;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Money\Money;
 
@@ -113,18 +114,22 @@ class ProductController extends Controller
         $chargeItem = $item->make();
 
 
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
-            ->setRedirectUrl('https://www.example.com')
-            ->create();
+        $result = null;
 
-        if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
+        if($user->validMollieMandate()){
+            $result = $user->newMandatedCharge()
+                ->addItem($chargeItem)
+                ->processAt(Carbon::now()->subMinute())
+                ->create();
+            return $result;
+        } else {
+            $result = $user->newFirstPaymentChargeThroughCheckout()
+                ->addItem($chargeItem)
+                ->processAt(Carbon::now()->subMinute())
+                ->create();
+
             return $result;
         }
-
-
-        return redirect()->route('profile.show');
-
 
     }
 }
