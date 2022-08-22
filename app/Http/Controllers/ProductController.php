@@ -108,29 +108,19 @@ class ProductController extends Controller
         $user = auth()->user();
 
 
-        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money(100,'EUR')); //1 EUR
-        $item->description('Test Item 1');
-        $chargeItem = $item->make();
+        $result = $user->newCharge();
+
+        $item = new ChargeItemBuilder($user);
+        $item->quantity(1);
+        $item->unitPrice(money($data->price*100,'EUR'));
+        $item->description($data->name);
 
 
-        $result = null;
+        $result->addItem($item->make());
 
-        if($user->validMollieMandate()){
-            $result = $user->newMandatedCharge()
-                ->addItem($chargeItem)
-                ->processAt(Carbon::now()->subMinute())
-                ->create();
+        $result = $result->create();
 
-            return redirect()->route('profile.show');
-        } else {
-            $result = $user->newFirstPaymentChargeThroughCheckout()
-                ->addItem($chargeItem)
-                ->processAt(Carbon::now()->subMinute())
-                ->create();
-
-            return $result;
-        }
+        return $result;
 
     }
 }
