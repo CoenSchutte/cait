@@ -106,13 +106,13 @@ class ProductController extends Controller
     {
         $product = Product::find($request->product_id);
         $user = auth()->user();
+        $user->clearMollieMandate();
 
         $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
         $item->unitPrice(money(100,'EUR')); //1 EUR
         $item->description('Test Item 1');
         $chargeItem = $item->make();
 
-        $user->clearMollieMandate();
 
         $result = $user->newCharge()
             ->addItem($chargeItem)
