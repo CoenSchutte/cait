@@ -107,20 +107,21 @@ class ProductController extends Controller
         $product = Product::find($request->product_id);
         $user = auth()->user();
 
-
-        $result = $user->newCharge();
-
-        $item = new ChargeItemBuilder($user);
-        $item->quantity(1);
-        $item->unitPrice(money($data->price*100,'EUR'));
-        $item->description($data->name);
+        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+        $item->unitPrice(money(100,'EUR')); //1 EUR
+        $item->description('Test Item 1');
+        $chargeItem = $item->make();
 
 
-        $result->addItem($item->make());
+        $result = $user->newCharge()
+            ->addItem($chargeItem)
+            ->create();
 
-        $result = $result->create();
+        if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
+            return $result;
+        }
 
-        return $result;
+        return redirect()->route('profile.show');
 
     }
 }
