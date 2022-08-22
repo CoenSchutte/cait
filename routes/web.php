@@ -23,6 +23,10 @@ Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
+    //get /shop and redirect to products.index
+    Route::get('/shop', function () {
+        return redirect()->route('products.index');
+    });
 
     Route::get('/about', function () {
         return view('about');
@@ -54,6 +58,9 @@ Route::middleware([])->group(function () {
     //auth middleware
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
+
+        //Buy product
+        Route::post('products/buy', [ProductController::class, 'buy'])->name('products.buy');
 
         Route::prefix('user')->group(function () {
             Route::post('/update', [UserController::class, 'update'])->name('user.update');

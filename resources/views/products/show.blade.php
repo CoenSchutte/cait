@@ -45,69 +45,79 @@
                     </p>
 
 
-                    <!-- Variant START -->
-                    @if(isset($product->options['colors']))
-                        <div class="mb-4">
-                            <span>Kies kleur</span>
-                            <ul class="list-inline mt-2">
-                                @foreach($product->options['colors'] as $option)
-                                    <li class="list-inline-item">
-                                        @if(!isset($product->urls[$loop->index]))
-                                            @break
-                                        @endif
-                                        <input type="radio" class="btn-check" name="options" id="option-{{$option}}">
-                                        <label class="btn btn-primary-soft-check" for="option-{{$option}}">
-                                            <img
-                                                src="{{ isset($product->urls[$loop->index]) ? $product->urls[$loop->index] : ''}}"
-                                                class="w-60" alt="">
+                    <form method="POST" action="{{route('products.buy')}}">
+                        @csrf
 
-                                        </label>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                        <input type="hidden" name="product_id" value="{{$product->id}}">
+                        <!-- Variant START -->
+                        @if(isset($product->options['colors']))
+                            <div class="mb-4">
+                                <span>Kies kleur</span>
+                                <ul class="list-inline mt-2">
+                                    @foreach($product->options['colors'] as $option)
+                                        <li class="list-inline-item">
+                                            @if(!isset($product->urls[$loop->index]))
+                                                @break
+                                            @endif
+                                            <input type="radio" class="btn-check" name="color"
+                                                   id="option-{{$option}}" value="{{$option}}">
+                                            <label class="btn btn-primary-soft-check" for="option-{{$option}}">
+                                                <img
+                                                    src="{{ isset($product->urls[$loop->index]) ? $product->urls[$loop->index] : ''}}"
+                                                    class="w-60" alt="">
 
-                    @if(isset($product->options['colors']))
-                        <div class="mb-4">
-                            <span>Kies maat</span>
-                            <select class="form-select" name="color">
-                                @foreach($product->options['sizes'] as $option)
-                                    <option value="{{$option}}">{{$option}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    @endif
+                                            </label>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
-                    <!-- Variant END -->
+                        @if(isset($product->options['colors']))
+                            <div class="mb-4">
+                                <span>Kies maat</span>
+                                <select class="form-select" name="size">
+                                    @foreach($product->options['sizes'] as $option)
+                                        <option value="{{$option}}">{{$option}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        @endif
 
-                    <!-- Price and button START -->
-                    <div class="row">
-                        <!-- Price -->
-                        <div class="col-md-4">
-                            <h6 class="mb-0">Prijs</h6>
-                            <h4 class="text-success">&nbsp;&euro;
-                                @if(Auth::check())
-                                    {{$product->member_price}}
+                        <!-- Variant END -->
+
+                        <!-- Price and button START -->
+                        <div class="row">
+                            <!-- Price -->
+                            <div class="col-md-4">
+                                <h6 class="mb-0">Prijs</h6>
+                                <h4 class="text-success">&nbsp;&euro;
+                                    @if(Auth::check())
+                                        {{$product->member_price}}
+                                    @else
+                                        {{$product->normal_price}}
+                                    @endif
+
+                                </h4>
+                            </div>
+                            <!-- Select -->
+                            <div class="col-md-2 pe-md-0 mb-2">
+                                <select class="form-select" name="amount" aria-label="Default select example">
+                                    <option value="1">01</option>
+                                    <option value="2">02</option>
+                                    <option value="3">03</option>
+                                </select>
+                            </div>
+                            <!-- Button -->
+                            <div class="col-md-6">
+                                @auth()
+                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100"></input>
                                 @else
-                                    {{$product->normal_price}}
-                                @endif
-
-                            </h4>
+                                    <a href="{{route('login')}}" class="btn btn-primary mb-0 w-100">Log in</a>
+                                @endauth
+                            </div>
                         </div>
-                        <!-- Select -->
-                        <div class="col-md-2 pe-md-0 mb-2">
-                            <select class="form-select" name="amount" aria-label="Default select example">
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                                <option value="3">03</option>
-                            </select>
-                        </div>
-                        <!-- Button -->
-                        <div class="col-md-6">
-                            <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100"></input>
-                        </div>
-                    </div>
+                    </form>
                     <!-- Price and button END -->
                 </div>
             </div>

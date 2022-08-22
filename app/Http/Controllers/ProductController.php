@@ -99,4 +99,30 @@ class ProductController extends Controller
     {
         //
     }
+
+    public function buy(Request $request)
+    {
+        $product = Product::find($request->product_id);
+        $user = auth()->user();
+        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
+
+        $price = $user->hasSubscription() ? $product->member_price : $product->normal_price;
+
+        $item->unitPrice(money($price * 100,'EUR')); //1 EUR
+        $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
+        $chargeItem = $item->make();
+
+        $result = $user->newCharge()
+            ->addItem($chargeItem)
+            ->setRedirectUrl('https://www.example.com')
+            ->create();
+
+        if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
+            return $result;
+        }
+
+        return redirect()->route('profile.show');
+
+
+    }
 }
