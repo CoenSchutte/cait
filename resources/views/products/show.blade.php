@@ -59,8 +59,14 @@
                                             @if(!isset($product->urls[$loop->index]))
                                                 @break
                                             @endif
-                                            <input type="radio" class="btn-check" name="color"
-                                                   id="option-{{$option}}" value="{{$option}}">
+
+                                            @if($loop->first)
+                                                <input type="radio" class="btn-check" name="color"
+                                                       id="option-{{$option}}" value="{{$option}}" required>
+                                            @else
+                                                <input type="radio" class="btn-check" name="color"
+                                                       id="option-{{$option}}" value="{{$option}}">
+                                            @endif
                                             <label class="btn btn-primary-soft-check" for="option-{{$option}}">
                                                 <img
                                                     src="{{ isset($product->urls[$loop->index]) ? $product->urls[$loop->index] : ''}}"

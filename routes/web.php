@@ -59,8 +59,9 @@ Route::middleware([])->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
 
-        //Buy product
         Route::post('products/buy', [ProductController::class, 'buy'])->name('products.buy');
+
+        Route::get('/products/success/{product}/{details}', [ProductController::class, 'success'])->name('products.success');
 
         Route::prefix('user')->group(function () {
             Route::post('/update', [UserController::class, 'update'])->name('user.update');

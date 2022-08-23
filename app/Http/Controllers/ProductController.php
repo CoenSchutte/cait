@@ -7,6 +7,7 @@ use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Money\Money;
+use function Symfony\Component\Translation\t;
 
 class ProductController extends Controller
 {
@@ -18,7 +19,7 @@ class ProductController extends Controller
     public function index()
     {
         $ad = Ad::inRandomOrder()->first();
-        if($ad) $ad->image_url = $ad->getMainbarAttribute();
+        if ($ad) $ad->image_url = $ad->getMainbarAttribute();
 
         $products = Product::where('is_displayed', 1)->orderBy('created_at', 'desc')->paginate(1);
 
@@ -46,7 +47,7 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -57,7 +58,7 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -71,7 +72,7 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function edit(Product $product)
@@ -82,8 +83,8 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
+     * @param \Illuminate\Http\Request $request
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Product $product)
@@ -94,7 +95,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Product  $product
+     * @param \App\Models\Product $product
      * @return \Illuminate\Http\Response
      */
     public function destroy(Product $product)
@@ -104,27 +105,44 @@ class ProductController extends Controller
 
     public function buy(Request $request)
     {
+
         $product = Product::find($request->product_id);
         $user = auth()->user();
-        $user->clearMollieMandate();
-
-
+//        $user->clearMollieMandate();
 
         $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money($product->getPrice()*100,'EUR')); //1 EUR
+        $item->unitPrice(money($product->getPrice() * 100, 'EUR')); //1 EUR
         $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
         $chargeItem = $item->make();
+
+        $details = [];
+        if ($request->color) $details['color'] = $request->color;
+        if ($request->size) $details['size'] = $request->size;
+        $details = implode(' - ', $details);
 
 
         $result = $user->newCharge()
             ->addItem($chargeItem)
+            ->setRedirectUrl(route('products.success', [
+                'product' => $product,
+                'details' => $details]))
             ->create();
 
-        if(is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
+        if (is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
             return $result;
         }
 
-        return redirect()->route('profile.show');
+        return redirect()->route('products.success', [
+            'product' => $product,
+            'details' => $details]);
+    }
 
+    public function success(Product $product, $details)
+    {
+
+        return view('products.success', [
+            'product' => $product,
+            'details' => $details,
+        ]);
     }
 }
