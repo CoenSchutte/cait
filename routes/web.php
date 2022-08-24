@@ -61,7 +61,8 @@ Route::middleware([])->group(function () {
 
         Route::post('products/buy', [ProductController::class, 'buy'])->name('products.buy');
 
-        Route::get('/products/success/{product}/{details}', [ProductController::class, 'success'])->name('products.success');
+        Route::get('/success/{invoice}', [ProductController::class, 'success'])->name('products.success');
+
 
         Route::prefix('user')->group(function () {
             Route::post('/update', [UserController::class, 'update'])->name('user.update');

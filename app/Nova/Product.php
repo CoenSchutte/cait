@@ -53,6 +53,20 @@ class Product extends Resource
             Text::make('Naam', 'name')
                 ->required(),
 
+            Select::make('Categorie', 'category')
+                ->options([
+                    'merch' => 'Merchandise',
+                    'ticket' => 'Ticket',
+                ])
+                ->required(),
+
+            Select::make('Status', 'status')
+                ->options([
+                    'pending' => 'Pending',
+                    'delivered' => 'Delivered',
+                ])
+                ->required(),
+
             Markdown::make('Omschrijving', 'description')
                 ->required(),
 

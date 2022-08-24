@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="images/logo-stir-zwart.png">
+    <link rel="shortcut icon" href="../images/logo-stir-zwart.png">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -27,7 +27,7 @@
     <script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 
 
-    <link id="style-switch" rel="stylesheet" type="text/css" href="../css/style.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="../../../../css/style.css">
 
 
     <!-- Scripts -->

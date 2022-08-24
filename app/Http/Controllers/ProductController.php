@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Invoice;
 use App\Models\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -111,21 +112,21 @@ class ProductController extends Controller
 //        $user->clearMollieMandate();
 
         $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money($product->getPrice() * 100, 'EUR')); //1 EUR
+        $item->unitPrice(money($product->getPrice() * 100, 'EUR'));
         $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
         $chargeItem = $item->make();
 
-        $details = [];
-        if ($request->color) $details['color'] = $request->color;
-        if ($request->size) $details['size'] = $request->size;
-        $details = implode(' - ', $details);
-
+        $invoice = $user->invoices()->create([
+            'product' => $product->name . ' - ' . $request->color . ' - ' . $request->size,
+            'price' => $product->getPrice(),
+            'category' => $product->category,
+        ]);
 
         $result = $user->newCharge()
             ->addItem($chargeItem)
             ->setRedirectUrl(route('products.success', [
-                'product' => $product,
-                'details' => $details]))
+                'invoice' => $invoice,
+            ]))
             ->create();
 
         if (is_a($result, \Laravel\Cashier\Http\RedirectToCheckoutResponse::class)) {
@@ -133,16 +134,16 @@ class ProductController extends Controller
         }
 
         return redirect()->route('products.success', [
-            'product' => $product,
-            'details' => $details]);
+                'invoice' => $invoice,]
+        );
     }
 
-    public function success(Product $product, $details)
+    public function success(Invoice $invoice)
     {
 
-        return view('products.success', [
-            'product' => $product,
-            'details' => $details,
-        ]);
+        return view('products.success',
+            [
+                'invoice' => $invoice,
+            ]);
     }
 }
