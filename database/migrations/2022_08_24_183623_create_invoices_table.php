@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('product');
             $table->string('category');
-            $table->status('status')->default('pending');
+            $table->string('status')->default('pending');
             $table->integer('user_id');
             $table->decimal('price', 8, 2);
             $table->timestamps();
