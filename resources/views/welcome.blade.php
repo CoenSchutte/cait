@@ -33,19 +33,6 @@
                                                     <!-- Card info -->
                                                     <ul
                                                         class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                                        <li class="nav-item">
-                                                            <div class="nav-link">
-                                                                <div
-                                                                    class="d-flex align-items-center text-white position-relative">
-                                                                    <div class="avatar avatar-sm">
-                                                                        <img class="avatar-img rounded-circle"
-                                                                             src="images/avatar/11.jpg" alt="avatar">
-                                                                    </div>
-                                                                    <span class="ms-3">by <a href="#"
-                                                                                             class="stretched-link text-reset btn-link">STIR</a></span>
-                                                                </div>
-                                                            </div>
-                                                        </li>
                                                         <li class="nav-item">{{ $post->created_at->format('d/m/Y') }}</li>
                                                     </ul>
                                                 </div>
@@ -113,14 +100,16 @@
                                             </div>
                                             <!-- Card overlay bottom -->
                                             <div class="w-100 mt-auto">
-                                                <a href="#" class="badge text-bg-{{strtolower($highlight->category)}} mb-2"><i
-                                                        class="fas fa-circle me-2 small fw-bold"></i>{{$highlight->category}}</a>
+                                                <a href="#"
+                                                   class="badge text-bg-{{strtolower($highlight->category)}} mb-2"><i
+                                                        class="fas fa-circle me-2 small fw-bold"></i>{{$highlight->category}}
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="card-body px-0 pt-3">
-                                        <h5 class="card-title"><a href="post-single-6.html"
-                                                                  class="btn-link text-reset fw-bold">{{$highlight->title}}</a></h5>
+                                        <h5 class="card-title"><a
+                                                class="btn-link text-reset fw-bold">{{$highlight->title}}</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center">
                                             <li class="nav-item">{{$highlight->event_date->format('d/m/Y')}}</li>
@@ -157,53 +146,53 @@
 
     <!-- =======================
         Sponsored news START -->
-{{--    <section class="pt-4">--}}
-{{--        <div class="container">--}}
-{{--            <div class="row">--}}
-{{--                <!-- Title -->--}}
-{{--                <div class="col-md-12">--}}
-{{--                    <div class="mb-4 d-md-flex justify-content-between align-items-center">--}}
-{{--                        <h2 class="m-0"><i class="bi bi-megaphone me-2"></i> Sponsored news</h2>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--            <div class="row">--}}
-{{--                <div class="col-lg-6">--}}
-{{--                    <!-- Card item START -->--}}
-{{--                    <div class="card mb-3 mb-sm-4">--}}
-{{--                        <div class="row g-3">--}}
-{{--                            <div class="col-4">--}}
-{{--                                <img class="rounded-3" src="images/blog/4by3/01.jpg" alt="">--}}
-{{--                            </div>--}}
-{{--                            <div class="col-8">--}}
-{{--                                <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i--}}
-{{--                                        class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>--}}
-{{--                                <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">The--}}
-{{--                                        pros and cons of business agency</a></h4>--}}
-{{--                                <!-- Card info -->--}}
-{{--                                <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">--}}
-{{--                                    <li class="nav-item">--}}
-{{--                                        <div class="nav-link">--}}
-{{--                                            <div class="d-flex align-items-center position-relative">--}}
-{{--                                                <div class="avatar avatar-xs">--}}
-{{--                                                    <img class="avatar-img rounded-circle" src="images/avatar/01.jpg"--}}
-{{--                                                         alt="avatar">--}}
-{{--                                                </div>--}}
-{{--                                                <span class="ms-3">by <a href="#"--}}
-{{--                                                                         class="stretched-link text-reset btn-link">Samuel</a></span>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                    </li>--}}
-{{--                                    <li class="nav-item">Jan 22, 2022</li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <!-- Card item END -->--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </section>--}}
+    {{--    <section class="pt-4">--}}
+    {{--        <div class="container">--}}
+    {{--            <div class="row">--}}
+    {{--                <!-- Title -->--}}
+    {{--                <div class="col-md-12">--}}
+    {{--                    <div class="mb-4 d-md-flex justify-content-between align-items-center">--}}
+    {{--                        <h2 class="m-0"><i class="bi bi-megaphone me-2"></i> Sponsored news</h2>--}}
+    {{--                    </div>--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--            <div class="row">--}}
+    {{--                <div class="col-lg-6">--}}
+    {{--                    <!-- Card item START -->--}}
+    {{--                    <div class="card mb-3 mb-sm-4">--}}
+    {{--                        <div class="row g-3">--}}
+    {{--                            <div class="col-4">--}}
+    {{--                                <img class="rounded-3" src="images/blog/4by3/01.jpg" alt="">--}}
+    {{--                            </div>--}}
+    {{--                            <div class="col-8">--}}
+    {{--                                <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i--}}
+    {{--                                        class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>--}}
+    {{--                                <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">The--}}
+    {{--                                        pros and cons of business agency</a></h4>--}}
+    {{--                                <!-- Card info -->--}}
+    {{--                                <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">--}}
+    {{--                                    <li class="nav-item">--}}
+    {{--                                        <div class="nav-link">--}}
+    {{--                                            <div class="d-flex align-items-center position-relative">--}}
+    {{--                                                <div class="avatar avatar-xs">--}}
+    {{--                                                    <img class="avatar-img rounded-circle" src="images/avatar/01.jpg"--}}
+    {{--                                                         alt="avatar">--}}
+    {{--                                                </div>--}}
+    {{--                                                <span class="ms-3">by <a href="#"--}}
+    {{--                                                                         class="stretched-link text-reset btn-link">Samuel</a></span>--}}
+    {{--                                            </div>--}}
+    {{--                                        </div>--}}
+    {{--                                    </li>--}}
+    {{--                                    <li class="nav-item">Jan 22, 2022</li>--}}
+    {{--                                </ul>--}}
+    {{--                            </div>--}}
+    {{--                        </div>--}}
+    {{--                    </div>--}}
+    {{--                    <!-- Card item END -->--}}
+    {{--                </div>--}}
+    {{--            </div>--}}
+    {{--        </div>--}}
+    {{--    </section>--}}
     <!-- =======================
         Sponsored news END -->
 @endsection
