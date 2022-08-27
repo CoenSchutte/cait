@@ -80,7 +80,6 @@ class Product extends Resource
 
             Code::make('Options', 'options')
                 ->language('json')
-                ->json()
                 ->required(),
 
             Images::make('Main image', 'images')
