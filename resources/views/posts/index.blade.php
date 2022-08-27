@@ -9,7 +9,7 @@ Inner intro START -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                        <h1 class="m-0">Check hier de laatste posts</h1>
+                    <h1 class="m-0">Check hier de laatste posts</h1>
                 </div>
             </div>
         </div>
@@ -21,12 +21,13 @@ Inner intro START -->
                 <!-- Main Post START -->
                 <div class="col-lg-9">
                     <div class="row gy-4">
-                        @foreach($posts as $post)
+                        @forelse($posts as $post)
                             <div class="col-sm-6">
                                 <div class="card">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img lazy" data-src="{{$post->image_url}}" src="{{$post->low_res}} alt="Card image">
+                                        <img class="card-img lazy" data-src="{{$post->image_url}}"
+                                             src="{{$post->low_res}} alt=" Card image">
                                         <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                             <!-- Card overlay bottom -->
                                             <div class="w-100 mt-auto">
@@ -50,15 +51,21 @@ Inner intro START -->
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        @empty
+                            <div class="col-12">
+                                <div class="alert alert-info">
+                                    <p class="mb-0">Er zijn geen posts gevonden.</p>
+                                </div>
+                            </div>
+                        @endforelse
 
                         <!-- Card item END -->
 
 
-                            <!-- Load more START -->
+                        <!-- Load more START -->
                         <div style="display: flex; justify-content: center;">
 
-                                {{ $posts->links() }}
+                            {{ $posts->links() }}
                         </div>
                         <!-- Load more END -->
                     </div>
