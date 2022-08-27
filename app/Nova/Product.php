@@ -60,13 +60,6 @@ class Product extends Resource
                 ])
                 ->required(),
 
-            Select::make('Status', 'status')
-                ->options([
-                    'pending' => 'Pending',
-                    'delivered' => 'Delivered',
-                ])
-                ->required(),
-
             Markdown::make('Omschrijving', 'description')
                 ->required(),
 
