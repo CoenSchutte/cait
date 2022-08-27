@@ -5,7 +5,7 @@
     <section class="pt-3 pt-lg-5">
         <div class="container">
             <div class="row">
-                @if($user && !$user->hasSubscription())
+                @if(($user && !$user->hasSubscription()) || !$user)
                     <div class="alert alert-warning" role="alert">
                         <h4 class="alert-heading">Je bent nog geen lid :(</h4>
                         <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
