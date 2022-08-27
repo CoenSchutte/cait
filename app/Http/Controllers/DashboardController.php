@@ -23,7 +23,7 @@ class DashboardController extends Controller
             $post->preview_url = $post->preview();
         });
 
-        $highlights = Highlight::where('is_published', true)->take(10)->get();
+        $highlights = Highlight::where('is_published', true)->take(10)->orderBy('event_date', 'desc')->get();
 
         $highlights->map(function ($highlight) {
             $highlight->image_url = $highlight->get4by3Attribute();
