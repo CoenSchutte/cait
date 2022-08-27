@@ -30,13 +30,18 @@
                 <div class="col-xl-10 mx-auto">
                     <!-- Product START -->
                     <div class="row">
-                        <!-- Adv START -->
-                        <a href="{{$ad?->company_url}}" target="_blank" class="col-12 mb-4">
-                            <div class="rounded-2 overflow-hidden p-4 p-md-5"
-                                 style="background-image: url({{$ad?->image_url}}); background-size: contain">
+                        <section class="p-0">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
+                                            <img src="{{$ad?->image_url}}" alt="">
+                                        </a>
+                                        <small class="text-end d-block mt-1">Advertentie</small>
+                                    </div>
+                                </div>
                             </div>
-                        </a>
-                        <!-- Adv END -->
+                        </section>
 
                         @foreach($products as $product)
                             <div class="col-sm-6 col-md-4">
