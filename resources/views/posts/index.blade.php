@@ -45,7 +45,7 @@ Inner intro START -->
                                         <p class="card-text">{{$post->subtitle}}</p>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
-                                            <li class="nav-item">{{$post->created_at}}</li>
+                                            <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
                                         </ul>
                                     </div>
                                 </div>
