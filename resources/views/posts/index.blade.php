@@ -9,10 +9,7 @@ Inner intro START -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="bg-danger bg-opacity-10 p-4 text-center rounded-3">
-                        <h1 class="text-danger m-0">Post grid style</h1>
-                        <p class="lead m-0">Checkout our latest post</p>
-                    </div>
+                        <h1 class="m-0">Check hier de laatste posts</h1>
                 </div>
             </div>
         </div>
@@ -72,38 +69,6 @@ Inner intro START -->
                 <div class="col-lg-3 mt-5 mt-lg-0">
                     <div data-margin-top="80" data-sticky-for="767">
                         <!-- Trending topics widget START -->
-
-                        <div>
-                            <h4 class="mb-3">Trending topics</h4>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../images/blog/4by3/01.jpg); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Workshop</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../images/blog/4by3/02.jpg); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Borrel</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../images/blog/4by3/03.jpg); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Promo</a>
-                                </div>
-                            </div>
-                            <!-- Category item -->
-                            <div class="text-center mb-3 card-bg-scale position-relative overflow-hidden rounded" style="background-image:url(../images/blog/4by3/04.jpg); background-position: center left; background-size: cover;">
-                                <div class="bg-dark-overlay-4 p-3">
-                                    <a href="#" class="stretched-link btn-link fw-bold text-white h5">Activiteiten</a>
-                                </div>
-                            </div>
-                            <!-- View All Category button -->
-                            <div class="text-center mt-3">
-                                <a href="#" class="fw-bold text-muted text-primary-hover"><u>Bekijk alle categoriën</u></a>
-                            </div>
-                        </div>
                         <!-- ADV widget START -->
                         <div class="col-12 col-sm-6 col-lg-12 my-4">
                             <a href="#" class="d-block card-img-flash">

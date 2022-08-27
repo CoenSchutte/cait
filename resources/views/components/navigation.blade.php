@@ -16,37 +16,32 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav navbar-nav-scroll ms-auto">
                     {{-- Activiteiten --}}
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="activiteiten-dropdown"
-                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Activiteiten</a>
-                        <ul class="dropdown-menu" aria-labelledby="activiteiten-dropdown">
-                            <li><a class="dropdown-item" href="#">TEMP</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('posts.index')}}">Activiteiten</a></li>
 
-{{--                    --}}{{-- Commissies --}}
-{{--                    <li class="nav-item dropdown">--}}
-{{--                        <a class="nav-link dropdown-toggle" href="#" id="commissies-dropdown"--}}
-{{--                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commissies</a>--}}
-{{--                        <ul class="dropdown-menu" aria-labelledby="commissies-dropdown">--}}
-{{--                            <li><a class="dropdown-item" href="#">TEMP</a></li>--}}
-{{--                        </ul>--}}
-{{--                    </li>--}}
+
+                    {{--                    --}}{{-- Commissies --}}
+                    {{--                    <li class="nav-item dropdown">--}}
+                    {{--                        <a class="nav-link dropdown-toggle" href="#" id="commissies-dropdown"--}}
+                    {{--                           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Commissies</a>--}}
+                    {{--                        <ul class="dropdown-menu" aria-labelledby="commissies-dropdown">--}}
+                    {{--                            <li><a class="dropdown-item" href="#">TEMP</a></li>--}}
+                    {{--                        </ul>--}}
+                    {{--                    </li>--}}
 
                     <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Shop</a></li>
 
 
                     {{-- Vacatures --}}
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Vacatures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('posts.vacatures')}}">Vacatures</a></li>
 
                     {{-- Over --}}
-                    <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Over</a></li>
+                    {{--                    <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Over</a></li>--}}
 
-                    {{-- Partners --}}
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Partners</a></li>
+                    {{--                    --}}{{-- Partners --}}
+                    {{--                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Partners</a></li>--}}
 
                     {{-- Contact --}}
-                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
 
                     @auth
                         <li class="nav-item d-lg-none">
@@ -76,7 +71,7 @@
                         <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
                            data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            <img class="avatar-img rounded-circle" src="{{ asset('images/avatar/03.jpg') }}"
+                            <img class="avatar-img rounded-circle" src="{{ asset('images/avatar/default.png') }}"
                                  alt="avatar"/>
                         </a>
 
@@ -86,30 +81,30 @@
                                 <div class="d-flex align-items-center">
                                     <div class="avatar me-3">
                                         <img class="avatar-img rounded-circle shadow"
-                                             src="{{ asset('images/avatar/03.jpg') }}" alt="avatar"/>
+                                             src="{{ asset('images/avatar/default.png') }}" alt="avatar"/>
                                     </div>
                                     <div>
                                         <a class="h6 mt-2 mt-sm-0" href="#">{{ auth()->user()->name }}</a>
-                                        <p class="small m-0">{{ auth()->user()->email }}</p>
+                                        <p class="small m-0"></p>
                                     </div>
                                 </div>
                                 <hr class="my-3"/>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="{{route('profile.show')}}"><i class="bi bi-person fa-fw me-2"></i>Profile</a>
+                                <a class="dropdown-item" href="{{route('profile.show')}}"><i
+                                        class="bi bi-person fa-fw me-2"></i>Profiel</a>
                             </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Settings</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a>
-                            </li>
+                            {{--                            <li>--}}
+                            {{--                                <a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Settings</a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a class="dropdown-item" href="#"><i class="bi bi-info-circle fa-fw me-2"></i>Help</a>--}}
+                            {{--                            </li>--}}
                             <li>
                                 <form method="POST" action="{{ route('logout') }}" x-data>
                                     @csrf
 
-                                    <button type="submit" class="dropdown-item"><i class="bi bi-power fa-fw me-2"></i>Sign
-                                        Out
+                                    <button type="submit" class="dropdown-item"><i class="bi bi-power fa-fw me-2"></i>Uitloggen
                                     </button>
                                 </form>
                             </li>

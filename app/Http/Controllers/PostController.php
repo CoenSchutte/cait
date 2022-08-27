@@ -21,7 +21,23 @@ class PostController extends Controller
         $ad = Ad::inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
-        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(1);
+        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(9);
+        $posts->map(function ($post) {
+            $post->image_url = $post->get4by3Attribute();
+            $post->low_res = $post->preview();
+        });
+        return view('posts.index', [
+            'posts' => $posts,
+            'ad' => $ad,
+        ]);
+    }
+
+    public function vacatures()
+    {
+        $ad = Ad::inRandomOrder()->first();
+        if($ad) $ad->image_url = $ad->getSidebarAttribute();
+
+        $posts = Post::where('category', 'Vacature')->where('is_published', 1)->orderBy('created_at', 'desc')->paginate(9);
         $posts->map(function ($post) {
             $post->image_url = $post->get4by3Attribute();
             $post->low_res = $post->preview();

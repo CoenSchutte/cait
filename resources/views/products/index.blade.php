@@ -5,11 +5,26 @@
     <section class="pt-3 pt-lg-5">
         <div class="container">
             <div class="row">
+                @if($user && !$user->hasSubscription())
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Je bent nog geen lid :(</h4>
+                        <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
+                        <ul>
+                            <li> <strong>30%</strong> korting op alle betaalde evenementen*</li>
+                            <li><strong>10%</strong> korting op onze merchandise</li>
+                            <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>
+                            <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
+                            <li>Beslissingsrecht tijdens de ALV</li>
+                        </ul>
+                        <hr>
+                        <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30
+                            per jaar!</a>
+                    </div>
+                @endif
                 <!-- Title -->
                 <div class="mb-4">
                     <h2 class="m-0">STIR Shop</h2>
                 </div>
-
 
                 <!-- Main part START -->
                 <div class="col-xl-10 mx-auto">

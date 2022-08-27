@@ -28,13 +28,19 @@ Route::middleware([])->group(function () {
         return redirect()->route('products.index');
     });
 
-    Route::get('/about', function () {
-        return view('about');
-    })->name('about');
+//    Route::get('/about', function () {
+//        return view('about');
+//    })->name('about');
+
+    Route::get('/contact', function () {
+        return view('contact');
+    })->name('contact');
 
     Route::resource('posts', PostController::class);
 
     Route::resource('products', ProductController::class);
+
+    Route::get('/vacatures', [PostController::class, 'vacatures'])->name('posts.vacatures');
 
 
     Route::post('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ad;
+use App\Models\Highlight;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -22,9 +23,17 @@ class DashboardController extends Controller
             $post->preview_url = $post->preview();
         });
 
+        $highlights = Highlight::where('is_published', true)->take(10)->get();
+
+        $highlights->map(function ($highlight) {
+            $highlight->image_url = $highlight->get4by3Attribute();
+            $highlight->preview_url = $highlight->preview();
+        });
+
         return view('welcome', [
             'posts' => $posts,
             'ad' => $ad,
+            'highlights' => $highlights,
         ]);
     }
 }

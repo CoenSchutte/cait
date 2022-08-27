@@ -21,32 +21,20 @@
                     <div class="col-6">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pt-0" href="#">Activiteiten</a>
+                                <a class="nav-link pt-0" href="{{route('posts.index')}}">Activiteiten</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    Blog
-                                    <span class="badge text-bg-danger ms-2">X Posts</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Commissies</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Vacatures</a>
+                                <a class="nav-link" href="{{route('posts.vacatures')}}">Vacatures</a>
                             </li>
                         </ul>
                     </div>
                     <div class="col-6">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pt-0" href="#">Over</a>
+                                <a class="nav-link pt-0" href="{{route('products.index')}}">Shop</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Partners</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="{{route('contact')}}">Contact</a>
                             </li>
                         </ul>
                     </div>

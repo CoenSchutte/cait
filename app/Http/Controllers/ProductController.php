@@ -28,10 +28,13 @@ class ProductController extends Controller
             $product->image_url = $product->get4by3Attribute();
         });
 
+        $user = auth()->user();
+
 
         return view('products.index', [
             'products' => $products,
             'ad' => $ad,
+            'user' => $user,
         ]);
     }
 
