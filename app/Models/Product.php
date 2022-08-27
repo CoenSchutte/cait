@@ -17,7 +17,7 @@ class Product extends Model implements HasMedia
     use InteractsWithMedia;
 
     protected $casts = [
-        'options' => 'array',
+        'options' => 'json',
     ];
 
     protected $fillable = [
