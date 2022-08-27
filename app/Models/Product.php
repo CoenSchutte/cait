@@ -20,6 +20,18 @@ class Product extends Model implements HasMedia
         'options' => 'array',
     ];
 
+    protected $fillable = [
+        'name',
+        'description',
+        'category',
+        'options',
+        'normal_price',
+        'member_price',
+        'is_available',
+        'is_displayed',
+        'stock',
+    ];
+
 //    protected $attributes = [
 ////        'options' => [
 ////            'colors' => [
