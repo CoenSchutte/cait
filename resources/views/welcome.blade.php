@@ -78,7 +78,7 @@
                 <div class="col-md-12">
                     <!-- Title -->
                     <div class="mb-4">
-                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Event hightlights!</h2>
+                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Event highlights!</h2>
                         <p class="m-0">De foto's, video's en andere ongein van de laatste events!</p>
                     </div>
                     <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
@@ -91,7 +91,7 @@
                                 <div class="card">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img" src="{{$highlight->image_url}}" alt="Card image">
+                                        <img class="card-img" src="{{$highlight->image_url}}" style="background-size: cover !important;" alt="Card image">
                                         <div class="card-img-overlay d-flex align-items-start flex-column p-3">
                                             <!-- Card overlay Top -->
                                             <div class="w-100 mb-auto d-flex justify-content-end">
@@ -112,7 +112,7 @@
                                                 class="btn-link text-reset fw-bold">{{$highlight->title}}</a></h5>
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center">
-                                            <li class="nav-item">{{$highlight->event_date->format('d/m/Y')}}</li>
+                                            <li class="nav-item">{{$highlight->event_date->translatedFormat('d F Y')}}</li>
                                         </ul>
                                     </div>
                                 </div>

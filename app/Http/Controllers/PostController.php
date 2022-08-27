@@ -26,9 +26,11 @@ class PostController extends Controller
             $post->image_url = $post->get4by3Attribute();
             $post->low_res = $post->preview();
         });
+
         return view('posts.index', [
             'posts' => $posts,
             'ad' => $ad,
+            'title' => 'activiteiten'
         ]);
     }
 
@@ -45,6 +47,7 @@ class PostController extends Controller
         return view('posts.index', [
             'posts' => $posts,
             'ad' => $ad,
+            'title' => 'vacatures'
         ]);
     }
 

@@ -6,12 +6,7 @@
             <!-- Footer Widget -->
             <div class="col-md-6 col-lg-4 mb-4">
                 <img class="light-mode-item" src="{{ asset('images/logo-stir-zwart.png') }}" alt="logo">
-                <img class="dark-mode-item" src="{{ asset('images/logo-stir-wit.png') }}" alt="logo">
-                <div class="mt-4">©
-                    <script>
-                        document.write(new Date().getFullYear())
-                    </script> STIR. All rights reserved
-                </div>
+                <img class="dark-mode-item" src="{{ asset('images/logo-stir-kleur.png') }}" alt="logo">
             </div>
 
             <!-- Footer Widget -->
@@ -43,7 +38,7 @@
 
             <!-- Footer Widget -->
             <div class="col-sm-6 col-lg-2 mb-4">
-                <h5 class="mb-4">Onze socials</h5>
+                <h5 class="mb-4">Blijf op de hoogte</h5>
                 <ul class="nav flex-column">
                     <li class="nav-item">
                         <a class="nav-link pt-0" href="https://discord.gg/Np6WEv46Bc">

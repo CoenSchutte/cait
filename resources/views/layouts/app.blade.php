@@ -9,7 +9,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../images/logo-stir-zwart.png">
+    <link rel="shortcut icon" href="../images/logo-stir-kleur.png">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

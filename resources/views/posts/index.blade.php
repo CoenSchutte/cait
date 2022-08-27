@@ -9,7 +9,7 @@ Inner intro START -->
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <h1 class="m-0">Check hier de laatste posts</h1>
+                    <h1 class="m-0">Check hier de laatste {{$title}}</h1>
                 </div>
             </div>
         </div>
@@ -54,7 +54,12 @@ Inner intro START -->
                         @empty
                             <div class="col-12">
                                 <div class="alert alert-info">
-                                    <p class="mb-0">Er zijn geen posts gevonden.</p>
+                                    @if($title == 'vacatures')
+                                        Er zijn op dit moment geen open vacatures.
+                                    @elseif($title == 'activiteiten')
+                                        Er zijn geen activiteiten gevonden
+
+                                    @endif
                                 </div>
                             </div>
                         @endforelse

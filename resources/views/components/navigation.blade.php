@@ -3,7 +3,7 @@
         <div class="container">
             <a class="navbar-brand" href="{{ route('welcome') }}">
                 <img class="navbar-brand-item light-mode-item" src="../images/logo-stir-zwart.png" alt="logo">
-                <img class="navbar-brand-item dark-mode-item" src="../images/logo-stir-wit.png" alt="logo">
+                <img class="navbar-brand-item dark-mode-item" src="../images/logo-stir-kleur.png" alt="logo">
             </a>
 
             <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse"
@@ -49,10 +49,10 @@
                         </li>
                     @else
                         <li class="nav-item d-lg-none">
-                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                            <a href="{{ route('login') }}" class="nav-link">Log in</a>
                         </li>
                         <li class="nav-item d-lg-none">
-                            <a href="{{ route('register') }}" class="nav-link">Registreer</a>
+                            <a href="{{ route('register') }}" class="nav-link">Word lid</a>
                         </li>
                     @endauth
                 </ul>
@@ -112,10 +112,10 @@
                     </div>
                 @else
                     <div class="nav-item d-none d-lg-block">
-                        <a href="{{ route('login') }}" class="btn btn-sm btn-primary mb-0 mx-2">Login</a>
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-primary mb-0 mx-2">Log in</a>
                     </div>
                     <div class="nav-item d-none d-lg-block">
-                        <a href="{{ route('register') }}" class="btn btn-sm btn-success mb-0 mx-2">Registreer</a>
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-success mb-0 mx-2">Meld je aan</a>
                     </div>
                 @endauth
             </div>
