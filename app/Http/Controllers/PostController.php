@@ -21,7 +21,7 @@ class PostController extends Controller
         $ad = Ad::inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
-        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(9);
+        $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(6);
         $posts->map(function ($post) {
             $post->image_url = $post->get4by3Attribute();
             $post->low_res = $post->preview();
@@ -37,7 +37,7 @@ class PostController extends Controller
         $ad = Ad::inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
-        $posts = Post::where('category', 'Vacature')->where('is_published', 1)->orderBy('created_at', 'desc')->paginate(9);
+        $posts = Post::where('category', 'Vacature')->where('is_published', 1)->orderBy('created_at', 'desc')->paginate(6);
         $posts->map(function ($post) {
             $post->image_url = $post->get4by3Attribute();
             $post->low_res = $post->preview();
