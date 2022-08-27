@@ -9,7 +9,6 @@
                 <div class="col-lg-5">
                     <div class="row g-2">
                         @foreach($product->urls as $img)
-
                             @if($loop->first)
                                 <div class="col-12">
                                     <div class="bg-light rounded-2 glightbox-bg p-4 position-relative">
@@ -50,11 +49,12 @@
 
                         <input type="hidden" name="product_id" value="{{$product->id}}">
                         <!-- Variant START -->
+                        @dd($product)
                         @if(isset($product->options['colors']))
                             <div class="mb-4">
                                 <span>Kies kleur</span>
                                 <ul class="list-inline mt-2">
-                                    @foreach($product->options['colors'] as $option)
+                                @foreach($product->options['colors'] as $option)
                                         <li class="list-inline-item">
                                             @if(!isset($product->urls[$loop->index]))
                                                 @break
