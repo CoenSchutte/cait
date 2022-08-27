@@ -49,7 +49,6 @@
 
                         <input type="hidden" name="product_id" value="{{$product->id}}">
                         <!-- Variant START -->
-                        @dd($product)
                         @if(isset($product->options['colors']))
                             <div class="mb-4">
                                 <span>Kies kleur</span>
