@@ -80,25 +80,6 @@ class Product extends Resource
 
             Code::make('Options', 'options')
                 ->language('json')
-                ->withMeta(
-                    ["value" => '{
-  "colors": {
-    "Rood": "Rood",
-    "Blauw": "Blauw",
-    "Geel": "Geel",
-    "Zwart": "Zwart",
-    "Wit": "Wit",
-    "Groen": "Groen"
-  },
-  "sizes": {
-    "XS": "XS",
-    "S": "S",
-    "M": "M",
-    "L": "L",
-    "XL": "XL",
-    "XXL": "XXL"
-  }
-}'])
                 ->json()
                 ->required(),
 

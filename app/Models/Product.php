@@ -32,27 +32,6 @@ class Product extends Model implements HasMedia
         'stock',
     ];
 
-//    protected $attributes = [
-////        'options' => [
-////            'colors' => [
-////                'Rood' => 'Rood',
-////                'Blauw'=> 'Blauw',
-////                'Geel' => 'Geel',
-////                'Zwart' => 'Zwart',
-////                'Wit' => 'Wit',
-////                'Groen' => 'Groen',
-////            ],
-////            'sizes' => [
-////                'XS' => 'XS',
-////                'S' => 'S',
-////                'M' => 'M',
-////                'L' => 'L',
-////                'XL' => 'XL',
-////                'XXL' => 'XXL',
-////            ],
-////        ],
-//    ];
-
     public function getPrice()
     {
         if (auth()->user() && auth()->user()->hasSubscription()) {
