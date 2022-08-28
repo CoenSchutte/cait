@@ -23,8 +23,8 @@
                     </div>
                 @elseif(!$user)
                     <div class="col-12">
-                        <div class="alert alert-warning">
-                            <h4>Let op:</h4>
+                        <div class="alert alert-info">
+                            <h4 style="color: var(--bs-alert-color)">Let op:</h4>
                             <p>Je bent op dit moment niet ingelogd. Log in om gebruik te maken van ledenkorting.</p>
                         </div>
                     </div>
