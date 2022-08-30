@@ -17,7 +17,7 @@ class CreateSubscriptionController extends Controller
 
         if(!$user->subscribed($name, $plan)) {
 
-            $result = $user->newSubscriptionViaMollieCheckout($name, $plan)->create();
+            $result = $user->newSubscription($name, $plan)->create();
 
             if(is_a($result, RedirectToCheckoutResponse::class)) {
                 return $result; // Redirect to Mollie checkout
