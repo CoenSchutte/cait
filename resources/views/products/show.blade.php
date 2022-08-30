@@ -97,11 +97,7 @@
                             <div class="col-md-4">
                                 <h6 class="mb-0">Prijs</h6>
                                 <h4 class="text-success">&nbsp;&euro;
-                                    @if(Auth::check())
-                                        {{$product->member_price}}
-                                    @else
-                                        {{$product->normal_price}}
-                                    @endif
+                                    {{number_format($product->getPrice(), 2, '.', '.')}}</h4>
 
                                 </h4>
                             </div>
