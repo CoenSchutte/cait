@@ -76,20 +76,10 @@ class User extends Resource
             }),
 
             Text::make('Mollie Customer ID', 'mollie_customer_id')
-                ->hideFromIndex()
-                ->withMeta([
-                    'extraAttributes' => [
-                        'readonly' => true,
-                    ],
-                ]),
+                ->hideFromIndex(),
 
             Text::make('Mollie Mandate ID', 'mollie_mandate_id')
-                ->hideFromIndex()
-                ->withMeta([
-                    'extraAttributes' => [
-                        'readonly' => true,
-                    ],
-                ]),
+                ->hideFromIndex(),
 
             Date::make('Trial Ends At', 'trial_ends_at')
                 ->hideFromIndex(),
