@@ -25,7 +25,7 @@ class ProductController extends Controller
         $ad = Ad::inRandomOrder()->first();
         if ($ad) $ad->image_url = $ad->getMainbarAttribute();
 
-        $products = Product::where('is_displayed', 1)->orderBy('created_at', 'desc')->paginate(1);
+        $products = Product::where('is_displayed', 1)->orderBy('created_at', 'desc')->paginate(6);
 
         $products->map(function ($product) {
             $product->image_url = $product->get4by3Attribute();
