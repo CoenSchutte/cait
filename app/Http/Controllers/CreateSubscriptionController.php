@@ -15,15 +15,19 @@ class CreateSubscriptionController extends Controller
 
         $plan = 'stir-yearly';
 
-        if(!$user->subscribed($name, $plan)) {
 
-            $result = $user->newSubscriptionViaMollieCheckout($name, $plan)->create();
+        if (!$user->subscribed($name, $plan)) {
 
-            if(is_a($result, RedirectToCheckoutResponse::class)) {
+            $result = $user->newSubscription($name, $plan)->create();
+
+            if (is_a($result, RedirectToCheckoutResponse::class)) {
                 return $result; // Redirect to Mollie checkout
             }
 
             return back()->with('status', 'Welcome to the ' . $plan . ' plan');
         }
+
+        return back()->with('status', 'You are already on the ' . $plan . ' plan');
+
     }
 }
