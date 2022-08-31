@@ -5,31 +5,31 @@
     <section class="pt-3 pt-lg-5">
         <div class="container">
             <div class="row">
-{{--                @if(($user && !$user->hasSubscription()))--}}
-{{--                    <div class="alert alert-warning" role="alert">--}}
-{{--                        <h4 class="alert-heading">Je bent nog geen lid :(</h4>--}}
-{{--                        <p>Je loopt nu een aantal voordelen mis. Zo krijg je als lid</p>--}}
-{{--                        <ul>--}}
-{{--                            <li><strong>30%</strong> korting op alle betaalde evenementen</li>--}}
-{{--                            <li><strong>10%</strong> korting op onze merchandise</li>--}}
-{{--                            <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v. <strong>&euro;3.00</strong>--}}
-{{--                            </li>--}}
-{{--                            <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>--}}
-{{--                            <li>Stemrecht tijdens de ALV</li>--}}
-{{--                        </ul>--}}
-{{--                        <hr>--}}
-{{--                        <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30--}}
-{{--                            per jaar!</a>--}}
-{{--                    </div>--}}
-{{--                @elseif(!$user)--}}
-{{--                    <div class="col-12">--}}
-{{--                        <div class="alert alert-info">--}}
-{{--                            <h4 style="color: var(--bs-alert-color)">Let op:</h4>--}}
-{{--                            <p>Je bent op dit moment niet ingelogd. Log in om gebruik te maken van ledenkorting.</p>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                @if(($user && !$user->hasSubscription()))
+                    <div class="alert alert-warning" role="alert">
+                        <h4 class="alert-heading">Je bent nog geen lid :(</h4>
+                        <p>Je loopt nu een aantal voordelen mis. Zo krijg je als lid</p>
+                        <ul>
+                            <li><strong>30%</strong> korting op alle betaalde evenementen</li>
+                            <li><strong>10%</strong> korting op onze merchandise</li>
+                            <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v. <strong>&euro;3.00</strong>
+                            </li>
+                            <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
+                            <li>Stemrecht tijdens de ALV</li>
+                        </ul>
+                        <hr>
+                        <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30
+                            per jaar!</a>
+                    </div>
+                @elseif(!$user)
+                    <div class="col-12">
+                        <div class="alert alert-info">
+                            <h4 style="color: var(--bs-alert-color)">Let op:</h4>
+                            <p>Je bent op dit moment niet ingelogd. Log in om gebruik te maken van ledenkorting.</p>
+                        </div>
+                    </div>
 
-{{--                @endif--}}
+                @endif
                 <!-- Title -->
                 <div class="mb-4">
                     <h2 class="m-0">STIR Shop</h2>
