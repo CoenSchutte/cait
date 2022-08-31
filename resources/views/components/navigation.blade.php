@@ -16,7 +16,12 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav navbar-nav-scroll ms-auto">
                     {{-- Activiteiten --}}
-                    <li class="nav-item"><a class="nav-link" href="{{route('posts.index')}}">Activiteiten</a></li>
+                    <li class="nav-item">
+                        <a @class([
+                            'nav-link',
+                            'active' => Request::is('posts*')
+                            ]) href="{{route('posts.index')}}">Activiteiten</a>
+                    </li>
 
 
                     {{--                    --}}{{-- Commissies --}}
@@ -28,11 +33,21 @@
                     {{--                        </ul>--}}
                     {{--                    </li>--}}
 
-                    <li class="nav-item"><a class="nav-link" href="{{route('products.index')}}">Shop</a></li>
+                    <li class="nav-item">
+                        <a @class([
+                            'nav-link',
+                            'active' => Request::is('products*')
+                            ]) href="{{route('products.index')}}">Shop</a>
+                    </li>
 
 
                     {{-- Vacatures --}}
-                    <li class="nav-item"><a class="nav-link" href="{{route('posts.vacatures')}}">Vacatures</a></li>
+                    <li class="nav-item">
+                        <a @class([
+                            'nav-link',
+                            'active' => Request::is('vacatures*')
+                            ]) href="{{route('posts.vacatures')}}">Vacatures</a>
+                    </li>
 
                     {{-- Over --}}
                     {{--                    <li class="nav-item"><a class="nav-link" href="{{route('about')}}">Over</a></li>--}}
@@ -41,7 +56,12 @@
                     {{--                    <li class="nav-item"><a class="nav-link" href="dashboard.html">Partners</a></li>--}}
 
                     {{-- Contact --}}
-                    <li class="nav-item"><a class="nav-link" href="{{route('contact')}}">Contact</a></li>
+                    <li class="nav-item">
+                        <a @class([
+                            'nav-link',
+                            'active' => Request::is('contact*')
+                            ]) href="{{route('contact')}}">Contact</a>
+                    </li>
 
                     @auth
                         <li class="nav-item d-lg-none">

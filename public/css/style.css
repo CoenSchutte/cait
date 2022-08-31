@@ -15495,17 +15495,6 @@ header .navbar-nav .show > .nav-link,
 header .navbar-nav .nav-link.active {
   color: #2163e8;
 }
-header .navbar-nav .show > .nav-link:before,
-header .navbar-nav .nav-link.active:before {
-  content: "";
-  width: 7px;
-  height: 7px;
-  background: #2163e8;
-  display: inline-block;
-  border-radius: 50%;
-  margin-right: 0.2rem;
-  margin-bottom: 1px;
-}
 
 .navbar-sticky-on {
   position: fixed;
