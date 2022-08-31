@@ -168,7 +168,7 @@ class ProductController extends Controller
             ]),
             "webhookUrl" => route('products.paid'),
             "metadata" => [
-                "user_id" => $user->id
+                "invoice_id" => $invoice->id
             ],
         ]);
 
@@ -180,7 +180,7 @@ class ProductController extends Controller
         $paymentId = $request->input('id');
         $payment = Mollie::api()->payments->get($paymentId);
 
-        $invoice = Invoice::find($payment->metadata->user_id);
+        $invoice = Invoice::find($payment->metadata->invoice_id);
 
         if ($payment->isPaid())
         {
