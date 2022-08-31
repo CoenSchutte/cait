@@ -3,6 +3,7 @@
 use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -63,9 +64,10 @@ Route::middleware([])->group(function () {
 
     //auth middleware
     Route::group(['middleware' => ['auth']], function () {
-//        Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
+        Route::get('/pay', [CreateSubscriptionController::class, 'preparePayment'])->name('subscription.create');
+        Route::get('/subscribed', [CreateSubscriptionController::class, 'subscribedView'])->name('subscription.subscribed');
 
-        Route::post('products/buy', [ProductController::class, 'buy'])->name('products.buy');
+        Route::post('products/buy', [ProductController::class, 'preparePayment'])->name('products.buy');
 
         Route::get('/success/{invoice}', [ProductController::class, 'success'])->name('products.success');
 
