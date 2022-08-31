@@ -4,6 +4,11 @@
 
     <section>
         <div class="container">
+            <div class="alert alert-warning" role="alert">
+                <h4 class="alert-heading">Online betalen is op dit moment niet mogelijk</h4>
+                <p>Mocht je lid willen worden of iets uit de webshop aan willen schaffen, neem dan contact op met een STIR bestuurslid.</p>
+                <hr>
+            </div>
             <div class="row g-4 g-lg-0 justify-content-between">
                 <!-- Image -->
                 <div class="col-lg-5">
@@ -112,7 +117,7 @@
                             <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
-                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100"></input>
+                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100" disabled></input>
                                 @else
                                     <a href="{{route('login')}}" class="btn btn-primary mb-0 w-100">Log in</a>
                                 @endauth
