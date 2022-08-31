@@ -6,28 +6,22 @@
             <div class="row g-4">
                 <!-- Left sidebar START -->
                 <div class="col-lg-7 col-xxl-8">
-
-{{--                    @if(!$user->hasSubscription())--}}
-{{--                        <div class="alert alert-warning" role="alert">--}}
-{{--                            <h4 class="alert-heading">Je bent nog geen lid :(</h4>--}}
-{{--                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>--}}
-{{--                            <ul>--}}
-{{--                                <li> <strong>30%</strong> korting op alle betaalde evenementen*</li>--}}
-{{--                                <li><strong>10%</strong> korting op onze merchandise</li>--}}
-{{--                                <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>--}}
-{{--                                <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>--}}
-{{--                                <li>Beslissingsrecht tijdens de ALV</li>--}}
-{{--                            </ul>--}}
-{{--                            <hr>--}}
-{{--                            <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30--}}
-{{--                                per jaar!</a>--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
-                    <div class="alert alert-warning" role="alert">
-                        <h4 class="alert-heading">Online betalen is op dit moment niet mogelijk</h4>
-                        <p>Mocht je lid willen worden of iets uit de webshop aan willen schaffen, neem dan contact op met een STIR bestuurslid.</p>
-                        <hr>
-                    </div>
+                    @if(!$user->hasSubscription())
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading">Je bent nog geen lid :(</h4>
+                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
+                            <ul>
+                                <li> <strong>30%</strong> korting op alle betaalde evenementen*</li>
+                                <li><strong>10%</strong> korting op onze merchandise</li>
+                                <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>
+                                <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
+                                <li>Beslissingsrecht tijdens de ALV</li>
+                            </ul>
+                            <hr>
+                            <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30
+                                per jaar!</a>
+                        </div>
+                    @endif
                     <!-- Profile START -->
                     <div class="card border mb-4">
                         <div class="card-header border-bottom p-3">
@@ -116,7 +110,7 @@
                         </div>
                     </form>
                 </div>
-                @if($user->subscription('main'))
+                @if(!$user->hasSubscription())
                     <div class="col-lg-5 col-xxl-4">
                         <div class="card border mb-4">
                             <div class="card-header border-bottom p-3">
