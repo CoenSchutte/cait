@@ -13,7 +13,7 @@
                         <span>Je lidmaatschap is geldig tot {{$user->member_until->translatedFormat('d F Y')}}</span>
                         <p>Je kunt nu gebruik maken van de volgende voordelen:</p>
                         <ul>
-                            <li><strong>30%</strong> korting op alle betaalde evenementen</li>
+                            <li><strong>15%</strong> korting op alle betaalde evenementen</li>
                             <li><strong>10%</strong> korting op onze merchandise</li>
                             <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v. <strong>&euro;3.00</strong>
                             </li>

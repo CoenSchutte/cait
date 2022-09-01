@@ -11,7 +11,7 @@
                             <h4 class="alert-heading">Je bent nog geen lid :(</h4>
                             <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
                             <ul>
-                                <li> <strong>30%</strong> korting op alle betaalde evenementen*</li>
+                                <li> <strong>15%</strong> korting op alle betaalde evenementen*</li>
                                 <li><strong>10%</strong> korting op onze merchandise</li>
                                 <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>
                                 <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
