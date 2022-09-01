@@ -67,9 +67,10 @@ Route::middleware([])->group(function () {
 
     //auth middleware
     Route::group(['middleware' => ['auth']], function () {
-//        Route::get('/pay', CreateSubscriptionController::class)->name('subscription.create');
+        Route::get('/pay', [CreateSubscriptionController::class, 'preparePayment'])->name('subscription.create');
+        Route::get('/subscribed', [CreateSubscriptionController::class, 'subscribedView'])->name('subscription.subscribed');
 
-        Route::post('products/buy', [ProductController::class, 'buy'])->name('products.buy');
+        Route::post('products/buy', [ProductController::class, 'preparePayment'])->name('products.buy');
 
         Route::get('/success/{invoice}', [ProductController::class, 'success'])->name('products.success');
 
