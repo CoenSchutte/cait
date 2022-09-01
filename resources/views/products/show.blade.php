@@ -4,11 +4,6 @@
 
     <section>
         <div class="container">
-            <div class="alert alert-warning" role="alert">
-                <h4 class="alert-heading">Online betalen is op dit moment niet mogelijk</h4>
-                <p>Mocht je lid willen worden of iets uit de webshop aan willen schaffen, neem dan contact op met een STIR bestuurslid.</p>
-                <hr>
-            </div>
             <div class="row g-4 g-lg-0 justify-content-between">
                 <!-- Image -->
                 <div class="col-lg-5">
@@ -106,18 +101,10 @@
 
                                 </h4>
                             </div>
-                            <!-- Select -->
-                            <div class="col-md-2 pe-md-0 mb-2">
-                                <select class="form-select" name="amount" aria-label="Default select example">
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                </select>
-                            </div>
                             <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
-                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100" disabled></input>
+                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100"></input>
                                 @else
                                     <a href="{{route('login')}}" class="btn btn-primary mb-0 w-100">Log in</a>
                                 @endauth
@@ -145,6 +132,8 @@
                     </x-markdown>
                 </div>
 
+                @if(!$product->category == 'ticket')
+
                 <!-- List START -->
                 <div class="col-lg-4">
                     <h5>Bezorg informatie</h5>
@@ -154,8 +143,9 @@
                             <span class="h6 mb-0">Verwacht tussen {{ucwords(now()->addDays(4)->translatedFormat('d F'))  }} en {{ ucwords(now()->addDays(12)->translatedFormat('d F'))   }}</span>
                         </li>
                     </ul>
-
                 </div>
+                @endif
+
                 <!-- List END -->
             </div>
         </div>

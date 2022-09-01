@@ -18,7 +18,6 @@ class User extends Authenticatable
     use HasProfilePhoto;
     use Notifiable;
     use TwoFactorAuthenticatable;
-    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -33,6 +32,7 @@ class User extends Authenticatable
         'is_admin',
         'birthdate',
         'mollie_mandate_id',
+        'member_until',
     ];
 
     /**
@@ -54,8 +54,8 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'trial_ends_at' => 'datetime',
         'birthdate' => 'date',
+        'member_until' => 'date',
     ];
 
     /**
@@ -73,7 +73,7 @@ class User extends Authenticatable
     }
 
     public function hasSubscription(){
-        return $this->subscribed('main') || $this->trial_ends_at > now();
+        return $this->member_until && $this->member_until->isFuture();
     }
 
     public function invoices(): HasMany

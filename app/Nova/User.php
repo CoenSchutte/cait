@@ -75,16 +75,7 @@ class User extends Resource
                 return $user->hasSubscription();
             }),
 
-            Text::make('Mollie Customer ID', 'mollie_customer_id')
-                ->hideFromIndex(),
-
-            Text::make('Mollie Mandate ID', 'mollie_mandate_id')
-                ->hideFromIndex(),
-
-            Date::make('Trial Ends At', 'trial_ends_at')
-                ->hideFromIndex(),
-
-            Text::make('Extra Billing Information', 'extra_billing_information')
+            Date::make('Lid tot', 'member_until')
                 ->hideFromIndex(),
 
             HasMany::make('Event Registrations', 'eventRegistrations', UserEventRegistration::class),
