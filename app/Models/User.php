@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -84,5 +83,10 @@ class User extends Authenticatable
 
     public function taxPercentage() {
         return 21;
+    }
+
+    public function eventRegistrations(): HasMany
+    {
+        return $this->hasMany(UserEventRegistration::class);
     }
 }

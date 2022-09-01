@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
-use App\Http\Middleware\VerifyCsrfToken;
+use App\Http\Controllers\UserEventRegistrationsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -40,6 +39,9 @@ Route::middleware([])->group(function () {
     Route::resource('posts', PostController::class);
 
     Route::resource('products', ProductController::class);
+
+    Route::post('events/{event}/register', [UserEventRegistrationsController::class, 'store'])->name('events.register');
+    Route::delete('events/{event}/unregister', [UserEventRegistrationsController::class, 'destroy'])->name('events.unregister');
 
     Route::get('/vacatures', [PostController::class, 'vacatures'])->name('posts.vacatures');
 
