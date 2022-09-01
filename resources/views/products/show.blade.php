@@ -101,14 +101,6 @@
 
                                 </h4>
                             </div>
-                            <!-- Select -->
-                            <div class="col-md-2 pe-md-0 mb-2">
-                                <select class="form-select" name="amount" aria-label="Default select example">
-                                    <option value="1">01</option>
-                                    <option value="2">02</option>
-                                    <option value="3">03</option>
-                                </select>
-                            </div>
                             <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
