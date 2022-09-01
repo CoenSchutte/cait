@@ -5,6 +5,7 @@ namespace App\Nova;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
 use Laravel\Nova\Fields\Select;
@@ -81,6 +82,9 @@ class Post extends Resource
                 ->rules('required')
                 ->showStatistics()
                 ->temporary(now()->addMinutes(10)),
+
+            HasOne::make('Registration', 'registration', EventRegistration::class)
+                ->nullable(),
         ];
     }
 
