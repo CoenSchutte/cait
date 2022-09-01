@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEventRegistrationsController;
