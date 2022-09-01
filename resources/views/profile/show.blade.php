@@ -118,10 +118,7 @@
                             </div>
                             <div class="card-body">
                                 <h6>Je lidmaatschap loopt door
-                                    tot: {{$user->subscription('main')?->created_at->addMonths(12)}}</h6>
-                                <ul>
-                                    <li>Je kunt opzeggen vanaf {{$user->subscription('main')?->created_at->diffInMonths() >= 12}}</li>
-                                </ul>
+                                    tot: {{$user->member_until}}</h6>
                             </div>
                         </div>
                     </div>
