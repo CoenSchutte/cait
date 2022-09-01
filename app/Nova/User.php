@@ -5,7 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Date;
-use Laravel\Nova\Fields\Gravatar;
+use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
 use Laravel\Nova\Fields\Text;
@@ -87,6 +87,7 @@ class User extends Resource
             Text::make('Extra Billing Information', 'extra_billing_information')
                 ->hideFromIndex(),
 
+            HasMany::make('Event Registrations', 'eventRegistrations', UserEventRegistration::class),
         ];
     }
 

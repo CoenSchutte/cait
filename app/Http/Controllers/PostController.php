@@ -82,7 +82,8 @@ class PostController extends Controller
     public function show(Post $post)
     {
         $post->image_url = $post->fileUrl();
-        return view('posts.show', compact('post'));
+        $registration = $post->registration;
+        return view('posts.show', compact('post', 'registration'));
     }
 
     /**

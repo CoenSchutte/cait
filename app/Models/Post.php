@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Spatie\Image\Manipulations;
 use Spatie\ImageOptimizer\Optimizers\Jpegoptim;
 use Spatie\MediaLibrary\HasMedia;
@@ -72,5 +73,8 @@ class Post extends Model implements HasMedia
         return (int)ceil(str_word_count($this->body) / 200);
     }
 
-
+    public function registration(): HasOne
+    {
+        return $this->hasOne(EventRegistration::class, 'post_id', 'id');
+    }
 }
