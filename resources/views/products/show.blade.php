@@ -140,6 +140,8 @@
                     </x-markdown>
                 </div>
 
+                @if(!$product->category == 'ticket')
+
                 <!-- List START -->
                 <div class="col-lg-4">
                     <h5>Bezorg informatie</h5>
@@ -149,8 +151,9 @@
                             <span class="h6 mb-0">Verwacht tussen {{ucwords(now()->addDays(4)->translatedFormat('d F'))  }} en {{ ucwords(now()->addDays(12)->translatedFormat('d F'))   }}</span>
                         </li>
                     </ul>
-
                 </div>
+                @endif
+
                 <!-- List END -->
             </div>
         </div>
