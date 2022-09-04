@@ -20,7 +20,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $ad = Ad::inRandomOrder()->first();
         if ($ad) $ad->image_url = $ad->getMainbarAttribute();
@@ -108,40 +108,6 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         //
-    }
-
-    public function buy(Request $request)
-    {
-
-        $product = Product::find($request->product_id);
-        $user = auth()->user();
-//        $user->clearMollieMandate();
-
-        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money($product->getPrice() * 100, 'EUR'));
-        $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
-        $chargeItem = $item->make();
-
-        $invoice = $user->invoices()->create([
-            'product' => $product->name . ' - ' . $request->color . ' - ' . $request->size,
-            'price' => $product->getPrice(),
-            'category' => $product->category,
-        ]);
-
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
-            ->setRedirectUrl(route('products.success', [
-                'invoice' => $invoice,
-            ]))
-            ->create();
-
-        if (is_a($result, RedirectToCheckoutResponse::class)) {
-            return $result;
-        }
-
-        return redirect()->route('products.success', [
-                'invoice' => $invoice,]
-        );
     }
 
     public function preparePayment(Request $request)

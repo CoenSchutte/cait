@@ -63,17 +63,17 @@ class Product extends Model implements HasMedia
 
     public function fileUrl(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5));
+        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60));
     }
 
     public function preview(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
+        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60), 'preview');
     }
 
     public function get4by3Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '4by3');
+        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60), '4by3');
     }
 
     public function getUrlsAttribute()

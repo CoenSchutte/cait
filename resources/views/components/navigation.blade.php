@@ -1,3 +1,56 @@
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMenu">
+    <!-- Offcanvas header -->
+    <div class="offcanvas-header justify-content-between border-bottom px-3">
+        <h3 class="mb-0">Je winkelmandje</h3>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <!-- Offcanvas body -->
+
+    <div class="offcanvas-body d-flex flex-column px-3">
+        @if(auth()->user())
+            @foreach(\Cart::session(auth()->user()->id)->getContent() as $item)
+                <div class="row g-3">
+                    <!-- Image -->
+                    <div class="col-3">
+                        <img class="rounded-2 bg-light p-2" src="{{$item->attributes->image_url}}" alt="avatar">
+                    </div>
+
+                    <div class="col-6">
+                        <h6 class="mb-1">{{$item->name}}</h6>
+                        <div class="d-flex justify-content-between">
+                            <h6 class="mb-0 text-success">&euro;{{$item->price}}</h6>
+                            <h6 class="mb-0">{{$item->attributes?->color}}</h6>
+                            <h6 class="mb-0">{{$item->attributes?->size}}</h6>
+
+                            <form action="{{route('products.remove-from-cart')}}" method="POST">
+                                @csrf
+                                <input type="hidden" name="item_id" value="{{$item->id}}">
+                                <input type="hidden" name="product_id" value="{{$item->attributes->product_id}}">
+                                <button type="submit" class="btn btn-sm btn-link">Verwijder</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+
+
+
+            <!-- Button and price -->
+            <div class="mt-auto">
+                <div class="d-flex justify-content-between mb-2">
+                    <h6 class="mb-0">Subtotaal</h6>
+                    <h5 class="text-success mb-0">&euro;{{\Cart::session(auth()->user()->id)->getTotal()}}</h5>
+                </div>
+                <!-- Button -->
+                <div class="d-grid">
+                    <a href="checkout.html" class="btn btn-lg btn-primary-soft mb-0">Afrekenen</a>
+                </div>
+            </div>
+        @endif
+
+    </div>
+</div>
 <header class="navbar-light navbar-sticky header-static">
     <nav class="navbar navbar-expand-lg">
         <div class="container">
@@ -113,6 +166,8 @@
                             <li>
                                 <a class="dropdown-item" href="{{route('profile.show')}}"><i
                                         class="bi bi-person fa-fw me-2"></i>Profiel</a>
+                                <a class="dropdown-item" href="{{route('profile.show')}}"><i
+                                        class="bi bi-cart-check fa-fw me-2"></i>Mijn bestellingen</a>
                             </li>
                             {{--                            <li>--}}
                             {{--                                <a class="dropdown-item" href="#"><i class="bi bi-gear fa-fw me-2"></i>Settings</a>--}}
@@ -138,6 +193,19 @@
                         <a href="{{ route('register') }}" class="btn btn-sm btn-success mb-0 mx-2">Meld je aan</a>
                     </div>
                 @endauth
+
+                <div class="nav-item ms-2 ms-md 3 position-relative">
+                    <a class="nav-link btn btn-light btn-round mb-0" data-bs-toggle="offcanvas" href="#offcanvasMenu"
+                       role="button" aria-controls="offcanvasMenu">
+                        <i class="bi bi-cart3 fa-fw" data-bs-target="#offcanvasMenu"></i>
+                    </a>
+                    <span
+                        class="position-absolute top-0 start-100 translate-middle badge smaller rounded-circle bg-dark mt-xl-2 ms-n1">
+                        {{ count(\Cart::session(auth()->user()->id)->getContent()) }}
+						<span class="visually-hidden">unread messages</span>
+					</span>
+                </div>
+
             </div>
         </div>
     </nav>

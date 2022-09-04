@@ -44,7 +44,7 @@
                     </p>
 
 
-                    <form method="POST" action="{{route('products.buy')}}">
+                    <form method="POST" action="{{route('products.add-to-cart')}}">
                         @csrf
 
                         <input type="hidden" name="product_id" value="{{$product->id}}">

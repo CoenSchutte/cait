@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEventRegistrationsController;
@@ -39,6 +40,9 @@ Route::middleware([])->group(function () {
     Route::resource('posts', PostController::class);
 
     Route::resource('products', ProductController::class);
+
+    Route::post('/products/add-to-cart', [CartController::class, 'addToCart'])->name('products.add-to-cart');
+    Route::post('/yeetus', [CartController::class, 'removeFromCart'])->name('products.remove-from-cart');
 
     Route::post('events/{event}/register', [UserEventRegistrationsController::class, 'store'])->name('events.register');
     Route::delete('events/{event}/unregister', [UserEventRegistrationsController::class, 'destroy'])->name('events.unregister');
