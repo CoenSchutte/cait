@@ -78,6 +78,12 @@ class User extends Resource
             Date::make('Lid tot', 'member_until')
                 ->hideFromIndex(),
 
+            Date::make('Aangemaakt op', 'created_at')
+                ->hideFromIndex(),
+
+            Date::make('Laatst gewijzigd op', 'updated_at')
+                ->hideFromIndex(),
+
             HasMany::make('Event Registrations', 'eventRegistrations', UserEventRegistration::class),
         ];
     }
