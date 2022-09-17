@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEventRegistrationsController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -26,6 +27,11 @@ Route::middleware([])->group(function () {
     //get /shop and redirect to products.index
     Route::get('/shop', function () {
         return redirect()->route('products.index');
+    });
+
+    Route::get('happen', function () {
+        $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%happen met stir%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('products.show', ['product' => $product]);
     });
 
 //    Route::get('/about', function () {
