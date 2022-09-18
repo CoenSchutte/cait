@@ -16,7 +16,7 @@ class DashboardController extends Controller
         if($ad) $ad->image_url = $ad->getMainbarAttribute();
 
 
-        $posts = Post::where('is_featured', true)->where('is_published', true)->take(3  )->get();
+        $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->get();
 
         $posts->map(function ($post) {
             $post->image_url = $post->get16by9Attribute();
@@ -30,10 +30,18 @@ class DashboardController extends Controller
             $highlight->preview_url = $highlight->preview();
         });
 
+        $recentPosts = Post::where('is_published', true)->where('is_features', false)->take(4)->orderBy('created_at', 'desc')->get();
+
+        $recentPosts->map(function ($post) {
+            $post->image_url = $post->get16by9Attribute();
+            $post->preview_url = $post->preview();
+        });
+
         return view('welcome', [
             'posts' => $posts,
             'ad' => $ad,
             'highlights' => $highlights,
+            'recentPosts' => $recentPosts,
         ]);
     }
 }
