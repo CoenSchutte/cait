@@ -130,7 +130,7 @@
                         <div class="row">
                             <!-- Recent post widget START -->
                             <div class="col-12 col-sm-6 col-lg-12">
-                                <h4 class="mt-4 mb-3">Recent post</h4>
+                                <h4 class="mt-4 mb-3">Recente posts</h4>
                                 <!-- Recent post item -->
                                 @foreach($recentPosts as $recentPost)
                                 <div class="card mb-3">
