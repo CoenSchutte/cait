@@ -16,7 +16,7 @@ class DashboardController extends Controller
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
 
-        $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->get();
+        $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->orderBy('created_at', 'desc')->get();
 
         $posts->map(function ($post) {
             $post->image_url = $post->get16by9Attribute();
