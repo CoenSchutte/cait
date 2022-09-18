@@ -14,8 +14,8 @@
                         <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
                             <div class="w-100 mt-auto">
                                 <!-- Card category -->
-                                <a href="#" class="badge text-bg-danger mb-2"><i
-                                        class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>
+                                <a href="#" class="badge text-bg-{{strtolower($posts->first()->category)}} mb-2"><i
+                                        class="fas fa-circle me-2 small fw-bold"></i>{{$posts->first()->category}}</a>
                                 <!-- Card title -->
                                 <h2 class="text-white h1"><a href="{{route('posts.show', $posts->first())}}"
                                                              class="btn-link stretched-link text-reset">{{$posts->first()->title}}</a>
