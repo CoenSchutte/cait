@@ -141,7 +141,7 @@
                                         <div class="col-8">
                                             <h6><a href="{{route('posts.show', $recentPost)}}"
                                                    class="btn-link stretched-link text-reset fw-bold">{{$recentPost->title}}</a></h6>
-                                            <div class="small mt-1">{{$highlight->event_date->translatedFormat('d F Y')}}</div>
+                                            <div class="small mt-1">{{$recentPost->created_at->translatedFormat('d F Y')}}</div>
                                         </div>
                                     </div>
                                 </div>
