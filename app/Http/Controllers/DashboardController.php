@@ -30,7 +30,7 @@ class DashboardController extends Controller
             $highlight->preview_url = $highlight->preview();
         });
 
-        $recentPosts = Post::where('is_published', true)->where('is_features', false)->take(4)->orderBy('created_at', 'desc')->get();
+        $recentPosts = Post::where('is_published', true)->where('is_featured', false)->take(4)->orderBy('created_at', 'desc')->get();
 
         $recentPosts->map(function ($post) {
             $post->image_url = $post->get16by9Attribute();
