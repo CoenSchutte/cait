@@ -136,7 +136,7 @@
                                 <div class="card mb-3">
                                     <div class="row g-3">
                                         <div class="col-4">
-                                            <img class="rounded" src="" alt="">
+                                            <img class="rounded" src="$recentPost->image_url" alt="">
                                         </div>
                                         <div class="col-8">
                                             <h6><a href="{{route('posts.show', $recentPost)}}"

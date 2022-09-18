@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index()
     {
         $ad = Ad::inRandomOrder()->first();
-        if($ad) $ad->image_url = $ad->getMainbarAttribute();
+        if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
 
         $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->get();
