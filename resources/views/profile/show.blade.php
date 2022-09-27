@@ -9,13 +9,15 @@
                     @if(!$user->hasSubscription())
                         <div class="alert alert-warning" role="alert">
                             <h4 class="alert-heading">Je bent nog geen lid :(</h4>
-                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je</p>
+                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je als lid</p>
                             <ul>
-                                <li> <strong>15%</strong> korting op alle betaalde evenementen*</li>
+                                <li><strong>15%</strong> korting op alle betaalde evenementen</li>
                                 <li><strong>10%</strong> korting op onze merchandise</li>
-                                <li>Een <strong>gratis</strong> muntje bij elke borrel t.w.v. <strong>&euro;3.00</strong></li>
+                                <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v.
+                                    <strong>&euro;3.00</strong>
+                                </li>
                                 <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>
-                                <li>Beslissingsrecht tijdens de ALV</li>
+                                <li>Stemrecht tijdens de ALV</li>
                             </ul>
                             <hr>
                             <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30
@@ -54,7 +56,8 @@
                             </div>
                             <!-- Save button -->
                             <div class="d-flex justify-content-end mt-4">
-                                <a href="{{route('profile.show')}}" class="btn text-secondary border-0 me-2">Annuleren</a>
+                                <a href="{{route('profile.show')}}"
+                                   class="btn text-secondary border-0 me-2">Annuleren</a>
                                 <input type="submit" class="btn btn-primary" value="Opslaan"></input>
                             </div>
                         </form>
@@ -62,7 +65,7 @@
                     <!-- Profile END -->
 
                     <!-- Update password START -->
-                    <form class="card border" method="POST" action="{{route('user.change-password')}}">
+                    <form class="card border mb-4" method="POST" action="{{route('user.change-password')}}">
                         @csrf
                         @if (session('status'))
                             <div class="alert alert-success" role="alert">
@@ -79,7 +82,8 @@
                         <div class="card-body">
                             <div class="mb-3">
                                 <label class="form-label">Huidig wachtwoord</label>
-                                <input class="form-control" type="password" name="old_password" placeholder="Huidig wachtwoord">
+                                <input class="form-control" type="password" name="old_password"
+                                       placeholder="Huidig wachtwoord">
                                 @error('old_password')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
@@ -95,20 +99,70 @@
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                                 <div class="input-group">
-                                    <input class="form-control fakepassword" type="password" name="new_password" id="psw-input"
+                                    <input class="form-control fakepassword" type="password" name="new_password"
+                                           id="psw-input"
                                            placeholder="Nieuw wachtwoord">
                                 </div>
                                 <div class="rounded mt-1" id="psw-strength"></div>
                             </div>
                             <!-- New password -->
                             <div>
-                                <input class="form-control" name="new_password_confirmation" type="password" placeholder="Bevestig nieuw wachtwoord">
+                                <input class="form-control" name="new_password_confirmation" type="password"
+                                       placeholder="Bevestig nieuw wachtwoord">
                             </div>
                             <div class="d-flex justify-content-end mt-4">
                                 <input type="submit" href="#" class="btn btn-primary" value="Opslaan"></input>
                             </div>
                         </div>
                     </form>
+                    <div class="card border">
+                        <div class="card-header border-bottom p-3">
+                            <h5 class="card-header-title mb-0">Mijn bestellingen</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="d-flex justify-content-center row">
+                                <div class="col-md-10">
+                                    <div class="rounded">
+                                        <div class="table-responsive table-borderless">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th class="text-center">
+                                                        <div class="toggle-btn">
+                                                            <div class="inner-circle"></div>
+                                                        </div>
+                                                    </th>
+                                                    <th>Order #</th>
+                                                    <th>status</th>
+                                                    <th>Total</th>
+                                                    <th>Created</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="table-body">
+                                                @foreach(\App\Models\Invoice::where('user_id', $user->id)->where('status', 'betaald')->get() as $invoice)
+                                                    <tr class="cell-1">
+                                                        <td class="text-center">
+                                                            <div class="toggle-btn">
+                                                                <div class="inner-circle"></div>
+                                                            </div>
+                                                        </td>
+                                                        <td>#{{$invoice->id}}</td>
+                                                        <td></td>
+                                                        <td>$2674.00</td>
+                                                        <td>Today</td>
+                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
                 @if(!$user->hasSubscription())
                     <div class="col-lg-5 col-xxl-4">
