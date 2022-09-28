@@ -35,7 +35,7 @@ Route::middleware([])->group(function () {
     });
 
     Route::get('user/profile', function (){
-        $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->paginate(5);
+        $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
         $user = auth()->user();
         return view('profile.show', compact( 'user','invoices'));
     })->name('profile.show');
