@@ -34,6 +34,12 @@ Route::middleware([])->group(function () {
         return redirect()->route('products.show', ['product' => $product]);
     });
 
+    Route::get('user/profile', function (){
+        $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->paginate(5);
+        $user = auth()->user();
+        return view('profile.show', compact( 'user','invoices'));
+    })->name('profile.show');
+
 //    Route::get('/about', function () {
 //        return view('about');
 //    })->name('about');

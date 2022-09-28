@@ -132,15 +132,15 @@
                                                             <div class="inner-circle"></div>
                                                         </div>
                                                     </th>
-                                                    <th>Order #</th>
+                                                    <th>Id</th>
                                                     <th>status</th>
-                                                    <th>Total</th>
-                                                    <th>Created</th>
+                                                    <th>Totaal</th>
+                                                    <th>Besteld op</th>
                                                     <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody class="table-body">
-                                                @foreach(\App\Models\Invoice::where('user_id', $user->id)->where('status', 'betaald')->get() as $invoice)
+                                                @foreach($invoices as $invoice)
                                                     <tr class="cell-1">
                                                         <td class="text-center">
                                                             <div class="toggle-btn">
@@ -148,14 +148,18 @@
                                                             </div>
                                                         </td>
                                                         <td>#{{$invoice->id}}</td>
-                                                        <td></td>
-                                                        <td>$2674.00</td>
-                                                        <td>Today</td>
-                                                        <td><i class="fa fa-ellipsis-h text-black-50"></i></td>
+                                                        <td>{{ucfirst($invoice->status)}}</td>
+                                                        <td>&euro;{{$invoice->price}}</td>
+                                                        <td>{{$invoice->created_at->format('d/m/Y')}}</td>
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
                                             </table>
+                                            <div class="col-12">
+                                                <div style="display: flex; justify-content: center;">
+                                                    {{ $invoices->links() }}
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
