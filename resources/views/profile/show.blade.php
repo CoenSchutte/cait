@@ -29,7 +29,7 @@
                         <div class="card-header border-bottom p-3">
                             @if (session('success'))
                                 <div class="alert alert-success">
-                                    {{ session('success  ') }}
+                                    {{ session('success') }}
                                 </div>
                             @endif
                             <h5 class="card-header-title mb-0">Profiel</h5>
@@ -132,8 +132,9 @@
                                                             <div class="inner-circle"></div>
                                                         </div>
                                                     </th>
-                                                    <th>Id</th>
-                                                    <th>status</th>
+                                                    <th>ID</th>
+                                                    <th>Product</th>
+                                                    <th>Status</th>
                                                     <th>Totaal</th>
                                                     <th>Besteld op</th>
                                                     <th></th>
@@ -148,6 +149,7 @@
                                                             </div>
                                                         </td>
                                                         <td>#{{$invoice->id}}</td>
+                                                        <td>{{$invoice->product}}</td>
                                                         <td>{{ucfirst($invoice->status)}}</td>
                                                         <td>&euro;{{$invoice->price}}</td>
                                                         <td>{{$invoice->created_at->format('d/m/Y')}}</td>
