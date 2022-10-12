@@ -150,6 +150,7 @@
                             <!-- Recent post widget END -->
 
                             <!-- ADV widget START -->
+                            @if($ad)
                                 <div class="col-12 col-sm-6 col-lg-12 my-4">
                                     <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
                                         <img src="{{$ad?->image_url}}" alt="">
@@ -158,6 +159,7 @@
                                                                                   class="text-body"><u>{{$ad?->company_name}}</u></a>
                                     </div>
                                 </div>
+                            @endif
                             <!-- ADV widget END -->
                         </div>
                     </div>

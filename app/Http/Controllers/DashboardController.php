@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $ad = Ad::inRandomOrder()->first();
+        $ad = Ad::where('expiration_date', '>=', today())->inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
 
