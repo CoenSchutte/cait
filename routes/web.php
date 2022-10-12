@@ -34,6 +34,12 @@ Route::middleware([])->group(function () {
         return redirect()->route('products.show', ['product' => $product]);
     });
 
+    Route::get('casino', function () {
+        $post = Post::where('title', 'LIKE', '%casino%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('posts.show', ['post' => $post]);
+    });
+
+
     Route::get('user/profile', function (){
         $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
         $user = auth()->user();
