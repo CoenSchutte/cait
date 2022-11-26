@@ -44,8 +44,13 @@
                 </div>
                 <!-- Button -->
                 <div class="d-grid">
-                    <a href="checkout.html" class="btn btn-lg btn-primary-soft mb-0">Afrekenen</a>
+                    <a href="{{route('products.checkout')}}" class="btn btn-lg btn-primary-soft mb-0">Afrekenen</a>
                 </div>
+            </div>
+        @else
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <h5 class="mb-3">Je bent niet ingelogd</h5>
+                <a href="{{route('login')}}" class="btn btn-primary">Inloggen</a>
             </div>
         @endif
 
@@ -201,8 +206,12 @@
                     </a>
                     <span
                         class="position-absolute top-0 start-100 translate-middle badge smaller rounded-circle bg-dark mt-xl-2 ms-n1">
-                        {{ count(\Cart::session(auth()->user()->id)->getContent()) }}
-						<span class="visually-hidden">unread messages</span>
+                        @if(auth()->check())
+                            {{ count(\Cart::session(auth()->user()->id)->getContent()) }}
+                        @else
+                            0
+                        @endif
+                        <span class="visually-hidden">unread messages</span>
 					</span>
                 </div>
 

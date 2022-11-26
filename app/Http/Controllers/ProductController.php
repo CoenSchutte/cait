@@ -155,14 +155,20 @@ class ProductController extends Controller
         }
     }
 
-
-
-
     public function success(Request $request, Invoice $invoice)
     {
         return view('products.success',
             [
                 'invoice' => $invoice,
             ]);
+    }
+
+    public function checkout(){
+        $user = auth()->user();
+        \Cart::session($user->id);
+        $cartItems = \Cart::getContent();
+        return view('products.checkout', [
+            'cartItems' => $cartItems,
+        ]);
     }
 }
