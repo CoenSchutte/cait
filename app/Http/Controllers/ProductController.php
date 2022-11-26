@@ -20,7 +20,7 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $ad = Ad::inRandomOrder()->first();
         if ($ad) $ad->image_url = $ad->getMainbarAttribute();
@@ -110,59 +110,51 @@ class ProductController extends Controller
         //
     }
 
-    public function buy(Request $request)
-    {
-
-        $product = Product::find($request->product_id);
-        $user = auth()->user();
-//        $user->clearMollieMandate();
-
-        $item = new \Laravel\Cashier\Charge\ChargeItemBuilder($user);
-        $item->unitPrice(money($product->getPrice() * 100, 'EUR'));
-        $item->description($product->name . ' - ' . $request->color . ' - ' . $request->size);
-        $chargeItem = $item->make();
-
-        $invoice = $user->invoices()->create([
-            'product' => $product->name . ' - ' . $request->color . ' - ' . $request->size,
-            'price' => $product->getPrice(),
-            'category' => $product->category,
-        ]);
-
-        $result = $user->newCharge()
-            ->addItem($chargeItem)
-            ->setRedirectUrl(route('products.success', [
-                'invoice' => $invoice,
-            ]))
-            ->create();
-
-        if (is_a($result, RedirectToCheckoutResponse::class)) {
-            return $result;
-        }
-
-        return redirect()->route('products.success', [
-                'invoice' => $invoice,]
-        );
-    }
-
     public function preparePayment(Request $request)
     {
-        $product = Product::find($request->product_id);
+
+        $products = collect();
+
+        $cartItems = \Cart::session(auth()->user()->id)->getContent();
+
+        foreach ($cartItems as $item) {
+            $product = Product::find($item->attributes->product_id);
+            $product->color = $item->attributes->color;
+            $product->size = $item->attributes->size;
+            $products->push($product);
+        }
+
+        $invoiceTitle = null;
+        $invoicePrice = null;
+        foreach ($products as $product) {
+            $invoiceTitle .= $product->name;
+            if ($product->color) $invoiceTitle .= ' - ' . $product->color;
+            if ($product->size) $invoiceTitle .= ' - ' . $product->size;
+            $invoiceTitle .= ', ';
+
+            $invoicePrice += $product->getPrice();
+        }
+
+        if ($products->contains('category', 'merch')) {
+            $invoicePrice += 6.50;
+        }
+
         $user = auth()->user();
 
 
         $invoice = $user->invoices()->create([
-            'product' => $product->name . ' - ' . $request->color . ' - ' . $request->size,
-            'price' => $product->getPrice(),
+            'product' => $invoiceTitle,
+            'price' => number_format($invoicePrice, 2),
             'status' => 'awaiting_payment',
-            'category' => $product->category,
+            'category' => $products->contains('category', 'merch') ? 'merch' : 'ticket',
         ]);
 
         $payment = Mollie::api()->payments->create([
             "amount" => [
                 "currency" => "EUR",
-                "value" => number_format($product->getPrice(), 2)
+                "value" => number_format($invoicePrice, 2)
             ],
-            "description" => $product->name . ' - ' . $request->color . ' - ' . $request->size,
+            "description" => $invoiceTitle,
             "redirectUrl" => route('products.success', [
                 'invoice' => $invoice,
             ]),
@@ -176,21 +168,18 @@ class ProductController extends Controller
         return redirect($payment->getCheckoutUrl(), 303);
     }
 
-    public function handleWebhookNotification(Request $request) {
+    public function handleWebhookNotification(Request $request)
+    {
         $paymentId = $request->input('id');
         $payment = Mollie::api()->payments->get($paymentId);
 
         $invoice = Invoice::find($payment->metadata->invoice_id);
 
-        if ($payment->isPaid())
-        {
+        if ($payment->isPaid()) {
             $invoice->status = 'paid';
             $invoice->save();
         }
     }
-
-
-
 
     public function success(Request $request, Invoice $invoice)
     {
@@ -198,5 +187,23 @@ class ProductController extends Controller
             [
                 'invoice' => $invoice,
             ]);
+    }
+
+    public function checkout()
+    {
+        $user = auth()->user();
+        \Cart::session($user->id);
+        $cartItems = \Cart::getContent();
+
+        $hasMerch = false;
+        foreach ($cartItems as $cartItem) {
+            if ($cartItem->attributes->category == 'merch') {
+                $hasMerch = true;
+            }
+        }
+        return view('products.checkout', [
+            'cartItems' => $cartItems,
+            'hasMerch' => $hasMerch,
+        ]);
     }
 }

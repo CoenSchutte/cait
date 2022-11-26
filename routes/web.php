@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEventRegistrationsController;
@@ -63,6 +64,9 @@ Route::middleware([])->group(function () {
 
     Route::resource('products', ProductController::class);
 
+    Route::post('/products/add-to-cart', [CartController::class, 'addToCart'])->name('products.add-to-cart');
+    Route::post('/remove-from-cart', [CartController::class, 'removeFromCart'])->name('products.remove-from-cart');
+
     Route::post('events/{event}/register', [UserEventRegistrationsController::class, 'store'])->name('events.register');
     Route::delete('events/{event}/unregister', [UserEventRegistrationsController::class, 'destroy'])->name('events.unregister');
 
@@ -91,6 +95,8 @@ Route::middleware([])->group(function () {
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/pay', [\App\Http\Controllers\CreateSubscriptionController::class, 'preparePayment'])->name('subscription.create');
         Route::get('/subscribed', [\App\Http\Controllers\CreateSubscriptionController::class, 'subscribedView'])->name('subscription.subscribed');
+
+        Route::get('/checkout', [ProductController::class, 'checkout'])->name('products.checkout');
 
         Route::post('products/buy', [ProductController::class, 'preparePayment'])->name('products.buy');
 

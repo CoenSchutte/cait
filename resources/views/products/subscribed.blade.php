@@ -10,7 +10,7 @@
                     <div class="col-xl-10 mx-auto">
 
                         <h1>Bedankt! Vanaf nu ben je lid van STIR</h1>
-                        <span>Je lidmaatschap is geldig tot {{$user->member_until->translatedFormat('d F Y')}}</span>
+                        <span>Je lidmaatschap is geldig tot {{$user?->member_until?->translatedFormat('d F Y')}}</span>
                         <p>Je kunt nu gebruik maken van de volgende voordelen:</p>
                         <ul>
                             <li><strong>15%</strong> korting op alle betaalde evenementen</li>
