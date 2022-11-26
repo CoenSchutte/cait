@@ -145,7 +145,7 @@
                 </div>
 
                 @auth
-                    <div class="nav-item ms-2 ms-md-3 dropdown">
+                    <div class="nav-item ms-2 ms-md-3 dropdown" style="margin-right: 16px">
                         <a class="avatar avatar-sm p-0" href="#" id="profileDropdown" role="button"
                            data-bs-auto-close="outside" data-bs-display="static" data-bs-toggle="dropdown"
                            aria-expanded="false">
@@ -199,7 +199,7 @@
                     </div>
                 @endauth
 
-                <div class="nav-item ms-2 ms-md 3 position-relative">
+                <div class="nav-item ms-2 ms-md-3 position-relative">
                     <a class="nav-link btn btn-light btn-round mb-0" data-bs-toggle="offcanvas" href="#offcanvasMenu"
                        role="button" aria-controls="offcanvasMenu">
                         <i class="bi bi-cart3 fa-fw" data-bs-target="#offcanvasMenu"></i>

@@ -14,7 +14,12 @@
 
                         <h1>Bedankt! Je bestelling is geplaatst!</h1>
                         <p>We hebben je bestelling ontvangen en zullen zo spoedig mogelijk contact met je
-                            opnemen. <br> Zodra je bestelling verwerkt is kun je deze komen ophalen in het TI-Lab op de eerste verdieping.</p>
+                            opnemen.
+                            @if($invoice->category == 'merch')
+                                <br>
+                                Zodra je bestelling verwerkt is kun je deze komen ophalen in het TI-Lab op de eerste
+                                verdieping.
+                            @endif</p>
                         <p>
                             Je bestelling bestaat uit:
 

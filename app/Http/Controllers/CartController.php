@@ -24,19 +24,20 @@ class CartController extends Controller
                     'size' => $request->size,
                     'product_id' => $product->id,
                     'image_url' => $url,
+                    'category' => $product->category,
                 )
             ]);
 
         session()->flash('success', $product->name . ' is aan je winkelmandje toegevoegd');
 
-        return redirect()->route('products.index');
+        return redirect()->route('products.checkout');
     }
 
     public function removeFromCart(Request $request)
     {
         $product = Product::find($request->product_id);
         \Cart::session(auth()->user()->id)->remove($request->item_id);
-        session()->flash('success', $product->name . ' is uit je winkelmandje verwijderd');
+        session()->flash('success', $product?->name . ' is uit je winkelmandje verwijderd');
         return redirect()->route('products.index');
     }
 }
