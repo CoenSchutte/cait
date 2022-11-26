@@ -1,105 +1,106 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="p-0">
-        <div class="container-fluid">
-            <div class="row g-0">
-                <div class="col-xxl-10 mx-auto rounded-3 overflow-hidden">
-                    <div class="tiny-slider arrow-hover arrow-blur arrow-round position-relative">
-                        <div class="tiny-slider-inner" data-autoplay="false" data-hoverpause="true" data-gutter="2"
-                             data-arrow="false" data-dots="true" data-items="1">
-                            <!-- Slide item -->
-                            @foreach ($posts as $post)
-                                <div
-                                    class="card bg-dark-overlay-3 rounded-0 h-400 h-lg-500 h-xl-700 position-relative overflow-hidden lazy"
-                                    data-bg="{{$post->image_url}}"
-                                    style="background-position: center left; background-size: cover;">
-                                    <!-- Card Image overlay -->
-                                    <div class="card-img-overlay rounded-0 d-flex align-items-center">
-                                        <div class="container px-3 my-auto">
-                                            <div class="row">
-                                                <div class="col-lg-7">
-                                                    <!-- Card category -->
-                                                    <a href="#"
-                                                       class="badge text-bg-{{strtolower($post->category)}} mb-2"><i
-                                                            class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}
-                                                    </a>
-                                                    <!-- Card title -->
-                                                    <h2 class="text-white display-5">
-                                                        <a href="{{route('posts.show',$post)}}"
-                                                           class="btn-link text-reset fw-normal">{{$post->title}}</a>
-                                                    </h2>
-                                                    <p class="text-white">{{ $post->subtitle }}</p>
-                                                    <!-- Card info -->
-                                                    <ul
-                                                        class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                                        <li class="nav-item">{{ $post->created_at->format('d/m/Y') }}</li>
-                                                    </ul>
-                                                </div>
+    <section class="pt-4 pb-0 card-grid">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Left big card -->
+                <div class="col-lg-6">
+                    <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
+                         style="background-image:url({{$posts->first()->image_url}}); background-position: center; background-size: cover;">
+                        <!-- Card featured -->
+                        <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
+                        <!-- Card Image overlay -->
+                        <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
+                            <div class="w-100 mt-auto">
+                                <!-- Card category -->
+                                <a href="#" class="badge text-bg-{{strtolower($posts->first()->category)}} mb-2"><i
+                                        class="fas fa-circle me-2 small fw-bold"></i>{{$posts->first()->category}}</a>
+                                <!-- Card title -->
+                                <h2 class="text-white h1"><a href="{{route('posts.show', $posts->first())}}"
+                                                             class="btn-link stretched-link text-reset">{{$posts->first()->title}}</a>
+                                </h2>
+                                <p class="text-white">{{$posts->first()->subtitle}}</p>
+                                <!-- Card info -->
+                                <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                    <li class="nav-item">{{$posts->first()->created_at->format('d/m/Y')}}</li>
+                                    <li class="nav-item">{{$posts->first()->getReadingTimeAttribute()}} min leestijd
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right small cards -->
+                <div class="col-lg-6">
+                    <div class="row g-4">
+                        <!-- Card item START -->
+                        @foreach($posts as $post)
+                            @if($loop->index > 0)
+                                @php
+                                    $isFirst = $loop->index == 1
+                                @endphp
+                                <div @class([
+                                        'col-md-12' => $isFirst,
+                                        'col-md-6' => ! $isFirst,
+                                    ])>
+                                    <div class="card card-overlay-bottom card-grid-sm card-bg-scale"
+                                         style="background-image:url({{$post->image_url}}); background-position: center; background-size: cover;">
+                                        <!-- Card Image -->
+                                        <!-- Card Image overlay -->
+                                        <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
+                                            <div class="w-100 mt-auto">
+                                                <!-- Card category -->
+                                                <a href="#"
+                                                   class="badge text-bg-{{strtolower($post->category)}} mb-2"><i
+                                                        class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}
+                                                </a>
+                                                <!-- Card title -->
+                                                <h4 class="text-white"><a href="{{route('posts.show', $post)}}"
+                                                                          class="btn-link stretched-link text-reset">{{$post->title}}</a>
+                                                </h4>
+                                                <!-- Card info -->
+                                                <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                                    <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-
-                        <div
-                            class="col-xl-4 custom-thumb pe-5 position-absolute top-50 end-0 translate-middle-y d-none d-xxl-block"
-                            id="custom-thumb">
-                            @foreach ($posts as $post)
-                                <div class="row align-items-center g-3 mb-4">
-                                    <div class="col-auto">
-                                        <div class="avatar avatar-lg">
-                                            <img class="avatar-img rounded-circle" src="{{$post->preview_url}}"
-                                                 alt="avatar">
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <h4 class="fw-normal text-truncate mb-1">{{ $post->title }}</h4>
-                                        <p class="text-truncate d-block col-11 small mb-0">{{$post->subtitle}}</p>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                        <!-- Custom thumb END -->
+                            @endif
+                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </section>
     <!-- =======================
-        Main hero END -->
+    Main hero END -->
 
     <!-- =======================
-        Highlights START -->
-    <section class="pt-4">
-        <div class="container">
+    Main content START -->
+    <section class="position-relative">
+        <div class="container" data-sticky-container>
             <div class="row">
-                <div class="col-md-12">
+                <!-- Main Post START -->
+                <div class="col-lg-9">
                     <!-- Title -->
                     <div class="mb-4">
-                        <h2 class="m-0"><i class="bi bi-megaphone"></i> Event highlights!</h2>
-                        <p class="m-0">De foto's, video's en andere ongein van de laatste events!</p>
+                        <h2 class="m-0"><i class="bi bi-hourglass-top me-2"></i>Event Highlights</h2>
+                        <p>De foto's, video's en andere ongein van de laatste events!</p>
                     </div>
-                    <div class="tiny-slider arrow-hover arrow-blur arrow-dark arrow-round mt-3">
-                        <div class="tiny-slider-inner" data-autoplay="true" data-hoverpause="true" data-gutter="24"
-                             data-arrow="true" data-dots="false" data-items-xl="4" data-items-lg="3" data-items-md="3"
-                             data-items-sm="2" data-items-xs="1">
-
-                            <!-- Card item START -->
-                            @foreach($highlights as $highlight)
+                    <div class="row gy-4">
+                        <!-- Card item START -->
+                        @foreach($highlights as $highlight)
+                            <div class="col-sm-6">
                                 <div class="card">
                                     <!-- Card img -->
                                     <div class="position-relative">
-                                        <img class="card-img" src="{{$highlight->image_url}}" style="background-size: cover !important;" alt="Card image">
+                                        <img class="card-img" src="{{$highlight->image_url}}" alt="Card image">
                                         <div class="card-img-overlay d-flex align-items-start flex-column p-3">
-                                            <!-- Card overlay Top -->
-                                            <div class="w-100 mb-auto d-flex justify-content-end">
-                                                <div class="text-end ms-auto">
-                                                </div>
-                                            </div>
                                             <!-- Card overlay bottom -->
                                             <div class="w-100 mt-auto">
+                                                <!-- Card category -->
                                                 <a href="#"
                                                    class="badge text-bg-{{strtolower($highlight->category)}} mb-2"><i
                                                         class="fas fa-circle me-2 small fw-bold"></i>{{$highlight->category}}
@@ -108,91 +109,67 @@
                                         </div>
                                     </div>
                                     <div class="card-body px-0 pt-3">
-                                        <h5 class="card-title"><a
-                                                class="btn-link text-reset fw-bold">{{$highlight->title}}</a></h5>
+                                        <h4 class="card-title mt-2"><a href=""
+                                                                       class="btn-link text-reset fw-bold">{{$highlight->title}}</a>
+                                        </h4>
                                         <!-- Card info -->
-                                        <ul class="nav nav-divider align-items-center">
+                                        <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                                             <li class="nav-item">{{$highlight->event_date->translatedFormat('d F Y')}}</li>
                                         </ul>
                                     </div>
                                 </div>
-                            @endforeach
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <!-- Main Post END -->
+                <!-- Sidebar START -->
+                <div class="col-lg-3 mt-5 mt-lg-0">
+                    <div data-sticky data-margin-top="80" data-sticky-for="767">
+
+                        <div class="row">
+                            <!-- Recent post widget START -->
+                            <div class="col-12 col-sm-6 col-lg-12">
+                                <h4 class="mt-4 mb-3">Recente posts</h4>
+                                <!-- Recent post item -->
+                                @foreach($recentPosts as $recentPost)
+                                <div class="card mb-3">
+                                    <div class="row g-3">
+                                        <div class="col-4">
+                                            <img class="rounded" src="{{$recentPost->image_url}}" alt="">
+                                        </div>
+                                        <div class="col-8">
+                                            <h6><a href="{{route('posts.show', $recentPost)}}"
+                                                   class="btn-link stretched-link text-reset fw-bold">{{$recentPost->title}}</a></h6>
+                                            <div class="small mt-1">{{$recentPost->created_at->translatedFormat('d F Y')}}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            <!-- Recent post widget END -->
+
+                            <!-- ADV widget START -->
+                            @if($ad)
+                                <div class="col-12 col-sm-6 col-lg-12 my-4">
+                                    <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
+                                        <img src="{{$ad?->image_url}}" alt="">
+                                    </a>
+                                    <div class="smaller text-end mt-2">ads via <a href="{{$ad?->company_url}}"
+                                                                                  class="text-body"><u>{{$ad?->company_name}}</u></a>
+                                    </div>
+                                </div>
+                            @endif
+                            <!-- ADV widget END -->
                         </div>
                     </div>
                 </div>
-            </div>
+                <!-- Sidebar END -->
+            </div> <!-- Row end -->
         </div>
     </section>
     <!-- =======================
-        Highlights END -->
+    Main content END -->
+    <script src="../vendor/sticky-js/sticky.min.js"></script>
 
-    <!-- =======================
-        Adv START -->
-    <section class="p-0">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
-                        <img src="{{$ad?->image_url}}" alt="">
-                    </a>
-                    <small class="text-end d-block mt-1">Advertentie</small>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- =======================
-        Adv END -->
-
-
-    <!-- =======================
-        Sponsored news START -->
-    {{--    <section class="pt-4">--}}
-    {{--        <div class="container">--}}
-    {{--            <div class="row">--}}
-    {{--                <!-- Title -->--}}
-    {{--                <div class="col-md-12">--}}
-    {{--                    <div class="mb-4 d-md-flex justify-content-between align-items-center">--}}
-    {{--                        <h2 class="m-0"><i class="bi bi-megaphone me-2"></i> Sponsored news</h2>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--            <div class="row">--}}
-    {{--                <div class="col-lg-6">--}}
-    {{--                    <!-- Card item START -->--}}
-    {{--                    <div class="card mb-3 mb-sm-4">--}}
-    {{--                        <div class="row g-3">--}}
-    {{--                            <div class="col-4">--}}
-    {{--                                <img class="rounded-3" src="images/blog/4by3/01.jpg" alt="">--}}
-    {{--                            </div>--}}
-    {{--                            <div class="col-8">--}}
-    {{--                                <a href="#" class="badge bg-danger bg-opacity-10 text-danger mb-2"><i--}}
-    {{--                                        class="fas fa-circle me-2 small fw-bold"></i>Lifestyle</a>--}}
-    {{--                                <h4><a href="post-single-5.html" class="btn-link stretched-link text-reset fw-bold">The--}}
-    {{--                                        pros and cons of business agency</a></h4>--}}
-    {{--                                <!-- Card info -->--}}
-    {{--                                <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">--}}
-    {{--                                    <li class="nav-item">--}}
-    {{--                                        <div class="nav-link">--}}
-    {{--                                            <div class="d-flex align-items-center position-relative">--}}
-    {{--                                                <div class="avatar avatar-xs">--}}
-    {{--                                                    <img class="avatar-img rounded-circle" src="images/avatar/01.jpg"--}}
-    {{--                                                         alt="avatar">--}}
-    {{--                                                </div>--}}
-    {{--                                                <span class="ms-3">by <a href="#"--}}
-    {{--                                                                         class="stretched-link text-reset btn-link">Samuel</a></span>--}}
-    {{--                                            </div>--}}
-    {{--                                        </div>--}}
-    {{--                                    </li>--}}
-    {{--                                    <li class="nav-item">Jan 22, 2022</li>--}}
-    {{--                                </ul>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                    <!-- Card item END -->--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </section>--}}
-    <!-- =======================
-        Sponsored news END -->
 @endsection

@@ -5,6 +5,7 @@ namespace App\Nova;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Currency;
+use Laravel\Nova\Fields\Date;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -70,6 +71,10 @@ class Invoice extends Resource
             Currency::make('Prijs', 'price')
                 ->currency('EUR')
                 ->required(),
+
+            Date::make('Created At', 'created_at')
+                ->format('DD-MM-YYYY')
+                ->sortable(),
 
         ];
     }
