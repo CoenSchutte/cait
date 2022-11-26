@@ -194,6 +194,7 @@ class ProductController extends Controller
 
     public function success(Request $request, Invoice $invoice)
     {
+        \Cart::session(auth()->user()->id)->clear();
         return view('products.success',
             [
                 'invoice' => $invoice,
