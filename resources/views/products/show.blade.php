@@ -44,7 +44,7 @@
                     </p>
 
 
-                    <form method="POST" action="{{route('products.buy')}}">
+                    <form method="POST" action="{{route('products.add-to-cart')}}">
                         @csrf
 
                         <input type="hidden" name="product_id" value="{{$product->id}}">
@@ -104,7 +104,7 @@
                             <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
-                                    <input type="submit" value="Koop" class="btn btn-primary mb-0 w-100"></input>
+                                    <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"></input>
                                 @else
                                     <a href="{{route('login')}}" class="btn btn-primary mb-0 w-100">Log in</a>
                                 @endauth

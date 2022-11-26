@@ -30,12 +30,15 @@
                     </div>
 
                 @endif
-                <!-- Title -->
-{{--                <div class="alert alert-warning" role="alert">--}}
-{{--                    <h4 class="alert-heading">Online betalen is op dit moment niet mogelijk</h4>--}}
-{{--                    <p>Mocht je lid willen worden of iets uit de webshop aan willen schaffen, neem dan contact op met een STIR bestuurslid.</p>--}}
-{{--                    <hr>--}}
-{{--                </div>--}}
+
+                @if(session()->has('success'))
+
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Succes!</h4>
+                    <p>{{session()->get('success')}}</p>
+                    <hr>
+                </div>
+                    @endif
 
                 <div class="mb-4">
                     <h2 class="m-0">STIR Shop</h2>
