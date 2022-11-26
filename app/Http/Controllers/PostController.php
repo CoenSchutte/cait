@@ -6,6 +6,7 @@ use App\Models\Ad;
 use App\Models\Post;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Cashier\Charge\ChargeItemBuilder;
 use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 
@@ -81,6 +82,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+        if (! Gate::allows('post-published', $post)) {
+            abort(404);
+        }
         $post->image_url = $post->fileUrl();
         $registration = $post->registration;
         return view('posts.show', compact('post', 'registration'));

@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Laravel\Cashier\Http\RedirectToCheckoutResponse;
 use Mollie\Laravel\Facades\Mollie;
 use Money\Money;
@@ -70,6 +71,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        if (! Gate::allows('product-displayed', $product)) {
+            abort(404);
+        }
+
         $product->urls = $product->getUrlsAttribute();
         return view('products.show', [
             'product' => $product,
