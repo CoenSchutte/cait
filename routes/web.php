@@ -60,6 +60,12 @@ Route::middleware([])->group(function () {
         return view('contact');
     })->name('contact');
 
+    //get /enquete and redirect to https://forms.gle/ZHYJydLfkvXsoH7D8
+    Route::get('/enquete', function () {
+        return redirect('https://forms.gle/ZHYJydLfkvXsoH7D8');
+    });
+
+
     Route::resource('posts', PostController::class);
 
     Route::resource('products', ProductController::class);
