@@ -29,11 +29,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('product-displayed', function (User $user, Product $product) {
+        Gate::define('product-displayed', function (User $user = null, Product $product) {
             return $product->is_displayed;
         });
 
-        Gate::define('post-published', function (User $user, Post $post) {
+        Gate::define('post-published', function (User $user = null, Post $post) {
             return $post->is_published;
         });
 

@@ -71,9 +71,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-//        if (! Gate::allows('product-displayed', $product)) {
-//            abort(404);
-//        }
+        if (! Gate::allows('product-displayed', $product)) {
+            abort(404);
+        }
 
         $product->urls = $product->getUrlsAttribute();
         return view('products.show', [

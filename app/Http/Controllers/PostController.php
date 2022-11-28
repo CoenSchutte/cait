@@ -82,9 +82,9 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-//        if (! Gate::allows('post-published', $post)) {
-//            abort(404);
-//        }
+        if (! Gate::allows('post-published', $post)) {
+            abort(404);
+        }
         $post->image_url = $post->fileUrl();
         $registration = $post->registration;
         return view('posts.show', compact('post', 'registration'));
