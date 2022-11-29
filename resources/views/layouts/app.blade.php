@@ -29,6 +29,29 @@
 
     <link id="style-switch" rel="stylesheet" type="text/css" href="../../../../css/style.css">
 
+{{--    <script src="../../../../js/PureSnow.js"></script>--}}
+
+<style>
+    .snowflake {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background: linear-gradient(white, white);
+        border-radius: 50%;
+        filter: drop-shadow(0 0 10px white);
+        z-index: 1021;
+    }
+
+    .snowcontainer {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+
+</style>
+
 
     <!-- Scripts -->
     @vite(['resources/js/app.js'])
@@ -38,10 +61,15 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="preloader">
-        <div class="preloader-item">
-            <div class="spinner-grow text-primary"></div>
-        </div>
+
+{{--    <div class="preloader">--}}
+{{--        <div class="preloader-item">--}}
+{{--            <div class="spinner-grow text-primary"></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
+
+    <div class="snowcontainer">
+        <div id="snow"></div>
     </div>
     <x-navigation />
 
@@ -63,7 +91,9 @@
     <!-- Template Functions -->
 {{--    <script src="../js/functions.js"></script>--}}
     @vite(['resources/js/functions.js'])
+    @vite(['resources/js/PureSnow.js'])
     @livewireScripts
+
 </body>
 
 </html>
