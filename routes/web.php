@@ -65,6 +65,11 @@ Route::middleware([])->group(function () {
         return redirect('https://forms.gle/ZHYJydLfkvXsoH7D8');
     });
 
+    Route::get('/13dec', function () {
+        $post = Post::where('title', 'LIKE', '%Gastcollege Exact%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('posts.show', ['post' => $post]);
+    });
+
 
     Route::resource('posts', PostController::class);
 
