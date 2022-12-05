@@ -38,9 +38,12 @@
                     <!-- Title -->
                     <h1>{{$product->name}}</h1>
                     <p class="mb-4">
-                        <x-markdown>
-                            {!! $product->description !!}
-                        </x-markdown>
+                        @if(!$product->options['voor'])
+                            <x-markdown>
+                                {!! $product->description !!}
+                            </x-markdown>
+                        @endif
+
                     </p>
 
 
@@ -53,7 +56,7 @@
                             <div class="mb-4">
                                 <span>Kies kleur</span>
                                 <ul class="list-inline mt-2">
-                                @foreach($product->options['colors'] as $option)
+                                    @foreach($product->options['colors'] as $option)
                                         <li class="list-inline-item">
                                             @if(!isset($product->urls[$loop->index]))
                                                 @break
@@ -172,16 +175,16 @@
 
                 @if(!$product->category == 'ticket')
 
-                <!-- List START -->
-                <div class="col-lg-4">
-                    <h5>Bezorg informatie</h5>
-                    <ul class="list-group list-group-borderless">
-                        <li class="list-group-item pb-0">
-                            <span>Bezorgen:</span>
-                            <span class="h6 mb-0">Verwacht tussen {{ucwords(now()->addDays(4)->translatedFormat('d F'))  }} en {{ ucwords(now()->addDays(12)->translatedFormat('d F'))   }}</span>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- List START -->
+                    <div class="col-lg-4">
+                        <h5>Bezorg informatie</h5>
+                        <ul class="list-group list-group-borderless">
+                            <li class="list-group-item pb-0">
+                                <span>Bezorgen:</span>
+                                <span class="h6 mb-0">Verwacht tussen {{ucwords(now()->addDays(4)->translatedFormat('d F'))  }} en {{ ucwords(now()->addDays(12)->translatedFormat('d F'))   }}</span>
+                            </li>
+                        </ul>
+                    </div>
                 @endif
 
                 <!-- List END -->
