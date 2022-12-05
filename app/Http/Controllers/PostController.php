@@ -19,7 +19,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $ad = Ad::inRandomOrder()->first();
+        $ad = Ad::where('expiration_date', '>=', today())->inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
         $posts = Post::where('is_published', 1)->orderBy('created_at', 'desc')->paginate(6);
@@ -37,7 +37,7 @@ class PostController extends Controller
 
     public function vacatures()
     {
-        $ad = Ad::inRandomOrder()->first();
+        $ad = Ad::where('expiration_date', '>=', today())->inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
         $posts = Post::where('category', 'Vacature')->where('is_published', 1)->orderBy('created_at', 'desc')->paginate(6);
