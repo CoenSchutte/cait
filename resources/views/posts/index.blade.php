@@ -82,16 +82,19 @@ Inner intro START -->
                     <div data-margin-top="80" data-sticky-for="767">
                         <!-- Trending topics widget START -->
                         <!-- ADV widget START -->
-                        <div class="col-12 col-sm-6 col-lg-12 my-4">
-                            <a href="#" class="d-block card-img-flash">
-                                <img class="lazy" data-src="{{$ad?->image_url}}" alt="">
-                            </a>
-                            <div class="smaller text-end mt-2">ads via
-                                <a href="{{$ad?->company_url}}"
-                                   class="text-muted"><u>{{$ad?->company_name}}</u>
+                        @if($ad)
+                            <div class="col-12 col-sm-6 col-lg-12 my-4">
+                                <a href="#" class="d-block card-img-flash">
+                                    <img class="lazy" data-src="{{$ad?->image_url}}" alt="">
                                 </a>
+                                <div class="smaller text-end mt-2">ads via
+                                    <a href="{{$ad?->company_url}}"
+                                       class="text-muted"><u>{{$ad?->company_name}}</u>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        @endif
+
                         <!-- ADV widget END -->
                     </div>
                 </div>
