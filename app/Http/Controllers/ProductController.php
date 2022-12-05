@@ -126,6 +126,10 @@ class ProductController extends Controller
             $product = Product::find($item->attributes->product_id);
             $product->color = $item->attributes->color;
             $product->size = $item->attributes->size;
+            $product->voor = $item->attributes->voor;
+            $product->hoofd = $item->attributes->hoofd;
+            $product->na = $item->attributes->na;
+            $product->dieet = $item->attributes->dieet;
             $products->push($product);
         }
 
@@ -135,6 +139,11 @@ class ProductController extends Controller
             $invoiceTitle .= $product->name;
             if ($product->color) $invoiceTitle .= ' - ' . $product->color;
             if ($product->size) $invoiceTitle .= ' - ' . $product->size;
+            if ($product->voor) $invoiceTitle .= ' - ' . $product->voor;
+            if ($product->hoofd) $invoiceTitle .= ' - ' . $product->hoofd;
+            if ($product->na) $invoiceTitle .= ' - ' . $product->na;
+            if ($product->dieet) $invoiceTitle .= ' - ' . $product->dieet;
+
             $invoiceTitle .= ', ';
 
             $invoicePrice += $product->getPrice();
