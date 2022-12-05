@@ -163,7 +163,7 @@
                             <ul class="list-group list-group-borderless">
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <span>Subtotaal</span>
-                                    <span class="h6 mb-0">&euro;{{\Cart::getTotal()}}</span>
+                                    <span class="h6 mb-0">&euro;{{number_format(\Cart::getTotal(),2)}}</span>
                                 </li>
                                 @if($hasMerch)
                                     <li class="list-group-item d-flex justify-content-between align-items-center">

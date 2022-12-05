@@ -83,7 +83,7 @@
                                         <!-- Title -->
                                         <h5 class="card-title"><a
                                                 href="{{route('products.show', $product)}}">{{$product->name}}</a></h5>
-                                        <h6 class="mb-0 text-success">&euro;{{$product->getPrice()}}</h6>
+                                        <h6 class="mb-0 text-success">&euro;{{number_format($product->getPrice(),2)}}</h6>
                                     </div>
 
                                     <!-- Card footer -->
