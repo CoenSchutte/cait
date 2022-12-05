@@ -151,7 +151,7 @@
                                                         <td>#{{$invoice->id}}</td>
                                                         <td>{{$invoice->product}}</td>
                                                         <td>{{ucfirst($invoice->status)}}</td>
-                                                        <td>&euro;{{$invoice->price}}</td>
+                                                        <td>&euro;{{number_format($invoice->price,2)}}</td>
                                                         <td>{{$invoice->created_at->format('d/m/Y')}}</td>
                                                     </tr>
                                                 @endforeach
