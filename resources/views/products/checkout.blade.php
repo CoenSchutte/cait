@@ -46,6 +46,17 @@
                                                                 <li class="nav-item">
                                                                     Maat: {{$cartItem->attributes->size}}</li>
                                                             @endif
+                                                            @if($cartItem->attributes->voor)
+                                                                <li class="nav-item">
+                                                                    Voorgerecht: {{$cartItem->attributes->voor}}</li>
+                                                                <li class="nav-item">
+                                                                    Hoofdgerecht: {{$cartItem->attributes->hoofd}}</li>
+                                                                <li class="nav-item">
+                                                                    Desert: {{$cartItem->attributes->na}}</li>
+                                                                <li class="nav-item">
+                                                                    Dieetwensen: {{$cartItem->attributes->dieet}}</li>
+
+                                                            @endif
 
                                                         </ul>
                                                     </div>

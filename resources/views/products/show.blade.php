@@ -81,7 +81,7 @@
                         @if(isset($product->options['voor']))
                             <div class="mb-4">
                                 <span>Voorgerecht</span>
-                                <select class="form-select" name="size">
+                                <select class="form-select" name="voor">
                                     @foreach($product->options['voor'] as $option)
                                         <option value="{{$option}}">{{$option}}</option>
                                     @endforeach
@@ -90,7 +90,7 @@
 
                             <div class="mb-4">
                                 <span>Voorgerecht</span>
-                                <select class="form-select" name="size">
+                                <select class="form-select" name="hoofd">
                                     @foreach($product->options['hoofd'] as $option)
                                         <option value="{{$option}}">{{$option}}</option>
                                     @endforeach
@@ -99,7 +99,7 @@
 
                             <div class="mb-4">
                                 <span>Voorgerecht</span>
-                                <select class="form-select" name="size">
+                                <select class="form-select" name="na">
                                     @foreach($product->options['na'] as $option)
                                         <option value="{{$option}}">{{$option}}</option>
                                     @endforeach
@@ -108,9 +108,9 @@
 
                             <div class="mb-4">
                                 <span>Dieetwensen</span>
-                                <select class="form-select" name="size">
-                                    <option value="dieetwensen-nee">Nee</option>
-                                    <option value="dieetwensen-ja">Ja</option>
+                                <select class="form-select" name="dieet">
+                                    <option value="Nee">Nee</option>
+                                    <option value="Ja">Ja</option>
                                 </select>
                             </div>
                         @endif

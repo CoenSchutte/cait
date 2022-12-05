@@ -22,6 +22,10 @@ class CartController extends Controller
                 'attributes' => array(
                     'color' => $request->color,
                     'size' => $request->size,
+                    'voor' => $request->voor,
+                    'hoofd' => $request->hoofd,
+                    'na' => $request->na,
+                    'dieet' => $request->dieet,
                     'product_id' => $product->id,
                     'image_url' => $url,
                     'category' => $product->category,
