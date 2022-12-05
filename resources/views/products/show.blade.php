@@ -78,6 +78,44 @@
                             </div>
                         @endif
 
+                        @if(isset($product->options['voor']))
+                            <div class="mb-4">
+                                <span>Voorgerecht</span>
+                                <select class="form-select" name="size">
+                                    @foreach($product->options['voor'] as $option)
+                                        <option value="{{$option}}">{{$option}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <span>Voorgerecht</span>
+                                <select class="form-select" name="size">
+                                    @foreach($product->options['hoofd'] as $option)
+                                        <option value="{{$option}}">{{$option}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <span>Voorgerecht</span>
+                                <select class="form-select" name="size">
+                                    @foreach($product->options['na'] as $option)
+                                        <option value="{{$option}}">{{$option}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="mb-4">
+                                <span>Dieetwensen</span>
+                                <select class="form-select" name="size">
+                                    <option value="dieetwensen-ja">Ja</option>
+                                    <option value="dieetwensen-nee">Nee</option>
+                                </select>
+                            </div>
+                        @endif
+
+
                         @if(isset($product->options['colors']))
                             <div class="mb-4">
                                 <span>Kies maat</span>
