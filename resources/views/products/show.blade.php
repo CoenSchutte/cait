@@ -109,8 +109,8 @@
                             <div class="mb-4">
                                 <span>Dieetwensen</span>
                                 <select class="form-select" name="size">
-                                    <option value="dieetwensen-ja">Ja</option>
                                     <option value="dieetwensen-nee">Nee</option>
+                                    <option value="dieetwensen-ja">Ja</option>
                                 </select>
                             </div>
                         @endif
