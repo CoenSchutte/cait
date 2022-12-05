@@ -92,7 +92,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <span>Voorgerecht</span>
+                                <span>Hoofdgerecht</span>
                                 <select class="form-select" name="hoofd">
                                     @foreach($product->options['hoofd'] as $option)
                                         <option value="{{$option}}">{{$option}}</option>
@@ -101,7 +101,7 @@
                             </div>
 
                             <div class="mb-4">
-                                <span>Voorgerecht</span>
+                                <span>Dessert</span>
                                 <select class="form-select" name="na">
                                     @foreach($product->options['na'] as $option)
                                         <option value="{{$option}}">{{$option}}</option>
