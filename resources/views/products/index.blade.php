@@ -33,12 +33,12 @@
 
                 @if(session()->has('success'))
 
-                <div class="alert alert-success" role="alert">
-                    <h4 class="alert-heading">Succes!</h4>
-                    <p>{{session()->get('success')}}</p>
-                    <hr>
-                </div>
-                    @endif
+                    <div class="alert alert-success" role="alert">
+                        <h4 class="alert-heading">Succes!</h4>
+                        <p>{{session()->get('success')}}</p>
+                        <hr>
+                    </div>
+                @endif
 
                 <div class="mb-4">
                     <h2 class="m-0">STIR Shop</h2>
@@ -48,18 +48,20 @@
                 <div class="col-xl-10 mx-auto">
                     <!-- Product START -->
                     <div class="row">
-                        <section class="p-0">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col">
-                                        <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
-                                            <img src="{{$ad?->image_url}}" alt="">
-                                        </a>
-                                        <small class="text-end d-block mt-1">Advertentie</small>
+                        @if($ad)
+                            <section class="p-0">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <a href="{{$ad?->company_url}}" class="d-block card-img-flash">
+                                                <img src="{{$ad?->image_url}}" alt="">
+                                            </a>
+                                            <small class="text-end d-block mt-1">Advertentie</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        @endif
 
                         @foreach($products as $product)
                             <div class="col-sm-6 col-md-4">
@@ -83,7 +85,8 @@
                                         <!-- Title -->
                                         <h5 class="card-title"><a
                                                 href="{{route('products.show', $product)}}">{{$product->name}}</a></h5>
-                                        <h6 class="mb-0 text-success">&euro;{{number_format($product->getPrice(),2)}}</h6>
+                                        <h6 class="mb-0 text-success">
+                                            &euro;{{number_format($product->getPrice(),2)}}</h6>
                                     </div>
 
                                     <!-- Card footer -->
