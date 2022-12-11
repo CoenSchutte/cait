@@ -1,1 +1,1 @@
-{{-- <link rel="icon" type="image/png" href="{{ asset('/img/favicon.png') }} "> --}}
+<link rel="icon" type="image/x-icon" href="../images/logo-stir-kleur.png">
