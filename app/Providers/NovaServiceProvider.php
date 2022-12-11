@@ -2,6 +2,12 @@
 
 namespace App\Providers;
 
+use App\Nova\Metrics\InvoicesPerDay;
+use App\Nova\Metrics\InvoicesPerProduct;
+use App\Nova\Metrics\NewInvoices;
+use App\Nova\Metrics\NewUsers;
+use App\Nova\Metrics\RegistrationsPerDay;
+use App\Nova\Metrics\UsersPerDay;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -28,9 +34,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function routes()
     {
         Nova::routes()
-                ->withAuthenticationRoutes()
-                ->withPasswordResetRoutes()
-                ->register();
+            ->withAuthenticationRoutes()
+            ->withPasswordResetRoutes()
+            ->register();
     }
 
     /**
@@ -56,7 +62,12 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function cards()
     {
         return [
-            new Help,
+            new NewUsers(),
+            new UsersPerDay(),
+            new RegistrationsPerDay(),
+            new NewInvoices(),
+            new InvoicesPerDay(),
+            new InvoicesPerProduct()
         ];
     }
 
@@ -67,7 +78,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     protected function dashboards()
     {
-        return [];
+        return [
+        ];
     }
 
     /**
