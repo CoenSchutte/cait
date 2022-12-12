@@ -12,7 +12,8 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $ad = Ad::where('expiration_date', '>=', today())->inRandomOrder()->first();
+        // get an ad with an expiration date in the future in a random order
+        $ad = Ad::where('expiration_date', '>', Carbon::now())->inRandomOrder()->first();
         if($ad) $ad->image_url = $ad->getSidebarAttribute();
 
 
