@@ -91,7 +91,7 @@
     <!-- Template Functions -->
 {{--    <script src="../js/functions.js"></script>--}}
     @vite(['resources/js/functions.js'])
-    @vite(['resources/js/PureSnow.js'])
+{{--    @vite(['resources/js/PureSnow.js'])--}}
     @livewireScripts
 
 </body>
