@@ -7,7 +7,10 @@
                 <h1 class="text-4xl font-bold mb-8">Onze Partners</h1>
                 <div class="flex justify-between flex-wrap">
                     <div class="shadow-md flex flex-start">
-                        <img style="padding-right: 1rem; width: 300px" class="mt-4" src="{{asset('images/netcompany.png')}}" alt="Partner 1">
+                        <a target="_blank" href="//www.netcompany.com">
+                            <img style="padding-right: 1rem; width: 300px" class="mt-4"
+                                 src="{{asset('images/netcompany.png')}}" alt="Partner 1">
+                        </a>
                     </div>
                 </div>
             </div>
