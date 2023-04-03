@@ -121,6 +121,13 @@
                             ]) href="{{route('contact')}}">Contact</a>
                     </li>
 
+                    <li class="nav-item">
+                        <a @class([
+                            'nav-link',
+                            'active' => Request::is('partners*')
+                            ]) href="{{route('partners')}}">Partners</a>
+                    </li>
+
                     @auth
                         <li class="nav-item d-lg-none">
                             <a href="{{ route('profile.show') }}" class="nav-link">Instellingen</a>

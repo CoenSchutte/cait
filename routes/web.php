@@ -70,6 +70,10 @@ Route::middleware([])->group(function () {
         return view('contact');
     })->name('contact');
 
+    Route::get('/partners', function () {
+        return view('partners');
+    })->name('partners');
+
     //get /enquete and redirect to https://forms.gle/ZHYJydLfkvXsoH7D8
     Route::get('/enquete', function () {
         return redirect('https://forms.gle/ZHYJydLfkvXsoH7D8');

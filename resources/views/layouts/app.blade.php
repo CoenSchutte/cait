@@ -62,11 +62,11 @@
 
 <body class="font-sans antialiased">
 
-{{--    <div class="preloader">--}}
-{{--        <div class="preloader-item">--}}
-{{--            <div class="spinner-grow text-primary"></div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
+    <div class="preloader">
+        <div class="preloader-item">
+            <div class="spinner-grow text-primary"></div>
+        </div>
+    </div>
 
     <div class="snowcontainer">
         <div id="snow"></div>
