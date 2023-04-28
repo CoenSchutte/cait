@@ -38,7 +38,7 @@ Route::middleware([])->group(function () {
     Route::get('kerst', function () {
         $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%kerstdiner%')->orderBy('created_at', 'desc')->first();
 
-        if(!$product) {
+        if (!$product) {
             return redirect()->route('products.index');
         }
 
@@ -56,15 +56,17 @@ Route::middleware([])->group(function () {
     });
 
 
-    Route::get('akida', function (){
+    Route::get('akida', function () {
         $post = Post::where('subtitle', 'LIKE', '%akida%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        $post->image_url = $post->fileUrl();
+        $registration = $post->registration;
+        return view('posts.show', compact('post', 'registration'));
     });
 
-    Route::get('user/profile', function (){
+    Route::get('user/profile', function () {
         $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
         $user = auth()->user();
-        return view('profile.show', compact( 'user','invoices'));
+        return view('profile.show', compact('user', 'invoices'));
     })->name('profile.show');
 
 //    Route::get('/about', function () {
