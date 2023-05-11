@@ -38,7 +38,7 @@
                     <!-- Title -->
                     <h1>{{$product->name}}</h1>
                     <p class="mb-4">
-                        @if(!$product->options['voor'])
+                        @if(!isset($product->options['voor']))
                             <x-markdown>
                                 {!! $product->description !!}
                             </x-markdown>
