@@ -50,13 +50,13 @@ Route::middleware([])->group(function () {
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
-    Route::get('netwerkdiner', function () {
+    Route::get('netwerk', function () {
         $post = Post::where('title', 'LIKE', '%netwerkdiner%')->orderBy('created_at', 'desc')->first();
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
 
-    Route::get('netwerkdiner/aanmelden', function () {
+    Route::get('netwerk/aanmelden', function () {
         return redirect('https://forms.gle/8S8nPnBUp6Ayan2o7');
     });
 
