@@ -55,6 +55,11 @@ Route::middleware([])->group(function () {
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
+
+    Route::get('netwerkdiner/aanmelden', function () {
+        return redirect('https://forms.gle/8S8nPnBUp6Ayan2o7');
+    });
+
     Route::get('movie', function () {
         $post = Post::where('title', 'LIKE', '%movie night%')->orderBy('created_at', 'desc')->first();
         return redirect()->route('posts.show', ['post' => $post]);
