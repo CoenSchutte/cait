@@ -57,7 +57,7 @@ Route::middleware([])->group(function () {
 
 
     Route::get('netwerk/aanmelden', function () {
-        return redirect('https://forms.gle/8S8nPnBUp6Ayan2o7');
+        return redirect('https://forms.gle/xz2L5Qod7YWdF3vt9');
     });
 
     Route::get('movie', function () {
