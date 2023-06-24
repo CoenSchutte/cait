@@ -65,6 +65,11 @@ Route::middleware([])->group(function () {
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
+    Route::get('alv', function () {
+        $post = Post::where('title', 'LIKE', '%Algemene ledenvergadering%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('posts.show', ['post' => $post]);
+    });
+
 
     Route::get('akida', function () {
         $post = Post::where('subtitle', 'LIKE', '%akida%')->orderBy('created_at', 'desc')->first();
