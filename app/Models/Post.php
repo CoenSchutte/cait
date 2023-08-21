@@ -24,6 +24,11 @@ class Post extends Model implements HasMedia
         'category',
         'is_published',
         'is_featured',
+        'event_held_at',
+    ];
+
+    protected $casts = [
+        'event_held_at' => 'datetime',
     ];
 
 

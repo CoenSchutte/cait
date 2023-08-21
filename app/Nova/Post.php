@@ -5,6 +5,7 @@ namespace App\Nova;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasOne;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Markdown;
@@ -37,6 +38,7 @@ class Post extends Resource
         'id',
         'title',
         'subtitle',
+        'category',
     ];
 
     /**
@@ -76,6 +78,9 @@ class Post extends Resource
 
             Boolean::make('Is Featured', 'is_featured')
                 ->default(false),
+
+            DateTime::make('Event held at', 'event_held_at')
+                ->nullable(),
 
             Images::make('Main image') // second parameter is the media collection name
                 ->conversionOnIndexView('preview') // conversion used to display the image

@@ -23,7 +23,13 @@
                                 <p class="text-white">{{$posts->first()->subtitle}}</p>
                                 <!-- Card info -->
                                 <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                    <li class="nav-item">{{$posts->first()->created_at->format('d/m/Y')}}</li>
+                                    <li class="nav-item">
+                                        @if($posts->first()->event_held_at)
+                                            {{$posts->first()->event_held_at->format('d/m/Y')}}
+                                        @else
+                                            {{$posts->first()->created_at->format('d/m/Y')}}
+                                        @endif
+                                    </li>
                                     <li class="nav-item">{{$posts->first()->getReadingTimeAttribute()}} min leestijd
                                     </li>
                                 </ul>
@@ -61,7 +67,13 @@
                                                 </h4>
                                                 <!-- Card info -->
                                                 <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                                    <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
+                                                    <li class="nav-item">
+                                                        @if($post->event_held_at)
+                                                            {{$post->event_held_at->format('d/m/Y')}}
+                                                        @else
+                                                            {{$post->created_at->format('d/m/Y')}}
+                                                        @endif
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
