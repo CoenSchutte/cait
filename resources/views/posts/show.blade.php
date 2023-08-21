@@ -6,14 +6,14 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="<Title>">
     <meta property="og:description" content="<Description>">
-    <meta property="og:image" content="{{$post->image_url}}">
+    <meta property="og:image" content="{{$post->getUrlPreviewAttribute}}">
 
     <meta name="twitter:card" content="summary">
     <meta property="twitter:domain" content="' . $request_url . '">
     <meta property="twitter:url" content="' . $request_url . '">
     <meta name="twitter:title" content="<Title>">
     <meta name="twitter:description" content="<Description>">
-    <meta name="twitter:image" content="{{$post->image_url}}">
+    <meta name="twitter:image" content="{{$post->getUrlPreviewAttribute}}">
     <section>
         <div class="container">
             <div class="row">

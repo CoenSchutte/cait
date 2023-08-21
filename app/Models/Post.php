@@ -51,6 +51,13 @@ class Post extends Model implements HasMedia
             ->fit(Manipulations::FIT_STRETCH, 1000, 750)
             ->optimize([Jpegoptim::class => ['--all-progressive']])
             ->nonQueued();
+
+        $this
+            ->addMediaConversion('url_preview')
+            ->fit(Manipulations::FIT_STRETCH, 1200, 630)
+            ->optimize([Jpegoptim::class => ['--all-progressive']])
+            ->nonQueued();
+
     }
 
     public function fileUrl(): ?string
@@ -71,6 +78,11 @@ class Post extends Model implements HasMedia
     public function get16by9Attribute(): ?string
     {
         return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '16by9');
+    }
+
+    public function getUrlPreviewAttribute(): ?string
+    {
+        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'url_preview');
     }
 
     public function getReadingTimeAttribute(): int
