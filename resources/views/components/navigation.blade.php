@@ -73,6 +73,16 @@
 
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav navbar-nav-scroll ms-auto">
+                    @if(!auth()->check() || (auth()->check() && !auth()->user()->hasSubscription()))
+                        <li class="nav-item">
+                            <a @class([
+                                'nav-link',
+                                'active' => Request::is('membership*')
+                            ]) href="{{route('membership')}}">Lid worden?
+                            </a>
+                        </li>
+                    @endif
+
                     {{-- Activiteiten --}}
                     <li class="nav-item">
                         <a @class([

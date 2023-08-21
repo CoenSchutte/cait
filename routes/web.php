@@ -25,7 +25,10 @@ Route::middleware([])->group(function () {
 
     Route::get('/', [DashboardController::class, 'index'])->name('welcome');
 
-    //get /shop and redirect to products.index
+    Route::get('/membership', function () {
+        return view('membership');
+    })->name('membership');
+
     Route::get('/shop', function () {
         return redirect()->route('products.index');
     });
