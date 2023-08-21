@@ -4,15 +4,15 @@
 @section('content')
     <meta property="og:url" content="' . $request_url . '">
     <meta property="og:type" content="website">
-    <meta property="og:title" content="<Title>">
-    <meta property="og:description" content="<Description>">
+    <meta property="og:title" content="{{$post->title}}">
+    <meta property="og:description" content="{{$post->subtitle}}">
     <meta property="og:image" content="{{$post->getUrlPreviewAttribute()}}">
 
     <meta name="twitter:card" content="summary">
     <meta property="twitter:domain" content="' . $request_url . '">
     <meta property="twitter:url" content="' . $request_url . '">
-    <meta name="twitter:title" content="<Title>">
-    <meta name="twitter:description" content="<Description>">
+    <meta name="twitter:title" content="{{$post->title}}">
+    <meta name="twitter:description" content="{{$post->subtitle}}">
     <meta name="twitter:image" content="{{$post->getUrlPreviewAttribute()}}">
     <section>
         <div class="container">
