@@ -53,6 +53,11 @@ Route::middleware([])->group(function () {
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
+    Route::get('bowlen', function () {
+        $post = Post::where('title', 'LIKE', '%go bowling!%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('posts.show', ['post' => $post]);
+    });
+
     Route::get('netwerk', function () {
         $post = Post::where('title', 'LIKE', '%netwerkdiner%')->orderBy('created_at', 'desc')->first();
         return redirect()->route('posts.show', ['post' => $post]);
