@@ -26,6 +26,7 @@
                             <h3>Adverteren / Samenwerken</h3>
                             <p>Neem direct contact met ons op!</p>
                             <p>Bel voorzitter: <a href="tel:31644408304" class="text-reset"><u>+31 644408304</u></a></p>
+                            <p>E-mail voorzitter: <a href="mailto:coen.schutte@stirotterdam.nl" class="text-reset"><u>coen.schutte@stirotterdam.nl</u></a></p>
                             <p>E-mail secretaris: <a href="mailto:guus.van.der.velde@stirotterdam.nl" class="text-reset"><u>guus.van.der.velde@stirotterdam.nl</u></a></p>
                             <address>Wijnhaven 107, 3011WN, Rotterdam</address>
                         </div>
