@@ -170,7 +170,7 @@
                     </div>
 
                 </div>
-                @if(!$user->hasSubscription())
+                @if($user->hasSubscription())
                     <div class="col-lg-5 col-xxl-4">
                         <div class="card border mb-4">
                             <div class="card-header border-bottom p-3">
