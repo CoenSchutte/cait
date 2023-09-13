@@ -31,6 +31,7 @@
         "livewire/livewire": "^2.5",
         "mollie/laravel-mollie": "^2.0",
         "orangehill/iseed": "^3.0",
+        "sentry/sentry-laravel": "^3.8",
         "spatie/laravel-markdown": "^2.2",
         "spatie/laravel-medialibrary": "^10.0.0",
         "taronyuu/nova-mollie-tool": "^0.0.32"
@@ -82,7 +83,8 @@
         "preferred-install": "dist",
         "sort-packages": true,
         "allow-plugins": {
-            "pestphp/pest-plugin": true
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
         }
     },
     "minimum-stability": "dev",
