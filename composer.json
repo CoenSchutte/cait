@@ -17,6 +17,7 @@
     "require": {
         "php": "^8.0.2",
         "64robots/nova-fields": "^0.22.0",
+        "coderello/nova-login-as": "^0.1.1",
         "darryldecode/cart": "^4.2",
         "ebess/advanced-nova-media-library": "*",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
