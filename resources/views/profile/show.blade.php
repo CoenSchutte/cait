@@ -178,7 +178,7 @@
                             </div>
                             <div class="card-body">
                                 <h6>Je lidmaatschap loopt door
-                                    tot: {{$user->member_until}}</h6>
+                                    tot: {{$user->member_until->format(('d/m/Y'))}}</h6>
                             </div>
                         </div>
                     </div>
