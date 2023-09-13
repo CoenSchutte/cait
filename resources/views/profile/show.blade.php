@@ -177,8 +177,8 @@
                                 <h5 class="card-header-title mb-0">STIR Lidmaatschap</h5>
                             </div>
                             <div class="card-body">
-                                <h6>Je lidmaatschap loopt door
-                                    tot: {{$user->member_until->format(('d/m/Y'))}}</h6>
+                                <p>Je lidmaatschap loopt door
+                                    tot: <b>{{$user->member_until->format(('d/m/Y'))}}</b></p>
                             </div>
                         </div>
                     </div>
