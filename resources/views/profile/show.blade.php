@@ -179,6 +179,7 @@
                             <div class="card-body">
                                 <p>Je lidmaatschap loopt door
                                     tot: <b>{{$user->member_until->format(('d/m/Y'))}}</b></p>
+                                <p>Dat betekent dat je nog <b>{{$user->member_until->diffInDays(now())}} dagen}} van je lidmaatschap kan genieten</b></p>
                             </div>
                         </div>
                     </div>
