@@ -29,7 +29,13 @@
                                 door <a href="#" class="text-reset btn-link">STIR</a>
                             </div>
                         </li>
-                        <li class="nav-item">{{$post->created_at->format('d/m/Y')}}</li>
+                        <li class="nav-item">
+                            @if($posts->first()->event_held_at)
+                                {{$posts->first()->event_held_at->format('d/m/Y')}}
+                            @else
+                                {{$posts->first()->created_at->format('d/m/Y')}}
+                            @endif
+                        </li>
                         <li class="nav-item">{{$post->getReadingTimeAttribute()}} min leestijd</li>
                     </ul>
                     <img class="rounded mt-5" src="{{$post->image_url}}" alt="Image">
