@@ -38,6 +38,11 @@ Route::middleware([])->group(function () {
         return redirect()->route('products.show', ['product' => $product]);
     });
 
+    Route::get('pubquiz', function () {
+        $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%STIR Pubquiz%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('products.show', ['product' => $product]);
+    });
+
     Route::get('kerst', function () {
         $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%kerstdiner%')->orderBy('created_at', 'desc')->first();
 
