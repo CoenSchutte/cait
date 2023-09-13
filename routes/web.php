@@ -91,11 +91,7 @@ Route::middleware([])->group(function () {
         return view('posts.show', compact('post', 'registration'));
     });
 
-    Route::get('user/profile', function () {
-        $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
-        $user = auth()->user();
-        return view('profile.show', compact('user', 'invoices'));
-    })->name('profile.show');
+
 
 //    Route::get('/about', function () {
 //        return view('about');
@@ -166,7 +162,11 @@ Route::middleware([])->group(function () {
         Route::prefix('user')->group(function () {
             Route::post('/update', [UserController::class, 'update'])->name('user.update');
 
-
+            Route::get('profile', function () {
+                $invoices = \App\Models\Invoice::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->paginate(5);
+                $user = auth()->user();
+                return view('profile.show', compact('user', 'invoices'));
+            })->name('profile.show');
         });
     });
 
