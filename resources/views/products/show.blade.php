@@ -145,7 +145,12 @@
                             <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
-                                    <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"></input>
+                                    @if($product->is_available)
+                                        <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"/>
+                                    @else
+                                        <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"
+                                               disabled/>
+                                    @endif
                                 @else
                                     <a href="{{route('login')}}" class="btn btn-primary mb-0 w-100">Log in</a>
                                 @endauth
