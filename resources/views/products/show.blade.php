@@ -148,7 +148,7 @@
                                     @if($product->is_available)
                                         <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"/>
                                     @else
-                                        <input type="submit" value="Bestel" class="btn btn-primary mb-0 w-100"
+                                        <input type="submit" value="Product niet langer beschikbaar" class="btn btn-primary mb-0 w-100"
                                                disabled/>
                                     @endif
                                 @else
