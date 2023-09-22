@@ -20,7 +20,8 @@
     <link rel="stylesheet" type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css">
 
     <!-- Theme CSS -->
-    <link id="style-switch" rel="stylesheet" type="text/css" href="css/style.css">
+    <link id="style-switch" rel="stylesheet" type="text/css" href="../../../../css/style.css">
+
 
 </head>
 
