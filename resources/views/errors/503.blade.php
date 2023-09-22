@@ -16,9 +16,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700&family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" type="text/css" href="vendor/font-awesome/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-icons/bootstrap-icons.css">
-
+    <link rel="stylesheet" type="text/css" href="../vendor/font-awesome/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" type="text/css" href="../vendor/tiny-slider/tiny-slider.css">
+    <script src="../vendor/vanilla-lazyload/lazyload.min.js"></script>
     <!-- Theme CSS -->
     <link id="style-switch" rel="stylesheet" type="text/css" href="../../../../css/style.css">
 
