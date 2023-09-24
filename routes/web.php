@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserEventRegistrationsController;
 use App\Models\Product;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProductController;
@@ -115,6 +116,14 @@ Route::middleware([])->group(function () {
         return redirect()->route('posts.show', ['post' => $post]);
     });
 
+
+    Route::get('/riot.txt', function () {
+        $content = '6bf42b2a-b4a6-4511-bf5b-63a462e5a2c7';
+
+        return response($content, Response::HTTP_OK)
+            ->header('Content-Type', 'text/plain')
+            ->header('Content-Disposition', 'inline; filename="riot.txt"');
+    });
 
     Route::resource('posts', PostController::class);
 
