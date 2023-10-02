@@ -8,6 +8,7 @@ use App\Nova\Metrics\NewInvoices;
 use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\RegistrationsPerDay;
 use App\Nova\Metrics\UsersPerDay;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Nova;
@@ -24,6 +25,10 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function boot()
     {
         parent::boot();
+
+        Nova::userTimezone(function (Request $request) {
+            return $request->user()?->timezone;
+        });
     }
 
     /**
@@ -79,6 +84,7 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     protected function dashboards()
     {
         return [
+            new \App\Nova\Dashboards\Main,
         ];
     }
 
@@ -89,7 +95,9 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
      */
     public function tools()
     {
-        return [new NovaMollieTool()];
+        return [
+//            new NovaMollieTool()
+        ];
     }
 
     /**

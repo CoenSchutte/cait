@@ -8,12 +8,10 @@ use Laravel\Nova\Metrics\Partition;
 
 class InvoicesPerProduct extends Partition
 {
-    /**
-     * Calculate the value of the metric.
-     *
-     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
-     * @return mixed
-     */
+    public $name = 'Aantal facturen per product';
+
+    public $width = '1/3';
+
     public function calculate(NovaRequest $request)
     {
         return $this->count($request, Invoice::class, 'product');

@@ -8,8 +8,9 @@ use Laravel\Nova\Metrics\Value;
 
 class NewInvoices extends Value
 {
-
     public $name = 'Totaal aantal nieuwe facturen';
+
+    public $width = '1/3';
 
     public function calculate(NovaRequest $request)
     {
