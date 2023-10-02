@@ -3,9 +3,10 @@
 namespace App\Nova;
 
 use App\Models\UserEventRegistration as UserEventRegistrationModel;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class UserEventRegistration extends Resource
 {
@@ -20,7 +21,7 @@ class UserEventRegistration extends Resource
 
     public static $group = 'Events';
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -30,25 +31,31 @@ class UserEventRegistration extends Resource
 
             BelongsTo::make('Event', 'eventRegistration', EventRegistration::class)
                 ->searchable(),
+
+            //created at
+            DateTime::make('Created At', 'created_at')
+                ->sortable()
+                ->hideWhenCreating(),
+
         ];
     }
 
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
 
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }

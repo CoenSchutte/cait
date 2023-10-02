@@ -13,36 +13,16 @@ use Laravel\Nova\Http\Requests\NovaRequest;
 
 class Highlight extends Resource
 {
-    /**
-     * The model the resource corresponds to.
-     *
-     * @var string
-     */
+
     public static $model = \App\Models\Highlight::class;
 
-    /**
-     * The single value that should be used to represent the resource when being displayed.
-     *
-     * @var string
-     */
     public static $title = 'id';
 
-    /**
-     * The columns that should be searched.
-     *
-     * @var array
-     */
     public static $search = [
         'id',
     ];
 
-    /**
-     * Get the fields displayed by the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
@@ -76,46 +56,22 @@ class Highlight extends Resource
         ];
     }
 
-    /**
-     * Get the cards available for the request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
 
-    /**
-     * Get the filters available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
 
-    /**
-     * Get the lenses available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
 
-    /**
-     * Get the actions available for the resource.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }

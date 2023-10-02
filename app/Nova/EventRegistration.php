@@ -3,12 +3,12 @@
 namespace App\Nova;
 
 use App\Models\EventRegistration as EventRegistrationModel;
-use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Number;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
 class EventRegistration extends Resource
 {
@@ -25,7 +25,7 @@ class EventRegistration extends Resource
 
     public static $group = 'Events';
 
-    public function fields(Request $request)
+    public function fields(NovaRequest $request)
     {
         return [
             ID::make()->sortable(),
@@ -46,22 +46,22 @@ class EventRegistration extends Resource
         ];
     }
 
-    public function cards(Request $request)
+    public function cards(NovaRequest $request)
     {
         return [];
     }
 
-    public function filters(Request $request)
+    public function filters(NovaRequest $request)
     {
         return [];
     }
 
-    public function lenses(Request $request)
+    public function lenses(NovaRequest $request)
     {
         return [];
     }
 
-    public function actions(Request $request)
+    public function actions(NovaRequest $request)
     {
         return [];
     }

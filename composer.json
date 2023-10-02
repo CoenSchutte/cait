@@ -7,11 +7,7 @@
     "repositories": [
         {
             "type": "git",
-            "url": "https://github.com/CoenSchutte/nova"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/CoenSchutte/advanced-nova-media-library"
+            "url": "https://github.com/CoenSchutte/nova4"
         }
     ],
     "require": {
@@ -19,12 +15,12 @@
         "64robots/nova-fields": "^0.22.0",
         "coderello/nova-login-as": "^0.1.1",
         "darryldecode/cart": "^4.2",
-        "ebess/advanced-nova-media-library": "*",
+        "ebess/advanced-nova-media-library": "^4.1",
         "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.11",
-        "laravel/nova": "dev-main",
+        "laravel/nova": "^4.0",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "league/flysystem-aws-s3-v3": "^3.0",

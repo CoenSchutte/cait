@@ -8,8 +8,10 @@ use Laravel\Nova\Metrics\Trend;
 
 class RegistrationsPerDay extends Trend
 {
-
     public $name = 'Aantal nieuwe event inschrijvingen';
+
+    public $width = '1/3';
+
 
     public function calculate(NovaRequest $request)
     {

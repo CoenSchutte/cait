@@ -8,8 +8,10 @@ use Laravel\Nova\Metrics\Trend;
 
 class UsersPerDay extends Trend
 {
-
     public $name = 'Aantal nieuwe gebruikers';
+
+    public $width = '1/2';
+
 
     public function calculate(NovaRequest $request)
     {
