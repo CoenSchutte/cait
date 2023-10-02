@@ -3,6 +3,9 @@
 namespace App\Nova;
 
 use App\Models\UserEventRegistration as UserEventRegistrationModel;
+use App\Nova\Metrics\NewRegistrations;
+use App\Nova\Metrics\RegistrationsPerDay;
+use App\Nova\Metrics\RegistrationsPerEvent;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\ID;
@@ -42,7 +45,11 @@ class UserEventRegistration extends Resource
 
     public function cards(NovaRequest $request)
     {
-        return [];
+        return [
+            new NewRegistrations(),
+            new RegistrationsPerDay(),
+            new RegistrationsPerEvent()
+        ];
     }
 
     public function filters(NovaRequest $request)

@@ -2,6 +2,9 @@
 
 namespace App\Nova;
 
+use App\Nova\Metrics\InvoicesPerDay;
+use App\Nova\Metrics\InvoicesPerProduct;
+use App\Nova\Metrics\NewInvoices;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Currency;
@@ -61,7 +64,11 @@ class Invoice extends Resource
 
     public function cards(NovaRequest $request)
     {
-        return [];
+        return [
+            new NewInvoices(),
+            new InvoicesPerDay(),
+            new InvoicesPerProduct()
+        ];
     }
 
     public function filters(NovaRequest $request)
