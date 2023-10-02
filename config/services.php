@@ -30,13 +30,5 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
-    'nova_mollie_tool'  => [
-        'title'     => 'Mollie ',
-        'icon'      => null,
-        'api_key'   => env('MOLLIE_KEY'),
-        'request'   => [
-            'limit'     => 20,
-        ]
-    ],
 
 ];

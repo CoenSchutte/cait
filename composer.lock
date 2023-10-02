@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "efafe56d96f0f729917d5e1a5d3e6878",
+    "content-hash": "13b7beb4f6fc2b7dd465066717974ee1",
     "packages": [
         {
             "name": "64robots/nova-fields",
@@ -113,16 +113,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.282.0",
+            "version": "3.282.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "79a3ed5bb573f592823f8b1cffe0dbac3132e6b4"
+                "reference": "59b84106b3870da3a1a862047fc61108dccb37b9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/79a3ed5bb573f592823f8b1cffe0dbac3132e6b4",
-                "reference": "79a3ed5bb573f592823f8b1cffe0dbac3132e6b4",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/59b84106b3870da3a1a862047fc61108dccb37b9",
+                "reference": "59b84106b3870da3a1a862047fc61108dccb37b9",
                 "shasum": ""
             },
             "require": {
@@ -202,9 +202,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.282.0"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.282.1"
             },
-            "time": "2023-09-28T18:09:20+00:00"
+            "time": "2023-10-02T18:07:55+00:00"
         },
         {
             "name": "bacon/bacon-qr-code",
@@ -1564,61 +1564,6 @@
                 }
             ],
             "time": "2023-02-25T20:23:15+00:00"
-        },
-        {
-            "name": "gregoriohc/laravel-nova-theme-responsive",
-            "version": "v0.8.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/gregoriohc/laravel-nova-theme-responsive.git",
-                "reference": "a37f8162872ea7483d2dec7091d29e49376df273"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/gregoriohc/laravel-nova-theme-responsive/zipball/a37f8162872ea7483d2dec7091d29e49376df273",
-                "reference": "a37f8162872ea7483d2dec7091d29e49376df273",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Gregoriohc\\LaravelNovaThemeResponsive\\ThemeServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Gregoriohc\\LaravelNovaThemeResponsive\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Gregorio Hernández Caso",
-                    "email": "gregoriohc@gmail.com",
-                    "homepage": "https://github.com/gregoriohc",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A Laravel Nova responsive theme.",
-            "homepage": "https://github.com/gregoriohc/laravel-nova-theme-responsive",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/gregoriohc/laravel-nova-theme-responsive/issues",
-                "source": "https://github.com/gregoriohc/laravel-nova-theme-responsive/tree/master"
-            },
-            "abandoned": true,
-            "time": "2020-03-08T16:15:03+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
@@ -9803,52 +9748,6 @@
                 }
             ],
             "time": "2023-09-12T10:11:35+00:00"
-        },
-        {
-            "name": "taronyuu/nova-mollie-tool",
-            "version": "0.0.32",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Taronyuu/nova-mollie-tool.git",
-                "reference": "24feb43961d58a43bd53ffe08d3bac2d6fb10a37"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Taronyuu/nova-mollie-tool/zipball/24feb43961d58a43bd53ffe08d3bac2d6fb10a37",
-                "reference": "24feb43961d58a43bd53ffe08d3bac2d6fb10a37",
-                "shasum": ""
-            },
-            "require": {
-                "mollie/mollie-api-php": "^2.0",
-                "php": ">=7.1.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Taronyuu\\NovaMollieTool\\ToolServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Taronyuu\\NovaMollieTool\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "Simple tool for Laravel Nova to show your transactions from Mollie",
-            "keywords": [
-                "laravel",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/Taronyuu/nova-mollie-tool/issues",
-                "source": "https://github.com/Taronyuu/nova-mollie-tool/tree/master"
-            },
-            "time": "2018-08-26T14:48:39+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

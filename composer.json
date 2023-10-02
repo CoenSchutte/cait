@@ -16,7 +16,6 @@
         "coderello/nova-login-as": "^0.1.1",
         "darryldecode/cart": "^4.2",
         "ebess/advanced-nova-media-library": "^4.1",
-        "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
         "laravel/jetstream": "^2.11",
@@ -29,8 +28,7 @@
         "orangehill/iseed": "^3.0",
         "sentry/sentry-laravel": "^3.8",
         "spatie/laravel-markdown": "^2.2",
-        "spatie/laravel-medialibrary": "^10.0.0",
-        "taronyuu/nova-mollie-tool": "^0.0.32"
+        "spatie/laravel-medialibrary": "^10.0.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
