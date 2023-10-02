@@ -12,7 +12,15 @@ class RegistrationsPerEvent extends Partition
 
     public function calculate(NovaRequest $request)
     {
-        return $this->count($request, UserEventRegistration::class, 'event_registration_id');
+        return $this->result(
+            UserEventRegistration::join('event_registrations', 'user_event_registrations.event_registration_id', '=', 'event_registrations.id')
+                ->join('posts', 'event_registrations.post_id', '=', 'posts.id')
+                ->select(DB::raw('count(*) as count'), 'posts.title as label')
+                ->groupBy('posts.title')
+                ->get()
+                ->pluck('count', 'label')
+                ->toArray()
+        );
     }
 
     /**
