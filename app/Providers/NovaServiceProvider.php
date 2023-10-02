@@ -11,6 +11,7 @@ use App\Nova\Metrics\UsersPerDay;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
+use Laravel\Nova\LogViewer\LogViewer;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
 use Taronyuu\NovaMollieTool\NovaMollieTool;
@@ -99,7 +100,8 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
     public function tools()
     {
         return [
-//            new NovaMollieTool()
+            LogViewer::make(),
+
         ];
     }
 
