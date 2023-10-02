@@ -8,7 +8,7 @@ use Laravel\Nova\Metrics\Trend;
 
 class RegistrationsPerDay extends Trend
 {
-    public $name = 'Aantal nieuwe event inschrijvingen';
+    public $name = 'Inschrijvingen Per Dag';
 
     public $width = '1/3';
 

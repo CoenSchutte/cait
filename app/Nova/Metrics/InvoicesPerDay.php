@@ -8,7 +8,7 @@ use Laravel\Nova\Metrics\Trend;
 
 class InvoicesPerDay extends Trend
 {
-    public $name = 'Aantal nieuwe facturen';
+    public $name = 'Facturen Per Dag';
 
     public $width = '1/3';
 

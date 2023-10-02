@@ -8,7 +8,7 @@ use Laravel\Nova\Metrics\Partition;
 
 class InvoicesPerProduct extends Partition
 {
-    public $name = 'Aantal facturen per product';
+    public $name = 'Facturen Per Product';
 
     public $width = '1/3';
 

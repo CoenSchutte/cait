@@ -9,7 +9,7 @@ use Laravel\Nova\Metrics\Partition;
 
 class RegistrationsPerEvent extends Partition
 {
-    public $name = 'Aantal inschrijvingen per event';
+    public $name = 'Inschrijvingen Per Evenement';
 
     public function calculate(NovaRequest $request)
     {
