@@ -18,8 +18,10 @@ class Highlight extends Resource
 
     public static $title = 'id';
 
+    public static $group = 'Content';
+
     public static $search = [
-        'id',
+        'id', 'title', 'category'
     ];
 
     public function fields(NovaRequest $request)

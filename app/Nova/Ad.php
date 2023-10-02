@@ -16,7 +16,11 @@ class Ad extends Resource
 
     public static $search = [
         'id',
+        'company_name',
     ];
+
+    public static $group = 'Content';
+
 
     public function fields(NovaRequest $request)
     {

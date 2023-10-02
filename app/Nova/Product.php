@@ -21,9 +21,12 @@ class Product extends Resource
 
     public static $title = 'id';
 
+    public static $group = 'Content';
+
     public static $search = [
         'id',
         'name',
+        'category',
     ];
 
     public function fields(Request $request)

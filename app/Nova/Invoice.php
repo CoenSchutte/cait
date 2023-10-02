@@ -21,6 +21,8 @@ class Invoice extends Resource
 
     public static $title = 'id';
 
+    public static $group = 'User';
+
     public static $search = [
         'id', 'product'
     ];
