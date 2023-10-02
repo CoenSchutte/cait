@@ -36,6 +36,10 @@ class Invoice extends Resource
                 ->required()
                 ->sortable(),
 
+            Text::make('Omschrijving', 'description')
+                ->required()
+                ->sortable(),
+
             Text::make('Categorie', 'category')
                 ->required()
                 ->sortable(),

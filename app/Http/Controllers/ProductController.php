@@ -133,18 +133,29 @@ class ProductController extends Controller
             $products->push($product);
         }
 
-        $invoiceTitle = null;
-        $invoicePrice = null;
+        $invoiceTitle = '';
+        $invoiceDescription = '';
+        $invoicePrice = 0;
+
         foreach ($products as $product) {
             $invoiceTitle .= $product->name;
-            if ($product->color) $invoiceTitle .= ' - ' . $product->color;
-            if ($product->size) $invoiceTitle .= ' - ' . $product->size;
-            if ($product->voor) $invoiceTitle .= ' - ' . $product->voor;
-            if ($product->hoofd) $invoiceTitle .= ' - ' . $product->hoofd;
-            if ($product->na) $invoiceTitle .= ' - ' . $product->na;
-            if ($product->dieet) $invoiceTitle .= ' - ' . $product->dieet;
 
-            $invoiceTitle .= ', ';
+            $descriptionParts = [];
+            if ($product->color) $descriptionParts[] = $product->color;
+            if ($product->size) $descriptionParts[] = $product->size;
+            if ($product->voor) $descriptionParts[] = $product->voor;
+            if ($product->hoofd) $descriptionParts[] = $product->hoofd;
+            if ($product->na) $descriptionParts[] = $product->na;
+            if ($product->dieet) $descriptionParts[] = $product->dieet;
+
+            if (!empty($invoiceDescription)) {
+                $invoiceDescription .= ' - ';
+            }
+            $invoiceDescription .= implode(' - ', $descriptionParts);
+
+            if ($product != $products->last()) {
+                $invoiceTitle .= ', ';
+            }
 
             $invoicePrice += $product->getPrice();
         }
@@ -158,8 +169,9 @@ class ProductController extends Controller
 
         $invoice = $user->invoices()->create([
             'product' => $invoiceTitle,
+            'description' => $invoiceDescription,
             'price' => number_format($invoicePrice, 2),
-            'status' => 'awaiting_payment',
+            'status' => 'Wacht op betaling',
             'category' => $products->contains('category', 'merch') ? 'merch' : 'ticket',
         ]);
 
@@ -168,7 +180,7 @@ class ProductController extends Controller
                 "currency" => "EUR",
                 "value" => number_format($invoicePrice, 2)
             ],
-            "description" => $invoiceTitle,
+            "description" => $invoiceTitle . ' - ' . $invoiceDescription,
             "redirectUrl" => route('products.success', [
                 'invoice' => $invoice,
             ]),
@@ -190,7 +202,7 @@ class ProductController extends Controller
         $invoice = Invoice::find($payment->metadata->invoice_id);
 
         if ($payment->isPaid()) {
-            $invoice->status = 'paid';
+            $invoice->status = 'Betaald';
             $invoice->save();
         }
     }
