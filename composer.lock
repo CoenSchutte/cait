@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "13b7beb4f6fc2b7dd465066717974ee1",
+    "content-hash": "12c6df81ca7cf3343a71fc017bc0a234",
     "packages": [
         {
             "name": "64robots/nova-fields",
@@ -438,47 +438,6 @@
                 }
             ],
             "time": "2022-02-21T13:15:14+00:00"
-        },
-        {
-            "name": "coderello/nova-login-as",
-            "version": "0.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/coderello/nova-login-as.git",
-                "reference": "f0dac4d064f8cab96907d39032de964c7818290f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/coderello/nova-login-as/zipball/f0dac4d064f8cab96907d39032de964c7818290f",
-                "reference": "f0dac4d064f8cab96907d39032de964c7818290f",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=7.1"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Coderello\\LoginAs\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "description": "An easy way to login as any user from Laravel Nova.",
-            "keywords": [
-                "as",
-                "laravel",
-                "login",
-                "nova"
-            ],
-            "support": {
-                "issues": "https://github.com/coderello/nova-login-as/issues",
-                "source": "https://github.com/coderello/nova-login-as/tree/0.1.1"
-            },
-            "abandoned": true,
-            "time": "2019-02-21T09:44:58+00:00"
         },
         {
             "name": "composer/ca-bundle",
