@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="description" content="Welkom bij studievereniging STIR! Dé vereniging voor studenten van Technische Informatica">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Studievereniging STIR</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../images/logo-stir-kleur.png">
