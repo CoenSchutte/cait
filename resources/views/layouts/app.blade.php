@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Welkom bij studievereniging STIR! Dé vereniging voor studenten van Technische Informatica">
+    <meta name="description" content="Welkom bij studievereniging STIR! Dé vereniging voor studenten van Technische Informatica Hogeschool Rotterdam">
+    <meta name="keywords" content="STIR, Studievereniging, Hogeschool Rotterdam, Technische Informatica, TI, Hogeschool, Rotterdam, Informatica, Studievereniging STIR, Studievereniging Technische Informatica Rotterdam, Studievereniging Hogeschool Rotterdam, Studievereniging TI, Studievereniging Hogeschool, Studievereniging Rotterdam, Studievereniging Informatica, Studievereniging Technische Informatica, Studievereniging Hogeschool Rotterdam, Studievereniging TI Rotterdam, Studievereniging Hogeschool Rotterdam, Studievereniging TI, Studievereniging Hogeschool, Studievereniging Rotterdam, Studievereniging Informatica, Studievereniging Technische Informatica, Studievereniging Hogeschool Rotterdam, Studievereniging TI Rotterdam">
 
     <title>Studievereniging STIR</title>
 
