@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\ProductController;
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,20 @@ Route::post('paid', [CreateSubscriptionController::class, 'handleWebhookNotifica
 Route::post('product/bought', [ProductController::class, 'handleWebhookNotification'])->name('products.paid');
 
 
+// group routes with prefix api
+Route::prefix('v1')->group(function () {
+
+    Route::get('posts' , function () {
+        $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->orderBy('created_at', 'desc')->get();
+
+        $posts->map(function ($post) {
+            $post->image_url = $post->get16by9Attribute();
+            $post->preview_url = $post->preview();
+        });
+
+        return response()->json($posts);
+    });
+
+
+
+});
