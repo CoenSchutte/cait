@@ -26,7 +26,7 @@ Route::post('product/bought', [ProductController::class, 'handleWebhookNotificat
 
 
 // group routes with prefix api
-Route::prefix('v1')->group(function () {
+Route::prefix('v1')->middleware(['cors'])->group(function () {
 
     Route::get('posts' , function () {
         $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->orderBy('created_at', 'desc')->get();
