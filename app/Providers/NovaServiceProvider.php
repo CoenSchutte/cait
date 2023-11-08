@@ -9,6 +9,7 @@ use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\RegistrationsPerDay;
 use App\Nova\Metrics\UsersPerDay;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\LogViewer\LogViewer;
@@ -31,6 +32,13 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
         Nova::userTimezone(function (Request $request) {
             return $request->user()?->timezone;
+        });
+
+        Nova::footer(function ($request) {
+            return Blade::render('
+                <p class="text-center">Powered by <a class="link-default" href="https://nova.laravel.com">Nova</a> · v4.27.13 (Silver Surfer)</p>
+                <p class="text-center">© 2023 · by Coen Schutte.</p>'
+        );
         });
 
     }
