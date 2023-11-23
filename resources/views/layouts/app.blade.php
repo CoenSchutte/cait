@@ -31,7 +31,7 @@
 
     <link id="style-switch" rel="stylesheet" type="text/css" href="../../../../css/style.css">
 
-{{--    <script src="../../../../js/PureSnow.js"></script>--}}
+    <script src="../../../../js/PureSnow.js"></script>
 
 <style>
     .snowflake {
@@ -64,15 +64,17 @@
 
 <body class="font-sans antialiased">
 
-    <div class="preloader">
+<div class="snowcontainer">
+    <div id="snow"></div>
+</div>
+
+    <div class="preloader" id="preloader">
         <div class="preloader-item">
             <div class="spinner-grow text-primary"></div>
         </div>
     </div>
 
-    <div class="snowcontainer">
-        <div id="snow"></div>
-    </div>
+
     <x-navigation />
 
     <main>
@@ -93,7 +95,7 @@
     <!-- Template Functions -->
 {{--    <script src="../js/functions.js"></script>--}}
     @vite(['resources/js/functions.js'])
-{{--    @vite(['resources/js/PureSnow.js'])--}}
+    @vite(['resources/js/PureSnow.js'])
     @livewireScripts
 
 </body>

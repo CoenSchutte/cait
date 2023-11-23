@@ -97,6 +97,14 @@ function spawnSnowCSS(snow_density = 500){
 
 // Load the rules and execute after the DOM loads
 window.onload = function() {
+
+    var preloader = document.getElementById('preloader');
+    preloader.className += ' animate__animated animate__fadeOut';
+    setTimeout(function(){
+        preloader.style.display = 'none';
+    }, 200);
+
+
     spawnSnowCSS(snowflakes_count);
     spawn_snow(snowflakes_count);
 };
