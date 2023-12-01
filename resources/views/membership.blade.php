@@ -7,8 +7,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto pt-md-5">
-                    <a href="#" class="badge text-bg-{{strtolower("category")}} mb-2"><i
-                            class="fas fa-circle me-2 small fw-bold"></i>category</a>
                     <h1 class="display-4">Verrijk je Studentenleven met STIR!</h1>
                     <p class="lead">Leren, Netwerken en Plezier: Ervaar het Allemaal als Lid van STIR!</p>
                     <!-- Info -->
