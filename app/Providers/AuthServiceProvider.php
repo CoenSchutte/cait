@@ -37,6 +37,10 @@ class AuthServiceProvider extends ServiceProvider
             return $post->is_published;
         });
 
+        Gate::define('viewPulse', function (User $user) {
+            return $user->is_admin;
+        });
+
         //
     }
 }
