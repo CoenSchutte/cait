@@ -47,10 +47,10 @@ Inner intro START -->
                                         <!-- Card info -->
                                         <ul class="nav nav-divider align-items-center d-none d-sm-inline-block">
                                             <li class="nav-item">
-                                                @if($posts->first()->event_held_at)
-                                                    {{$posts->first()->event_held_at->format('d/m/Y')}}
+                                                @if($post->event_held_at)
+                                                    {{$post->event_held_at->format('d/m/Y')}}
                                                 @else
-                                                    {{$posts->first()->created_at->format('d/m/Y')}}
+                                                    {{$post->created_at->format('d/m/Y')}}
                                                 @endif
                                             </li>
                                         </ul>
