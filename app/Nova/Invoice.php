@@ -24,7 +24,7 @@ class Invoice extends Resource
     public static $group = 'User';
 
     public static $search = [
-        'id', 'product'
+        'id', 'product', 'user.name'
     ];
 
     public function fields(NovaRequest $request)
