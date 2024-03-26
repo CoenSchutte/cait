@@ -55,7 +55,8 @@ class InvoiceResource extends Resource
                     ->label('User')
                     ->relationship(name: 'user', titleAttribute: 'name')
                     ->required(),
-            ]);
+            ])->defaultSort('created_at', 'desc');
+
     }
 
     public static function table(Table $table): Table
