@@ -70,6 +70,7 @@ class PostResource extends Resource
                 Forms\Components\SpatieMediaLibraryFileUpload::make('Main Image')
                     ->label('Main Image')
                     ->disk('s3')
+                    ->visibility('private')
                     ->maxFiles(1),
 
             ]);
@@ -87,6 +88,11 @@ class PostResource extends Resource
                     ->searchable()
                     ->label('Ondertitel'),
 
+                Tables\Columns\SpatieMediaLibraryImageColumn::make('Main Image')
+                    ->label('Main Image')
+                    ->disk('s3')
+                    ->visibility('private'),
+
                 Tables\Columns\TextColumn::make('category')
                     ->searchable()
                     ->label('Categorie'),
@@ -103,7 +109,6 @@ class PostResource extends Resource
                     ->date('D j M Y H:i')
                     ->searchable()
                     ->label('Evenement gehouden op'),
-
 
 
             ])
