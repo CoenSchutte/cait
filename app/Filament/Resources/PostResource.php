@@ -90,6 +90,7 @@ class PostResource extends Resource
 
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('Main Image')
                     ->label('Main Image')
+                    ->allCollections()
                     ->disk('s3')
                     ->visibility('private'),
 
