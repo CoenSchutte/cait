@@ -67,6 +67,10 @@ class PostResource extends Resource
                     ->required()
                     ->placeholder('Evenement gehouden op'),
 
+                Forms\Components\SpatieMediaLibraryFileUpload::make('Main Image')
+                    ->label('Main Image')
+                    ->disk('s3')
+                    ->maxFiles(1),
 
             ]);
     }
@@ -99,6 +103,7 @@ class PostResource extends Resource
                     ->date('D j M Y H:i')
                     ->searchable()
                     ->label('Evenement gehouden op'),
+
 
 
             ])

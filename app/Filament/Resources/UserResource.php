@@ -54,7 +54,6 @@ class UserResource extends Resource
                     ->inline()
                     ->default(false),
 
-
             ]);
     }
 

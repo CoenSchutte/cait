@@ -16,6 +16,7 @@
         "darryldecode/cart": "^4.2",
         "ebess/advanced-nova-media-library": "^4.1",
         "filament/filament": "^3.2",
+        "filament/spatie-laravel-media-library-plugin": "^3.2",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.0",
         "laravel/jetstream": "^2.11",
