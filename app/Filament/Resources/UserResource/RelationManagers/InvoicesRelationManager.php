@@ -59,11 +59,16 @@ class InvoicesRelationManager extends RelationManager
         return $table
             ->recordTitleAttribute('product')
             ->columns([
-                Tables\Columns\TextColumn::make('product'),
-                Tables\Columns\TextColumn::make('description'),
-                Tables\Columns\TextColumn::make('category'),
-                Tables\Columns\TextColumn::make('status'),
-                Tables\Columns\TextColumn::make('price'),
+                Tables\Columns\TextColumn::make('product')
+                    ->label('Product'),
+                Tables\Columns\TextColumn::make('description')
+                    ->label('Beschrijving'),
+                Tables\Columns\TextColumn::make('category')
+                    ->label('Categorie'),
+                Tables\Columns\TextColumn::make('status')
+                    ->label('Status'),
+                Tables\Columns\TextColumn::make('price')
+                    ->label('Prijs'),
             ])
             ->filters([
                 //
