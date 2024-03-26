@@ -55,7 +55,7 @@ class InvoiceResource extends Resource
                     ->label('User')
                     ->relationship(name: 'user', titleAttribute: 'name')
                     ->required(),
-            ])->defaultSort('created_at', 'asc');
+            ]);
 
     }
 
@@ -79,7 +79,7 @@ class InvoiceResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array
