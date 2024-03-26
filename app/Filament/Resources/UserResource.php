@@ -26,7 +26,7 @@ class UserResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name')
-                    ->label('Name')
+                    ->label('Naam')
                     ->required()
                     ->placeholder('John Doe'),
 
@@ -38,12 +38,13 @@ class UserResource extends Resource
                     ->placeholder('user@email.com'),
 
                 Forms\Components\TextInput::make('student_number')
-                    ->label('Student Number')
+                    ->label('Student nummer')
                     ->required()
                     ->maxLength(7)
                     ->placeholder('1234567'),
 
                 DatePicker::make('birthdate')
+                    ->label('Geboortedatum')
                     ->maxDate(now()),
 
 
