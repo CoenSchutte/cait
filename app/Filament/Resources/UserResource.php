@@ -12,6 +12,8 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+// use datepicker
+use Filament\Forms\Components\DatePicker;
 
 class UserResource extends Resource
 {
@@ -28,22 +30,21 @@ class UserResource extends Resource
                     ->required()
                     ->placeholder('John Doe'),
 
-//                Forms\Components\TextInput::make('email')
-//                    ->label('Email')
-//                    ->required()
-//                    ->email()
-//                    ->unique(User::class, 'email', fn ($record) => $record->getKey())
-//                    ->placeholder('user@email.com'),
-//
-//                Forms\Components\TextInput::make('student_number')
-//                    ->label('Student Number')
-//                    ->required()
-//                    ->maxLength(7)
-//                    ->placeholder('1234567'),
-//
-                Forms\Components\Datepicker::make('birthdate')
-                    ->label('Birthdate')
-                    ->placeholder('DD/MM/YYYY'),
+                Forms\Components\TextInput::make('email')
+                    ->label('Email')
+                    ->required()
+                    ->email()
+                    ->unique(ignoreRecord: true)
+                    ->placeholder('user@email.com'),
+
+                Forms\Components\TextInput::make('student_number')
+                    ->label('Student Number')
+                    ->required()
+                    ->maxLength(7)
+                    ->placeholder('1234567'),
+
+                DatePicker::make('date_of_birth')
+                    ->maxDate(now()),
 
 
                 Forms\Components\Checkbox::make('is_admin')
