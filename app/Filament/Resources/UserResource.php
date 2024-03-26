@@ -12,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+
 // use datepicker
 use Filament\Forms\Components\DatePicker;
 
@@ -52,9 +53,6 @@ class UserResource extends Resource
                     ->label('Is Admin')
                     ->inline()
                     ->default(false),
-
-
-
 
 
             ]);
@@ -98,11 +96,6 @@ class UserResource extends Resource
                     ->label('Geboortedatum'),
 
 
-
-
-
-
-
             ])
             ->filters([
                 //
@@ -114,7 +107,8 @@ class UserResource extends Resource
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
-            ]);
+            ])
+            ->defaultSort('created_at', 'desc');
     }
 
     public static function getRelations(): array
