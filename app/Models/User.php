@@ -91,4 +91,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(UserEventRegistration::class);
     }
+
+    public function canAccessFilament(): bool
+    {
+        return $this->is_admin;
+    }
 }

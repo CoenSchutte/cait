@@ -5,38 +5,41 @@
         <div class="container">
             <div class="row g-4">
                 <!-- Left big card -->
-                <div class="col-lg-6">
-                    <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
-                         style="background-image:url({{$posts->first()->image_url}}); background-position: center; background-size: cover;">
-                        <!-- Card featured -->
-                        <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
-                        <!-- Card Image overlay -->
-                        <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
-                            <div class="w-100 mt-auto">
-                                <!-- Card category -->
-                                <a href="#" class="badge text-bg-{{strtolower($posts->first()->category)}} mb-2"><i
-                                        class="fas fa-circle me-2 small fw-bold"></i>{{$posts->first()->category}}</a>
-                                <!-- Card title -->
-                                <h2 class="text-white h1"><a href="{{route('posts.show', $posts->first())}}"
-                                                             class="btn-link stretched-link text-reset">{{$posts->first()->title}}</a>
-                                </h2>
-                                <p class="text-white">{{$posts->first()->subtitle}}</p>
-                                <!-- Card info -->
-                                <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
-                                    <li class="nav-item">
-                                        @if($posts->first()->event_held_at)
-                                            {{$posts->first()->event_held_at->format('d/m/Y')}}
-                                        @else
-                                            {{$posts->first()->created_at->format('d/m/Y')}}
-                                        @endif
-                                    </li>
-                                    <li class="nav-item">{{$posts->first()->getReadingTimeAttribute()}} min leestijd
-                                    </li>
-                                </ul>
+                @if($posts->first())
+                    <div class="col-lg-6">
+                        <div class="card card-overlay-bottom card-grid-lg card-bg-scale"
+                             style="background-image:url({{$posts->first()->image_url}}); background-position: center; background-size: cover;">
+                            <!-- Card featured -->
+                            <span class="card-featured" title="Featured post"><i class="fas fa-star"></i></span>
+                            <!-- Card Image overlay -->
+                            <div class="card-img-overlay d-flex align-items-center p-3 p-sm-4">
+                                <div class="w-100 mt-auto">
+                                    <!-- Card category -->
+                                    <a href="#" class="badge text-bg-{{strtolower($posts->first()->category)}} mb-2"><i
+                                            class="fas fa-circle me-2 small fw-bold"></i>{{$posts->first()->category}}
+                                    </a>
+                                    <!-- Card title -->
+                                    <h2 class="text-white h1"><a href="{{route('posts.show', $posts->first())}}"
+                                                                 class="btn-link stretched-link text-reset">{{$posts->first()->title}}</a>
+                                    </h2>
+                                    <p class="text-white">{{$posts->first()->subtitle}}</p>
+                                    <!-- Card info -->
+                                    <ul class="nav nav-divider text-white-force align-items-center d-none d-sm-inline-block">
+                                        <li class="nav-item">
+                                            @if($posts->first()->event_held_at)
+                                                {{$posts->first()->event_held_at->format('d/m/Y')}}
+                                            @else
+                                                {{$posts->first()->created_at->format('d/m/Y')}}
+                                            @endif
+                                        </li>
+                                        <li class="nav-item">{{$posts->first()->getReadingTimeAttribute()}} min leestijd
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @endif
                 <!-- Right small cards -->
                 <div class="col-lg-6">
                     <div class="row g-4">
@@ -145,18 +148,20 @@
                                 <h4 class="mt-4 mb-3">Recente posts</h4>
                                 <!-- Recent post item -->
                                 @foreach($recentPosts as $recentPost)
-                                <div class="card mb-3">
-                                    <div class="row g-3">
-                                        <div class="col-4">
-                                            <img class="rounded" src="{{$recentPost->image_url}}" alt="">
-                                        </div>
-                                        <div class="col-8">
-                                            <h6><a href="{{route('posts.show', $recentPost)}}"
-                                                   class="btn-link stretched-link text-reset fw-bold">{{$recentPost->title}}</a></h6>
-                                            <div class="small mt-1">{{$recentPost->created_at->translatedFormat('d F Y')}}</div>
+                                    <div class="card mb-3">
+                                        <div class="row g-3">
+                                            <div class="col-4">
+                                                <img class="rounded" src="{{$recentPost->image_url}}" alt="">
+                                            </div>
+                                            <div class="col-8">
+                                                <h6><a href="{{route('posts.show', $recentPost)}}"
+                                                       class="btn-link stretched-link text-reset fw-bold">{{$recentPost->title}}</a>
+                                                </h6>
+                                                <div
+                                                    class="small mt-1">{{$recentPost->created_at->translatedFormat('d F Y')}}</div>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
                                 @endforeach
                             </div>
                             <!-- Recent post widget END -->
