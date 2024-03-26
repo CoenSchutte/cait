@@ -43,7 +43,7 @@ class UserResource extends Resource
                     ->maxLength(7)
                     ->placeholder('1234567'),
 
-                DatePicker::make('date_of_birth')
+                DatePicker::make('birthdate')
                     ->maxDate(now()),
 
 
