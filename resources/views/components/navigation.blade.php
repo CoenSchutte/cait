@@ -87,8 +87,8 @@
                     <li class="nav-item">
                         <a @class([
                             'nav-link',
-                            'active' => Request::is('posts*')
-                            ]) href="{{route('posts.index')}}">Activiteiten</a>
+                            'active' => Request::is('post*')
+                            ]) href="{{route('post.index')}}">Activiteiten</a>
                     </li>
 
 
@@ -114,7 +114,7 @@
                         <a @class([
                             'nav-link',
                             'active' => Request::is('vacatures*')
-                            ]) href="{{route('posts.vacatures')}}">Vacatures</a>
+                            ]) href="{{route('post.vacatures')}}">Vacatures</a>
                     </li>
 
                     {{-- Over --}}

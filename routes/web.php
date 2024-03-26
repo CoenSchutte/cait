@@ -127,7 +127,7 @@ Route::middleware([])->group(function () {
     Route::post('events/{event}/register', [UserEventRegistrationsController::class, 'store'])->name('events.register');
     Route::delete('events/{event}/unregister', [UserEventRegistrationsController::class, 'destroy'])->name('events.unregister');
 
-    Route::get('/vacatures', [PostController::class, 'vacatures'])->name('posts.vacatures');
+    Route::get('/vacatures', [PostController::class, 'vacatures'])->name('post.vacatures');
 
 
     Route::post('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');

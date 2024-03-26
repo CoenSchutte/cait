@@ -87,7 +87,7 @@ class PostController extends Controller
         }
         $post->image_url = $post->fileUrl();
         $registration = $post->registration;
-        return view('posts.show', compact('post', 'registration'));
+        return view('post.show', compact('post', 'registration'));
     }
 
     /**

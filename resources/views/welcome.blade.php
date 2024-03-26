@@ -19,7 +19,7 @@
                                             class="fas fa-circle me-2 small fw-bold"></i>{{$posts->first()->category}}
                                     </a>
                                     <!-- Card title -->
-                                    <h2 class="text-white h1"><a href="{{route('posts.show', $posts->first())}}"
+                                    <h2 class="text-white h1"><a href="{{route('post.show', $posts->first())}}"
                                                                  class="btn-link stretched-link text-reset">{{$posts->first()->title}}</a>
                                     </h2>
                                     <p class="text-white">{{$posts->first()->subtitle}}</p>
@@ -65,7 +65,7 @@
                                                         class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}
                                                 </a>
                                                 <!-- Card title -->
-                                                <h4 class="text-white"><a href="{{route('posts.show', $post)}}"
+                                                <h4 class="text-white"><a href="{{route('post.show', $post)}}"
                                                                           class="btn-link stretched-link text-reset">{{$post->title}}</a>
                                                 </h4>
                                                 <!-- Card info -->
@@ -154,7 +154,7 @@
                                                 <img class="rounded" src="{{$recentPost->image_url}}" alt="">
                                             </div>
                                             <div class="col-8">
-                                                <h6><a href="{{route('posts.show', $recentPost)}}"
+                                                <h6><a href="{{route('post.show', $recentPost)}}"
                                                        class="btn-link stretched-link text-reset fw-bold">{{$recentPost->title}}</a>
                                                 </h6>
                                                 <div

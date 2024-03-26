@@ -40,7 +40,7 @@ Inner intro START -->
                                         </div>
                                     </div>
                                     <div class="card-body px-0 pt-3">
-                                        <h4 class="card-title"><a href="{{route('posts.show', $post)}}"
+                                        <h4 class="card-title"><a href="{{route('post.show', $post)}}"
                                                                   class="btn-link text-reset fw-bold">{{$post->title}}</a>
                                         </h4>
                                         <p class="card-text">{{$post->subtitle}}</p>

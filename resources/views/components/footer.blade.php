@@ -16,10 +16,10 @@
                     <div class="col-6">
                         <ul class="nav flex-column">
                             <li class="nav-item">
-                                <a class="nav-link pt-0" href="{{route('posts.index')}}">Activiteiten</a>
+                                <a class="nav-link pt-0" href="{{route('post.index')}}">Activiteiten</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{route('posts.vacatures')}}">Vacatures</a>
+                                <a class="nav-link" href="{{route('post.vacatures')}}">Vacatures</a>
                             </li>
                         </ul>
                     </div>
