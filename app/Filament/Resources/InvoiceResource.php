@@ -62,7 +62,11 @@ class InvoiceResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('product'),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('category'),
+                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('price'),
             ])
             ->filters([
                 //
