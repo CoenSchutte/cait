@@ -23,7 +23,51 @@ class PostResource extends Resource
     {
         return $form
             ->schema([
-                //
+
+                Forms\Components\TextInput::make('title')
+                    ->label('Titel')
+                    ->required()
+                    ->placeholder('Titel'),
+
+                Forms\Components\TextInput::make('subtitle')
+                    ->label('Ondertitel')
+                    ->required()
+                    ->placeholder('Ondertitel'),
+
+                Forms\Components\MarkdownEditor::make('body')
+                    ->label('Body')
+                    ->required()
+                    ->placeholder('Body'),
+
+                Forms\Components\Select::make('category')
+                    ->label('Categorie')
+                    ->options([
+                        'Workshop' => 'Workshop',
+                        'Promo' => 'Promo',
+                        'Borrel' => 'Borrel',
+                        'Vacature' => 'Vacature',
+                        'Activiteit' => 'Activiteit',
+                        'Nieuws' => 'Nieuws',
+                        'Overig' => 'Overig',
+                    ])
+                    ->required(),
+
+                Forms\Components\Checkbox::make('is_published')
+                    ->label('Is Gepubliceerd')
+                    ->inline()
+                    ->default(false),
+
+                Forms\Components\Checkbox::make('is_featured')
+                    ->label('Is gefeatured')
+                    ->inline()
+                    ->default(false),
+
+                Forms\Components\DateTimePicker::make('event_held_at')
+                    ->label('Evenement gehouden op')
+                    ->required()
+                    ->placeholder('Evenement gehouden op'),
+
+
             ]);
     }
 
