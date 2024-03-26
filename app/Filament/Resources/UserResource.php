@@ -90,10 +90,10 @@ class UserResource extends Resource
                     ->searchable()
                     ->label('Lid tot'),
 
-                Tables\Columns\TextColumn::make('birthdate')
-                    ->date('d M Y')
-                    ->searchable()
-                    ->label('Geboortedatum'),
+//                Tables\Columns\TextColumn::make('birthdate')
+//                    ->date('d M Y')
+//                    ->searchable()
+//                    ->label('Geboortedatum'),
 
 
             ])
