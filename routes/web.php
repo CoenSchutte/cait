@@ -117,15 +117,7 @@ Route::middleware([])->group(function () {
     });
 
 
-    Route::get('/riot.txt', function () {
-        $content = '6bf42b2a-b4a6-4511-bf5b-63a462e5a2c7';
-
-        return response($content, Response::HTTP_OK)
-            ->header('Content-Type', 'text/plain')
-            ->header('Content-Disposition', 'inline; filename="riot.txt"');
-    });
-
-    Route::resource('posts', PostController::class);
+    Route::resource('post', PostController::class);
 
     Route::resource('products', ProductController::class);
 
@@ -140,20 +132,6 @@ Route::middleware([])->group(function () {
 
     Route::post('/change-password', [UserController::class, 'changePassword'])->name('user.change-password');
 
-    Route::group(['middleware' => ['admin']], function () {
-        Route::prefix('admin')->group(function () {
-
-            //Niet zo interessant, alleen ter demonstratie dat je routes kan afschermen
-            Route::get('/posts', function () {
-                $posts = Post::orderByDesc('created_at')->get();
-
-                $posts->map(function ($post) {
-                    $post->image_url = $post->get4by3Attribute();
-                });
-                return view('posts.index', compact('posts'));
-            });
-        });
-    });
 
 
     //auth middleware
