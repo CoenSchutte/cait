@@ -56,17 +56,17 @@ Route::middleware([])->group(function () {
 
     Route::get('casino', function () {
         $post = Post::where('title', 'LIKE', '%casino%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
     Route::get('bowlen', function () {
         $post = Post::where('title', 'LIKE', '%go bowling!%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
     Route::get('netwerk', function () {
         $post = Post::where('title', 'LIKE', '%netwerkdiner%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
 
@@ -76,12 +76,12 @@ Route::middleware([])->group(function () {
 
     Route::get('movie', function () {
         $post = Post::where('title', 'LIKE', '%movie night%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
     Route::get('alv', function () {
         $post = Post::where('title', 'LIKE', '%Algemene ledenvergadering%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
 
@@ -89,7 +89,7 @@ Route::middleware([])->group(function () {
         $post = Post::where('subtitle', 'LIKE', '%akida%')->orderBy('created_at', 'desc')->first();
         $post->image_url = $post->fileUrl();
         $registration = $post->registration;
-        return view('posts.show', compact('post', 'registration'));
+        return view('post.show', compact('post', 'registration'));
     });
 
 
@@ -113,7 +113,7 @@ Route::middleware([])->group(function () {
 
     Route::get('/13dec', function () {
         $post = Post::where('title', 'LIKE', '%Gastcollege Exact%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('posts.show', ['post' => $post]);
+        return redirect()->route('post.show', ['post' => $post]);
     });
 
 
