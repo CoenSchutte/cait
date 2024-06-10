@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         $post->preview_url = $post->preview();
         $post->registration = $post->registration;
 
-        $post->registration->available_seats = $post->registration->availableSeats();
+        $post->registration->available_seats = $post->registration?->availableSeats();
 
         // Check if the user is registered for this event
         $user = Auth::user();
