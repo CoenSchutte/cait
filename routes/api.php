@@ -104,21 +104,32 @@ Route::post('/forgot-password', function (Request $request) {
 
 });
 
+Route::get('posts' , function () {
+    $posts = Post::where('is_featured', true)->where('is_published', true)->orderBy('created_at', 'desc')->get();
+
+    $posts->map(function ($post) {
+        $post->image_url = $post->get16by9Attribute();
+        $post->preview_url = $post->preview();
+    });
+
+    return response()->json($posts);
+});
+
+Route::get('posts/{post}' , function ($id) {
+    $post = Post::where('id', $id)->first();
+
+    $post->image_url = $post->get16by9Attribute();
+    $post->preview_url = $post->preview();
+
+    return response()->json($post);
+});
+
 
 
 // group routes with prefix api
 Route::prefix('v1')->middleware(['cors'])->group(function () {
 
-    Route::get('posts' , function () {
-        $posts = Post::where('is_featured', true)->where('is_published', true)->take(4)->orderBy('created_at', 'desc')->get();
 
-        $posts->map(function ($post) {
-            $post->image_url = $post->get16by9Attribute();
-            $post->preview_url = $post->preview();
-        });
-
-        return response()->json($posts);
-    });
 
 
 
