@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         if ($event->registration_start <= now() && $event->registration_end >= now()) {
             if ($event->attendees()->where('user_id', $user->id)->exists()) {
-                return response()->json(['message' => 'Already registered'], 400);
+                return response()->json(['message' => 'Je bent al aangeneld'], 400);
             }
 
             if ($event->availableSeats() > 0) {
@@ -62,13 +62,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
                     'event_registration_id' => $event->id,
                 ]);
 
-                return response()->json(['message' => 'Registered successfully']);
+                return response()->json(['message' => 'Aanmelding succesvol']);
             } else {
-                return response()->json(['message' => 'No available seats'], 400);
+                return response()->json(['message' => 'Geen plek meer beschikbaar'], 400);
             }
         }
 
-        return response()->json(['message' => 'Registration period is over or has not started'], 400);
+        return response()->json(['message' => 'De registratie is niet geopend'], 400);
     });
 
     Route::delete('/events/{eventId}/unregister', function ($eventId){
@@ -77,10 +77,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         if ($event->attendees()->where('user_id', $user->id)->exists()) {
             $event->attendees()->where('user_id', $user->id)->delete();
-            return response()->json(['message' => 'Unregistered successfully']);
+            return response()->json(['message' => 'Je bent afgemeld']);
         }
 
-        return response()->json(['message' => 'You are not registered for this event'], 400);
+        return response()->json(['message' => 'Je bent niet aangemeld voor dit evenement'], 400);
     }
     );
 
