@@ -164,8 +164,11 @@ Route::post('/forgot-password', function (Request $request) {
 
 });
 
-Route::get('posts' , function () {
-    $posts = Post::where('is_published', true)->orderBy('created_at', 'desc')->get();
+Route::get('posts', function () {
+    $posts = Post::where('is_published', true)
+        ->orderBy('created_at', 'desc')
+        ->with('media') // Eager load the media relationship
+        ->get();
 
     $posts->map(function ($post) {
         $post->image_url = $post->get16by9Attribute();
@@ -174,6 +177,7 @@ Route::get('posts' , function () {
 
     return response()->json($posts);
 });
+
 
 
 
