@@ -97,7 +97,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         // Check if the user is registered for this event
         $user = Auth::user();
-        if ($user) {
+        if ($user && $post->registration) {
             $post->registration->is_registered = $post->registration->attendees()->where('user_id', $user->id)->exists();
         }
 
