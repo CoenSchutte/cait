@@ -1,10 +1,12 @@
 <?php
 use App\Http\Controllers\CreateSubscriptionController;
 use App\Http\Controllers\ProductController;
+use App\Models\EventRegistration;
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\ValidationException;
@@ -42,7 +44,38 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
         return response()->noContent();
     });
 
+    Route::post('/events/{eventId}/register', function ($eventId)
+    {
+        $user = Auth::user();
+        $event = EventRegistration::findOrFail($eventId);
 
+        if ($event->registration_start <= now() && $event->registration_end >= now()) {
+            if ($event->attendees()->where('user_id', $user->id)->exists()) {
+                return response()->json(['message' => 'Already registered'], 400);
+            }
+
+            if ($event->availableSeats() > 0) {
+                $event->attendees()->attach($user->id);
+                return response()->json(['message' => 'Registered successfully']);
+            } else {
+                return response()->json(['message' => 'No available seats'], 400);
+            }
+        }
+
+        return response()->json(['message' => 'Registration period is over or has not started'], 400);
+    });
+    Route::delete('/events/{eventId}/unregister', function ($eventId){
+        $user = Auth::user();
+        $event = EventRegistration::findOrFail($eventId);
+
+        if ($event->attendees()->where('user_id', $user->id)->exists()) {
+            $event->attendees()->detach($user->id);
+            return response()->json(['message' => 'Unregistered successfully']);
+        }
+
+        return response()->json(['message' => 'You are not registered for this event'], 400);
+    }
+    );
 });
 
 Route::post('/login', function(Request $request) {
@@ -120,6 +153,7 @@ Route::get('posts/{post}' , function ($id) {
 
     $post->image_url = $post->get16by9Attribute();
     $post->preview_url = $post->preview();
+    $post->registration = $post->registration;
 
     return response()->json($post);
 });
