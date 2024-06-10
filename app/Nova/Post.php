@@ -42,6 +42,9 @@ class Post extends Resource
             Markdown::make('Body', 'body')
                 ->rules('required'),
 
+            Markdown::make('App Body', 'app_body')
+                ->rules('required'),
+
             Select::make('Category', 'category')
                 ->options([
                     'Workshop' => 'Workshop',
