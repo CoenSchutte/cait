@@ -4,6 +4,7 @@ use App\Http\Controllers\ProductController;
 use App\Models\EventRegistration;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\UserEventRegistration;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,7 +56,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
             }
 
             if ($event->availableSeats() > 0) {
-                $event->attendees()->attach($user->id);
+                // Create a new UserEventRegistration entry
+                UserEventRegistration::create([
+                    'user_id' => $user->id,
+                    'event_registration_id' => $event->id,
+                ]);
+
                 return response()->json(['message' => 'Registered successfully']);
             } else {
                 return response()->json(['message' => 'No available seats'], 400);
@@ -64,18 +70,37 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 
         return response()->json(['message' => 'Registration period is over or has not started'], 400);
     });
+
     Route::delete('/events/{eventId}/unregister', function ($eventId){
         $user = Auth::user();
         $event = EventRegistration::findOrFail($eventId);
 
         if ($event->attendees()->where('user_id', $user->id)->exists()) {
-            $event->attendees()->detach($user->id);
+            $event->attendees()->where('user_id', $user->id)->delete();
             return response()->json(['message' => 'Unregistered successfully']);
         }
 
         return response()->json(['message' => 'You are not registered for this event'], 400);
     }
     );
+
+    Route::get('posts/{post}' , function ($id) {
+        $post = Post::where('id', $id)->first();
+
+        $post->image_url = $post->get16by9Attribute();
+        $post->preview_url = $post->preview();
+        $post->registration = $post->registration;
+
+        $post->registration->available_seats = $post->registration->availableSeats();
+
+        // Check if the user is registered for this event
+        $user = Auth::user();
+        if ($user) {
+            $post->registration->is_registered = $post->registration->attendees()->where('user_id', $user->id)->exists();
+        }
+
+        return response()->json($post);
+    });
 });
 
 Route::post('/login', function(Request $request) {
@@ -148,17 +173,7 @@ Route::get('posts' , function () {
     return response()->json($posts);
 });
 
-Route::get('posts/{post}' , function ($id) {
-    $post = Post::where('id', $id)->first();
 
-    $post->image_url = $post->get16by9Attribute();
-    $post->preview_url = $post->preview();
-    $post->registration = $post->registration;
-
-    $post->registration->available_seats = $post->registration->availableSeats();
-
-    return response()->json($post);
-});
 
 
 
