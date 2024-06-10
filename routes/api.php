@@ -105,7 +105,7 @@ Route::post('/forgot-password', function (Request $request) {
 });
 
 Route::get('posts' , function () {
-    $posts = Post::where('is_featured', true)->where('is_published', true)->orderBy('created_at', 'desc')->get();
+    $posts = Post::where('is_published', true)->orderBy('created_at', 'desc')->get();
 
     $posts->map(function ($post) {
         $post->image_url = $post->get16by9Attribute();
