@@ -71,6 +71,11 @@ class User extends Resource
                 ->hideFromIndex()
                 ->hideWhenCreating(),
 
+            Text::make('expo_token')
+                ->hideFromIndex()
+                ->hideWhenCreating(),
+
+
             HasMany::make('Event Registrations', 'eventRegistrations', UserEventRegistration::class),
         ];
     }
