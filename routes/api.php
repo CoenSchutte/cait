@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\CreateSubscriptionController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\ProductController;
 use App\Models\EventRegistration;
 use App\Models\Post;
@@ -32,10 +33,24 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('paid', [CreateSubscriptionController::class, 'handleWebhookNotification'])->name('subscription.paid');
 Route::post('product/bought', [ProductController::class, 'handleWebhookNotification'])->name('products.paid');
 
+Route::post('/send-notification', [NotificationController::class, 'sendNotification']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
+    });
+
+    Route::post('/register-token', function(Request $request) {
+        // Save the token to the database or any storage
+        // Example: $user->update(['expo_push_token' => $request->input('token')]);
+
+        $user = Auth::user();
+        $user->update(['expo_token' => $request->input('token')]);
+
+        //log the token and user
+        \Log::info('User: ' . $user->id . ' has token: ' . $request->input('token'));
+
+        return response()->json(['success' => true]);
     });
 
     Route::post('/test-csrf', fn () => [1, 2, 3]);
@@ -167,7 +182,7 @@ Route::post('/forgot-password', function (Request $request) {
 Route::get('posts', function () {
     $posts = Post::where('is_published', true)
         ->orderBy('created_at', 'desc')
-        ->with('media') // Eager load the media relationship
+        ->with('media')
         ->get();
 
     $posts->map(function ($post) {
