@@ -155,6 +155,8 @@ Route::get('posts/{post}' , function ($id) {
     $post->preview_url = $post->preview();
     $post->registration = $post->registration;
 
+    $post->registration->available_seats = $post->registration->availableSeats();
+
     return response()->json($post);
 });
 
