@@ -11,6 +11,7 @@ class NotificationController extends Controller
     {
         $token = $request->input('token');
         $message = $request->input('message');
+        $title = $request->input('title');
 
         $client = new Client();
 
@@ -18,7 +19,7 @@ class NotificationController extends Controller
             'json' => [
                 'to' => $token,
                 'sound' => 'default',
-                'title' => 'Notification Title',
+                'title' => $title,
                 'body' => $message,
             ],
         ]);
