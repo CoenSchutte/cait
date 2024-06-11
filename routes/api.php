@@ -43,11 +43,14 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/register-token', function(Request $request) {
         \Log::info($request);
         $user = Auth::user();
-        $user->update(['expo_token' => $request->input('token')]);
+        if(isset($request->token)) {
+            $user->update(['expo_token' => $request->input('token')]);
+        }
 
-        \Log::info('User: ' . $user->id . ' has token: ' . $request->input('token'));
-
+        \Log::info('User: ' . $user->id . ' has token: ' . $user->expo_token);
         return response()->json(['success' => true]);
+
+
     });
 
     Route::post('/test-csrf', fn () => [1, 2, 3]);
