@@ -41,13 +41,10 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     });
 
     Route::post('/register-token', function(Request $request) {
-        // Save the token to the database or any storage
-        // Example: $user->update(['expo_push_token' => $request->input('token')]);
-        \Illuminate\Support\Facades\Log::info($request);
+        \Log::info($request);
         $user = Auth::user();
         $user->update(['expo_token' => $request->input('token')]);
 
-        //log the token and user
         \Log::info('User: ' . $user->id . ' has token: ' . $request->input('token'));
 
         return response()->json(['success' => true]);
