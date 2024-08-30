@@ -59,11 +59,11 @@ class Post extends Resource
             DateTime::make('Event held at', 'event_held_at')
                 ->nullable(),
 
-            Images::make('Main image') // second parameter is the media collection name
-                ->conversionOnIndexView('preview') // conversion used to display the image
-                ->rules('required')
-                ->showStatistics()
-                ->temporary(now()->addMinutes(10)),
+//            Images::make('Main image') // second parameter is the media collection name
+//                ->conversionOnIndexView('preview') // conversion used to display the image
+//                ->rules('required')
+//                ->showStatistics()
+//                ->temporary(now()->addMinutes(10)),
 
             HasOne::make('Registration', 'registration', EventRegistration::class)
                 ->nullable(),
