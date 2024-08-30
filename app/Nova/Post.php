@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enums\PostCategory;
 use Ebess\AdvancedNovaMediaLibrary\Fields\Images;
 use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\DateTime;
@@ -46,15 +47,7 @@ class Post extends Resource
                 ->rules('required'),
 
             Select::make('Category', 'category')
-                ->options([
-                    'Workshop' => 'Workshop',
-                    'Promo' => 'Promo',
-                    'Borrel' => 'Borrel',
-                    'Vacature' => 'Vacature',
-                    'Activiteit' => 'Activiteit',
-                    'Nieuws' => 'Nieuws',
-                    'Overig' => 'Overig',
-                ])
+                ->options(PostCategory::cases())
                 ->rules('required'),
 
             Boolean::make('Is Published', 'is_published')
