@@ -5,8 +5,8 @@
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Webestica.com">
-    <meta name="description" content="Bootstrap based News, Magazine and Blog Theme">
+    <meta name="author" content="caitrotterdam.nl">
+    <meta name="description" content="Studievereniging CAIT, CAIT, Studieverening">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="images/logo-stir-zwart.png">
