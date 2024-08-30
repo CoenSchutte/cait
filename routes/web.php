@@ -34,65 +34,6 @@ Route::middleware([])->group(function () {
         return redirect()->route('products.index');
     });
 
-    Route::get('happen', function () {
-        $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%happen met stir%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('products.show', ['product' => $product]);
-    });
-
-    Route::get('pubquiz', function () {
-        $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%STIR Pubquiz%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('products.show', ['product' => $product]);
-    });
-
-    Route::get('kerst', function () {
-        $product = Product::where('is_displayed', 1)->where('name', 'LIKE', '%kerstdiner%')->orderBy('created_at', 'desc')->first();
-
-        if (!$product) {
-            return redirect()->route('products.index');
-        }
-
-        return redirect()->route('products.show', ['product' => $product]);
-    });
-
-    Route::get('casino', function () {
-        $post = Post::where('title', 'LIKE', '%casino%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
-
-    Route::get('bowlen', function () {
-        $post = Post::where('title', 'LIKE', '%go bowling!%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
-
-    Route::get('netwerk', function () {
-        $post = Post::where('title', 'LIKE', '%netwerkdiner%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
-
-
-    Route::get('netwerk/aanmelden', function () {
-        return redirect('https://forms.gle/xz2L5Qod7YWdF3vt9');
-    });
-
-    Route::get('movie', function () {
-        $post = Post::where('title', 'LIKE', '%movie night%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
-
-    Route::get('alv', function () {
-        $post = Post::where('title', 'LIKE', '%Algemene ledenvergadering%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
-
-
-    Route::get('akida', function () {
-        $post = Post::where('subtitle', 'LIKE', '%akida%')->orderBy('created_at', 'desc')->first();
-        $post->image_url = $post->fileUrl();
-        $registration = $post->registration;
-        return view('post.show', compact('post', 'registration'));
-    });
-
-
 
 //    Route::get('/about', function () {
 //        return view('about');
@@ -106,15 +47,6 @@ Route::middleware([])->group(function () {
         return view('partners');
     })->name('partners');
 
-    //get /enquete and redirect to https://forms.gle/ZHYJydLfkvXsoH7D8
-    Route::get('/enquete', function () {
-        return redirect('https://forms.gle/ZHYJydLfkvXsoH7D8');
-    });
-
-    Route::get('/13dec', function () {
-        $post = Post::where('title', 'LIKE', '%Gastcollege Exact%')->orderBy('created_at', 'desc')->first();
-        return redirect()->route('post.show', ['post' => $post]);
-    });
 
 
     Route::resource('post', PostController::class);

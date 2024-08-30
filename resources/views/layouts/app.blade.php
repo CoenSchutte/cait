@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Welkom bij studievereniging STIR! Dé vereniging voor studenten van Technische Informatica Hogeschool Rotterdam">
-    <meta name="keywords" content="STIR, Studievereniging, Hogeschool Rotterdam, Technische Informatica, TI, Hogeschool, Rotterdam, Informatica, Studievereniging STIR, Studievereniging Technische Informatica Rotterdam, Studievereniging Hogeschool Rotterdam, Studievereniging TI, Studievereniging Hogeschool, Studievereniging Rotterdam, Studievereniging Informatica, Studievereniging Technische Informatica, Studievereniging Hogeschool Rotterdam, Studievereniging TI Rotterdam, Studievereniging Hogeschool Rotterdam, Studievereniging TI, Studievereniging Hogeschool, Studievereniging Rotterdam, Studievereniging Informatica, Studievereniging Technische Informatica, Studievereniging Hogeschool Rotterdam, Studievereniging TI Rotterdam">
+    <meta name="description" content="Welkom bij studievereniging CAIT! Dé vereniging voor studenten van CMI Hogeschool Rotterdam">
+    <meta name="keywords" content="CAIT, Studievereniging, Hogeschool Rotterdam, Technische Informatica, TI, Hogeschool, Rotterdam, Informatica, Studievereniging STIR, Communicatie, Applied Data Science, AI">
 
-    <title>Studievereniging STIR</title>
+    <title>Studievereniging CAIT</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../images/logo-stir-kleur.png">
+    <link rel="shortcut icon" href="../images/cait.png">
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">

@@ -25,15 +25,14 @@
                         <div class="col-sm-6 mb-5 mb-sm-0">
                             <h3>Adverteren / Samenwerken</h3>
                             <p>Neem direct contact met ons op!</p>
-                            <p>Bel voorzitter: <a href="tel:31644408304" class="text-reset"><u>+31 644408304</u></a></p>
-                            <p>E-mail voorzitter: <a href="mailto:coen.schutte@stirotterdam.nl" class="text-reset"><u>coen.schutte@stirotterdam.nl</u></a></p>
-                            <p>E-mail secretaris: <a href="mailto:guus.van.der.velde@stirotterdam.nl" class="text-reset"><u>guus.van.der.velde@stirotterdam.nl</u></a></p>
+{{--                            <p>Bel voorzitter: <a href="tel:31644408304" class="text-reset"><u>+31 644408304</u></a></p>--}}
+                            <p>E-mail voorzitter: <a href="mailto:acelya.arslan@caitrotterdam.nl" class="text-reset"><u>acelya.arslan@caitrotterdam.nl</u></a></p>
                             <address>Wijnhaven 107, 3011WN, Rotterdam</address>
                         </div>
-                        <div class="col-sm-6">
-                            <h3>Contactinformatie </h3>
-                            <p>Loop even langs het TI-Lab (ruimte wd.01.021), daar kun je eigenlijk altijd wel iemand vinden! Mocht er niemand zijn stuur dan even een berichtje op Teams</p>
-                        </div>
+{{--                        <div class="col-sm-6">--}}
+{{--                            <h3>Contactinformatie </h3>--}}
+{{--                            <p>Loop even langs het TI-Lab (ruimte wd.01.021), daar kun je eigenlijk altijd wel iemand vinden! Mocht er niemand zijn stuur dan even een berichtje op Teams</p>--}}
+{{--                        </div>--}}
                     </div>
                 </div>  <!-- Col END -->
             </div>
