@@ -52,10 +52,16 @@ class User extends Resource
                 ->sortable()
                 ->rules('required', 'max:7'),
 
-            Select::make('Opleiding')
-                ->options(Opleiding::cases())
+            Select::make('Opleiding', 'opleiding')
+                ->options(
+                    collect(Opleiding::cases())->mapWithKeys(fn ($case) => [$case->value => $case->value])
+                )
                 ->displayUsingLabels()
-                ->rules('required'),
+                ->rules('required')
+                ->resolveUsing(fn ($value) => $value) // Pass the raw value to Nova
+                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
+                    $model->{$attribute} = $request->{$requestAttribute}; // Save the raw value directly
+                }),
 
             Date::make('Geboortedatum', 'birthdate')
                 ->sortable(),

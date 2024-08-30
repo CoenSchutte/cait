@@ -47,8 +47,16 @@ class Post extends Resource
                 ->rules('required'),
 
             Select::make('Category', 'category')
-                ->options(PostCategory::cases())
-                ->rules('required'),
+                ->options(
+                    collect(PostCategory::cases())->mapWithKeys(fn ($case) => [$case->value => $case->value])
+                )
+                ->displayUsingLabels()
+                ->rules('required')
+                ->resolveUsing(fn ($value) => $value) // Pass the raw value to Nova
+                ->fillUsing(function ($request, $model, $attribute, $requestAttribute) {
+                    $model->{$attribute} = $request->{$requestAttribute}; // Save the raw value directly
+                }),
+
 
             Boolean::make('Is Published', 'is_published')
                 ->default(false),

@@ -7736,32 +7736,32 @@ textarea.form-control-lg {
   background-color: RGBA(15, 15, 16, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-workshop {
+.text-bg-ads {
     color: #fff !important;
     background-color: RGBA(214, 41, 62, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-promo {
+.text-bg-cmd {
     color: #fff !important;
     background-color: RGBA(247, 195, 46, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-borrel {
+.text-bg-co {
     color: #fff !important;
     background-color: RGBA(12, 188, 135, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-vacature {
+.text-bg-cmgt {
     color: #fff !important;
     background-color: RGBA(79, 158, 248, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-activiteit {
+.text-bg-ti {
     color: #fff !important;
     background-color: RGBA(33, 99, 232, var(--bs-bg-opacity, 1)) !important;
 }
 
-.text-bg-nieuws {
+.text-bg-inf {
     color: #fff !important;
     background-color: RGBA(89, 93, 105, var(--bs-bg-opacity, 1)) !important;
 }
