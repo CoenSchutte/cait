@@ -5,8 +5,8 @@
         <div class="row pt-5">
             <!-- Footer Widget -->
             <div class="col-md-6 col-lg-4 mb-4">
-                <img class="light-mode-item h-50" src="{{ asset('images/cait.png') }}" alt="logo">
-                <img class="dark-mode-item" src="{{ asset('images/cait.png') }}" alt="logo">
+                <img class="light-mode-item h-75 w-75" src="{{ asset('images/cait.png') }}" alt="logo">
+                <img class="dark-mode-item h-75 w-75" src="{{ asset('images/cait.png') }}" alt="logo">
             </div>
 
             <!-- Footer Widget -->
