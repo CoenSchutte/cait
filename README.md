@@ -1,1 +1,1 @@
-[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F64fcd180-7985-4ca6-8cd8-aa44e204b4c7%3Fdate%3D1%26commit%3D1&style=flat)](https://forge.laravel.com)
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2F72f21a0b-806f-4cc8-a655-18f0948da94b%3Fdate%3D1%26commit%3D1&style=for-the-badge)](https://forge.laravel.com/servers/786543/sites/2453314)
