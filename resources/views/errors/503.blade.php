@@ -84,26 +84,26 @@
                     <div class="col-lg-7 mx-auto">
                         <p class="lead">We zijn bezig met het uitvoeren van een update! Niet getreurd, we zijn zo weer online.</p>
                         <ul class="nav text-white-force justify-content-center">
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-facebook" href="https://discord.gg/Np6WEv46Bc">--}}
+{{--                                    <i class="fab fa-discord align-middle"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-linkedin" href="https://linkedin.com/company/stirotterdam">--}}
+{{--                                    <i class="fab fa-linkedin align-middle"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                             <li class="nav-item">
-                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-facebook" href="https://discord.gg/Np6WEv46Bc">
-                                    <i class="fab fa-discord align-middle"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-linkedin" href="https://linkedin.com/company/stirotterdam">
-                                    <i class="fab fa-linkedin align-middle"></i>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-instagram-gradient" href="https://instagram.com/stirotterdam">
+                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-instagram-gradient" href="https://instagram.com/caitrotterdam">
                                     <i class="fab fa-instagram align-middle"></i>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-facebook" href="https://facebook.com/stirotterdam">
-                                    <i class="fab fa-facebook-square align-middle"></i>
-                                </a>
-                            </li>
+{{--                            <li class="nav-item">--}}
+{{--                                <a class="nav-link icon-md rounded-circle me-2 mb-2 p-0 fs-6 bg-facebook" href="https://facebook.com/stirotterdam">--}}
+{{--                                    <i class="fab fa-facebook-square align-middle"></i>--}}
+{{--                                </a>--}}
+{{--                            </li>--}}
                         </ul>
                     </div>
                     <!-- Content and social icon END -->
