@@ -18,7 +18,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9 mx-auto pt-md-5">
-                    @dump($post)
                     <a href="#" class="badge text-bg-{{strtolower($post->category)}} mb-2"><i
                             class="fas fa-circle me-2 small fw-bold"></i>{{$post->category}}</a>
                     <h1 class="display-4">{{$post->title}}</h1>
