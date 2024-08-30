@@ -6,24 +6,24 @@
             <div class="row g-4">
                 <!-- Left sidebar START -->
                 <div class="col-lg-7 col-xxl-8">
-{{--                    @if(!$user->hasSubscription())--}}
-{{--                        <div class="alert alert-warning" role="alert">--}}
-{{--                            <h4 class="alert-heading">Je bent nog geen lid :(</h4>--}}
-{{--                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je als lid</p>--}}
-{{--                            <ul>--}}
-{{--                                <li><strong>15%</strong> korting op alle betaalde evenementen</li>--}}
-{{--                                <li><strong>10%</strong> korting op onze merchandise</li>--}}
-{{--                                <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v.--}}
-{{--                                    <strong>&euro;3.00</strong>--}}
-{{--                                </li>--}}
-{{--                                <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>--}}
-{{--                                <li>Stemrecht tijdens de ALV</li>--}}
-{{--                            </ul>--}}
-{{--                            <hr>--}}
-{{--                            <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30--}}
-{{--                                per jaar!</a>--}}
-{{--                        </div>--}}
-{{--                    @endif--}}
+                    {{--                    @if(!$user->hasSubscription())--}}
+                    {{--                        <div class="alert alert-warning" role="alert">--}}
+                    {{--                            <h4 class="alert-heading">Je bent nog geen lid :(</h4>--}}
+                    {{--                            <p>Je loopt nu een aantal voordelen mis. Zo krijg je als lid</p>--}}
+                    {{--                            <ul>--}}
+                    {{--                                <li><strong>15%</strong> korting op alle betaalde evenementen</li>--}}
+                    {{--                                <li><strong>10%</strong> korting op onze merchandise</li>--}}
+                    {{--                                <li>Een <strong>gratis</strong> drankje bij elke borrel t.w.v.--}}
+                    {{--                                    <strong>&euro;3.00</strong>--}}
+                    {{--                                </li>--}}
+                    {{--                                <li>Voorrang bij evenementen met beperkte beschikbare plaatsen</li>--}}
+                    {{--                                <li>Stemrecht tijdens de ALV</li>--}}
+                    {{--                            </ul>--}}
+                    {{--                            <hr>--}}
+                    {{--                            <a class="btn btn-link" href="{{route('subscription.create')}}">Word nu lid voor &euro;30--}}
+                    {{--                                per jaar!</a>--}}
+                    {{--                        </div>--}}
+                    {{--                    @endif--}}
                     <!-- Profile START -->
                     <div class="card border mb-4">
                         <div class="card-header border-bottom p-3">
@@ -48,6 +48,20 @@
                                 <input class="form-control" name="student_number" type="text"
                                        value="{{$user->student_number}}">
                             </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Opleiding</label>
+                                <select class="form-select" name="opleiding">
+                                    @foreach(\App\Enums\Opleiding::cases() as $opleiding)
+                                        <option value="{{ $opleiding->value }}"
+                                            {{ $user->opleiding == $opleiding->value ? 'selected' : '' }}>
+                                            {{ $opleiding->value }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+
                             <!-- Birthday -->
                             <div>
                                 <label class="form-label">Geboortedatum</label>
@@ -181,7 +195,8 @@
                             <div class="card-body">
                                 <p>Je lidmaatschap loopt door
                                     tot: <b>{{$user->member_until->format(('d/m/Y'))}}</b></p>
-                                <p>Dat betekent dat je nog <b>{{$user->member_until->diffInDays(now())}} dagen</b> van je lidmaatschap kan genieten</p>
+                                <p>Dat betekent dat je nog <b>{{$user->member_until->diffInDays(now())}} dagen</b> van
+                                    je lidmaatschap kan genieten</p>
                             </div>
                         </div>
                     </div>

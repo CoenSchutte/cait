@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         $user = auth()->user();
         $user->update($request->all());
+
         return redirect()->back()->with('success', 'Profile updated successfully');
     }
 

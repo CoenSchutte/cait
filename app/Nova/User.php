@@ -2,6 +2,7 @@
 
 namespace App\Nova;
 
+use App\Enums\Opleiding;
 use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\UsersPerDay;
 use Illuminate\Http\Request;
@@ -11,6 +12,7 @@ use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\HasMany;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
@@ -49,6 +51,11 @@ class User extends Resource
             Text::make('Student nummer', 'student_number')
                 ->sortable()
                 ->rules('required', 'max:7'),
+
+            Select::make('Opleiding')
+                ->options(Opleiding::cases())
+                ->displayUsingLabels()
+                ->rules('required'),
 
             Date::make('Geboortedatum', 'birthdate')
                 ->sortable(),
