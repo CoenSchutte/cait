@@ -7751,6 +7751,11 @@ textarea.form-control-lg {
     background-color: RGBA(12, 188, 135, var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-cmi {
+    color: #fff !important;
+    background-color: RGBA(208,7,57, var(--bs-bg-opacity, 1)) !important;
+}
+
 .text-bg-cmgt {
     color: #fff !important;
     background-color: RGBA(79, 158, 248, var(--bs-bg-opacity, 1)) !important;

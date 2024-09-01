@@ -8,6 +8,7 @@ enum PostCategory: string
     case COMMUNICATIE = 'CO';
     case CMD = 'CMD';
     case CMGT = 'CMGT';
+    case CMI = 'CMI';
     case INFORMATICA = 'INF';
     case TECHNISCHE_INFORMATICA = 'TI';
 }
