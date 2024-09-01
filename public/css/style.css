@@ -7775,6 +7775,36 @@ textarea.form-control-lg {
     background-color: RGBA(147, 148, 249, var(--bs-bg-opacity, 1)) !important;
 }
 
+.text-bg-workshop {
+    color: #fff !important;
+    background-color: RGBA(214, 41, 62, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-promo {
+    color: #fff !important;
+    background-color: RGBA(247, 195, 46, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-borrel {
+    color: #fff !important;
+    background-color: RGBA(12, 188, 135, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-vacature {
+    color: #fff !important;
+    background-color: RGBA(79, 158, 248, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-activiteit {
+    color: #fff !important;
+    background-color: RGBA(33, 99, 232, var(--bs-bg-opacity, 1)) !important;
+}
+
+.text-bg-nieuws {
+    color: #fff !important;
+    background-color: RGBA(89, 93, 105, var(--bs-bg-opacity, 1)) !important;
+}
+
 
 
 .text-bg-default {
