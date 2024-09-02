@@ -34,6 +34,6 @@ class UsersPerOpleiding extends Partition
      */
     public function uriKey()
     {
-        return 'invoices-per-product';
+        return 'users-per-opleiding';
     }
 }
