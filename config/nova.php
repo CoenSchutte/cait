@@ -178,7 +178,7 @@ return [
     */
 
      'brand' => [
-         'logo' => resource_path('/images/logo-stir-zwart.svg'),
+//         'logo' => resource_path('/images/logo-stir-zwart.svg'),
 
 //         'colors' => [
 //             "400" => "24, 182, 155, 0.5",
