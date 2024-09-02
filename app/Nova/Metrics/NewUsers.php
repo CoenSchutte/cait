@@ -10,7 +10,7 @@ class NewUsers extends Value
 {
     public $name = 'Totaal aantal nieuwe gebruikers';
 
-    public $width = '1/2';
+    public $width = '1/3';
 
 
     public function calculate(NovaRequest $request)

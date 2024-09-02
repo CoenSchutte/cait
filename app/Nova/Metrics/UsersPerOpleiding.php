@@ -4,32 +4,17 @@ namespace App\Nova\Metrics;
 
 use App\Models\User;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Metrics\Trend;
+use Laravel\Nova\Metrics\Partition;
 
-class UsersPerDay extends Trend
+class UsersPerOpleiding extends Partition
 {
-    public $name = 'Gebruikers Per Dag';
+    public $name = 'Users Per Opleiding';
 
     public $width = '1/3';
 
-
     public function calculate(NovaRequest $request)
     {
-        return $this->countByDays($request, User::class);
-    }
-
-    /**
-     * Get the ranges available for the metric.
-     *
-     * @return array
-     */
-    public function ranges()
-    {
-        return [
-            30 => __('30 Days'),
-            60 => __('60 Days'),
-            90 => __('90 Days'),
-        ];
+        return $this->count($request, User::class, 'opleiding');
     }
 
     /**
@@ -49,6 +34,6 @@ class UsersPerDay extends Trend
      */
     public function uriKey()
     {
-        return 'users-per-day';
+        return 'invoices-per-product';
     }
 }

@@ -10,6 +10,7 @@ use App\Nova\Metrics\NewUsers;
 use App\Nova\Metrics\RegistrationsPerDay;
 use App\Nova\Metrics\RegistrationsPerEvent;
 use App\Nova\Metrics\UsersPerDay;
+use App\Nova\Metrics\UsersPerOpleiding;
 use Laravel\Nova\Cards\Help;
 use Laravel\Nova\Dashboards\Main as Dashboard;
 
@@ -25,6 +26,7 @@ class Main extends Dashboard
         return [
             new NewUsers(),
             new UsersPerDay(),
+            new UsersPerOpleiding(),
             new NewInvoices(),
             new InvoicesPerDay(),
             new InvoicesPerProduct(),
