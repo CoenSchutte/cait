@@ -2,7 +2,7 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="/">
-                <img src="{{asset('images/cait.png')}}" alt="CAIT Logo" class="w-full h-32">
+                <img src="{{asset('images/cait.png')}}" alt="CAIT Logo" class="w-full h-16">
             </a>
         </x-slot>
 
