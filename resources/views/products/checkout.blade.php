@@ -15,7 +15,6 @@
                             <div class="card-header px-0 pb-3">
                                 <h4 class="card-title mb-0">Je bestelling</h4>
                             </div>
-
                             @foreach($cartItems as $cartItem)
                                 <!-- Card body -->
                                 <div class="card-body p-0">
@@ -186,12 +185,15 @@
                                     @endif
                                 </span>
                             </div>
-
                             <!-- Button -->
-                            <form class="d-grid" action="{{route("products.buy")}}" method="POST">
+                            <form class="d-grid" action="{{ route('products.buy') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="btn btn-primary mb-0">Plaats bestelling</button>
+                                <button type="submit"
+                                        class="btn btn-primary mb-0" {{ Cart::session(auth()->user()->id)->isEmpty() ? 'disabled' : '' }}>Plaats
+                                    bestelling
+                                </button>
                             </form>
+
                         </div>
                     </div>
                     <!-- Order summary END -->
