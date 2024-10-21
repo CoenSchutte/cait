@@ -48,6 +48,11 @@ Route::middleware([])->group(function () {
     })->name('partners');
 
 
+    Route::get('/borrel', function () {
+        $post = Post::where('title', 'LIKE', '%borrel%')->orderBy('created_at', 'desc')->first();
+        return redirect()->route('post.show', ['post' => $post]);
+    })->name('borrel');
+
 
     Route::resource('post', PostController::class);
 
