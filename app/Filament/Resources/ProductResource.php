@@ -41,9 +41,7 @@ class ProductResource extends Resource
             Forms\Components\MarkdownEditor::make('description')->required(),
 
             FilamentJsonColumn::make('options')
-                ->label('Options')
-                ->required(),
-
+                ->label('Options'),
             
 
             Forms\Components\TextInput::make('stock')->numeric(),
