@@ -20,7 +20,6 @@ class Post extends Model implements HasMedia
         'title',
         'subtitle',
         'body',
-        'app_body',
         'category',
         'is_published',
         'is_featured',

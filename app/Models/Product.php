@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
@@ -63,27 +62,21 @@ class Product extends Model implements HasMedia
 
     public function fileUrl(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60));
+        return $this->getFirstMediaUrl();
     }
 
     public function preview(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60), 'preview');
+        return $this->getFirstMediaUrl('images', 'preview');
     }
 
     public function get4by3Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(60), '4by3');
+        return $this->getFirstMediaUrl('images', '4by3');
     }
 
-    public function getUrlsAttribute()
+    public function getUrlsAttribute(): array
     {
-        $urls = [];
-        foreach ($this->media()->get() as $media) {
-            $urls[] = $media->getTemporaryUrl(Carbon::now()->addHour());
-        }
-        return $urls;
+        return $this->getMedia('images')->map(fn($media) => $media->getUrl())->toArray();
     }
-
-
 }

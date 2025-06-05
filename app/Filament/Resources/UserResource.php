@@ -20,7 +20,10 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-user-group';
+
+    protected static ?string $navigationGroup = 'User';
+
 
     public static function form(Form $form): Form
     {
@@ -44,15 +47,21 @@ class UserResource extends Resource
                     ->maxLength(7)
                     ->placeholder('1234567'),
 
-                DatePicker::make('birthdate')
-                    ->label('Geboortedatum')
-                    ->maxDate(now()),
-
+                DatePicker::make('member_until')
+                    ->label('Lid tot')
+                    ->default(now()->addYear()),
 
                 Forms\Components\Checkbox::make('is_admin')
                     ->label('Is Admin')
                     ->inline()
                     ->default(false),
+
+                DatePicker::make('birthdate')
+                    ->label('Geboortedatum')
+                    ->maxDate(now()),
+
+
+
 
             ]);
     }

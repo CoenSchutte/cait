@@ -15,6 +15,13 @@ class Highlight extends Model implements HasMedia
     use HasFactory;
     use InteractsWithMedia;
 
+    protected $fillable = [
+        'title',
+        'category',
+        'is_published',
+        'event_date',
+    ];
+
     protected $casts = [
         'event_date' => 'date',
     ];

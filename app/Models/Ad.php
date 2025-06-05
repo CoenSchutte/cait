@@ -17,6 +17,7 @@ class Ad extends Model implements HasMedia
 
     protected $fillable = [
         'company_name',
+        'company_url',
         'expiration_date',
     ];
 

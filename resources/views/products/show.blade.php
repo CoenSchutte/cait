@@ -130,9 +130,7 @@
                             </div>
                         @endif
 
-                        <!-- Variant END -->
 
-                        <!-- Price and button START -->
                         <div class="row">
                             <!-- Price -->
                             <div class="col-md-4">
@@ -142,7 +140,6 @@
 
                                 </h4>
                             </div>
-                            <!-- Button -->
                             <div class="col-md-6">
                                 @auth()
                                     @if($product->is_available)
@@ -157,16 +154,11 @@
                             </div>
                         </div>
                     </form>
-                    <!-- Price and button END -->
                 </div>
             </div>
         </div>
     </section>
-    <!-- =======================
-    Main END -->
 
-    <!-- =======================
-    Description START -->
     <section class="pt-0 pt-lg-5">
         <div class="container">
             <div class="row g-4 justify-content-between">

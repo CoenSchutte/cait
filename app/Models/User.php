@@ -38,8 +38,7 @@ class User extends Authenticatable implements FilamentUser
         'birthdate',
         'mollie_mandate_id',
         'member_until',
-        'opleiding',
-        'expo_token'
+        'opleiding'
     ];
 
     /**
