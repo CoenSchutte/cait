@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
@@ -43,22 +42,21 @@ class Highlight extends Model implements HasMedia
 
     public function fileUrl(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5));
+        return $this->getFirstMediaUrl();
     }
 
     public function preview(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
+        return $this->getFirstMediaUrl('default', 'preview');
     }
 
     public function get4by3Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '4by3');
+        return $this->getFirstMediaUrl('default', '4by3');
     }
 
     public function get16by9Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '16by9');
-
+        return $this->getFirstMediaUrl('default', '16by9');
     }
 }

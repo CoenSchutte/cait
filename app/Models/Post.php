@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -26,13 +25,11 @@ class Post extends Model implements HasMedia
         'is_published',
         'is_featured',
         'event_held_at',
-
     ];
 
     protected $casts = [
         'event_held_at' => 'datetime',
     ];
-
 
     public function registerMediaConversions(Media $media = null): void
     {
@@ -59,32 +56,31 @@ class Post extends Model implements HasMedia
             ->fit(Manipulations::FIT_STRETCH, 1200, 630)
             ->optimize([Jpegoptim::class => ['--all-progressive']])
             ->nonQueued();
-
     }
 
     public function fileUrl(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5));
+        return $this->getFirstMediaUrl();
     }
 
     public function preview(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
+        return $this->getFirstMediaUrl('default', 'preview');
     }
 
     public function get4by3Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '4by3');
+        return $this->getFirstMediaUrl('default', '4by3');
     }
 
     public function get16by9Attribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), '16by9');
+        return $this->getFirstMediaUrl('default', '16by9');
     }
 
     public function getUrlPreviewAttribute(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'url_preview');
+        return $this->getFirstMediaUrl('default', 'url_preview');
     }
 
     public function getReadingTimeAttribute(): int

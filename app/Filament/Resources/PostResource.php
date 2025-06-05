@@ -69,8 +69,8 @@ class PostResource extends Resource
 
                 Forms\Components\SpatieMediaLibraryFileUpload::make('Main Image')
                     ->label('Main Image')
-                    ->disk('s3')
-                    ->visibility('private')
+                    ->disk('public')
+                    ->visibility('public')
                     ->maxFiles(1),
 
             ]);
@@ -91,8 +91,8 @@ class PostResource extends Resource
                 Tables\Columns\SpatieMediaLibraryImageColumn::make('Main Image')
                     ->label('Main Image')
                     ->allCollections()
-                    ->disk('s3')
-                    ->visibility('private'),
+                    ->disk('public')
+                    ->visibility('public'),
 
                 Tables\Columns\TextColumn::make('category')
                     ->searchable()

@@ -185,8 +185,6 @@
             </div> <!-- Row end -->
         </div>
     </section>
-    <!-- =======================
-    Main content END -->
     <script src="../vendor/sticky-js/sticky.min.js"></script>
 
 @endsection

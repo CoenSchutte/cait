@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Image\Manipulations;
@@ -20,6 +19,7 @@ class Ad extends Model implements HasMedia
         'company_name',
         'expiration_date',
     ];
+
     protected $casts = [
         'expiration_date' => 'date',
     ];
@@ -47,21 +47,21 @@ class Ad extends Model implements HasMedia
 
     public function fileUrl(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5));
+        return $this->getFirstMediaUrl();
     }
 
     public function preview(): ?string
     {
-        return $this->media->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'preview');
+        return $this->getFirstMediaUrl('default', 'preview');
     }
 
     public function getSidebarAttribute(): ?string
     {
-        return $this->getMedia('sidebar')->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'sidebar');
+        return $this->getFirstMediaUrl('default', 'sidebar');
     }
 
     public function getMainbarAttribute(): ?string
     {
-        return $this->getMedia('mainbar')->first()?->getTemporaryUrl(Carbon::now()->addMinutes(5), 'mainbar');
+        return $this->getFirstMediaUrl('default', 'mainbar');
     }
 }
