@@ -57,7 +57,7 @@ class ProductResource extends Resource
                 ->disk('public')
                 ->visibility('public'),
 
-            Forms\Components\Checkbox::make('is_available'),
+            Forms\Components\Checkbox::make('is_available')->columnSpanFull(),
             Forms\Components\Checkbox::make('is_displayed'),
         ]);
     }
